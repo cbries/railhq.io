@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📚 Documentation
+    url: https://railhq.io/docs
+    about: Check the documentation for guides and tutorials
+  - name: 💬 Discussions
+    url: https://github.com/cbries/railhq.io/discussions
+    about: Ask questions and share ideas with the community
+  - name: 🔒 Security Vulnerability
+    url: https://github.com/cbries/railhq.io/blob/main/SECURITY.md
+    about: Report security vulnerabilities privately (DO NOT open a public issue!)
