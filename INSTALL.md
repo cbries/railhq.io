@@ -93,8 +93,14 @@ Copy-Item -Path "resourcesRuntime\nginx\*.conf" -Destination "$dataDir\resources
 ### Step 4: Build and Start
 
 ```bash
-# Build the Docker image
-docker compose build railhq
+# Option 1: Build using the build script (includes documentation)
+./docker-build_and_export.sh
+
+# Option 2: Build and save as tar.gz for deployment
+./docker-build_and_export.sh --save
+
+# Option 3: Pull pre-built image from GitHub Container Registry
+docker pull ghcr.io/cbries/railhq.io:latest
 
 # Start all services
 docker compose up -d
@@ -279,7 +285,47 @@ dotnet run
 
 The Gateway connects your command station (ECoS, z21) to railhq.io.
 
-### Option A: Run Gateway from Source
+### Option A: Download Pre-built Binaries
+
+Download the latest Gateway release for your platform from [GitHub Releases](https://github.com/cbries/railhq.io/releases).
+
+| Platform | File |
+|----------|------|
+| Windows x64 | `railhqGateway-windows-x64-*.zip` |
+| Windows ARM64 | `railhqGateway-windows-arm64-*.zip` |
+| Linux x64 | `railhqGateway-linux-x64-*.tar.gz` |
+| Linux ARM64 (RPi 4) | `railhqGateway-linux-arm64-*.tar.gz` |
+| Linux ARM (RPi 3) | `railhqGateway-linux-arm-*.tar.gz` |
+| macOS Intel | `railhqGateway-macos-x64-*.tar.gz` |
+| macOS Apple Silicon | `railhqGateway-macos-arm64-*.tar.gz` |
+
+```bash
+# Example: Linux x64
+tar -xzf railhqGateway-linux-x64-1.64.tar.gz
+cd railhqGateway-linux-x64
+./railyGateway
+```
+
+### Option B: Build Gateway Locally
+
+Build Gateway binaries for all or specific platforms:
+
+```bash
+# Build all platforms
+./build-gateway-local.sh
+
+# Build for specific platform
+./build-gateway-local.sh linux-x64
+./build-gateway-local.sh linux-arm64   # Raspberry Pi 4
+./build-gateway-local.sh linux-arm     # Raspberry Pi 3
+
+# List available platforms
+./build-gateway-local.sh --list
+
+# Output is in publish-local/
+```
+
+### Option C: Run Gateway from Source
 
 ```bash
 # Build the Gateway
@@ -292,7 +338,7 @@ dotnet run
 
 The Gateway dashboard is available at: http://localhost:8090
 
-### Option B: Build Gateway Package (Linux)
+### Option D: Build Gateway DEB Package (Linux)
 
 For Debian/Ubuntu systems, you can build a `.deb` package:
 

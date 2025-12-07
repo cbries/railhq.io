@@ -168,7 +168,11 @@ railhq.io/
 ### Build Image
 
 ```bash
-docker compose build railhq
+# Build with documentation (recommended)
+./docker-build_and_export.sh
+
+# Build and save as tar.gz for deployment
+./docker-build_and_export.sh --save
 ```
 
 ### Run Services
@@ -192,6 +196,55 @@ docker compose run --rm backup
 
 # Restore resources
 docker compose run --rm restoreResources
+```
+
+## 🏗️ Building Gateway Locally
+
+Build Gateway binaries for all platforms:
+
+```bash
+# Build all variants (Windows, Linux, macOS, Raspberry Pi)
+./build-gateway-local.sh
+
+# Build specific variant
+./build-gateway-local.sh linux-x64
+
+# List available variants
+./build-gateway-local.sh --list
+
+# Clean old builds
+./build-gateway-local.sh --clean
+```
+
+### Available Variants
+
+| Runtime | Platform | Description |
+|---------|----------|-------------|
+| `win-x64` | Windows | 64-bit Intel/AMD |
+| `win-arm64` | Windows | ARM64 |
+| `linux-x64` | Linux | 64-bit Intel/AMD |
+| `linux-arm64` | Linux | ARM64 (Raspberry Pi 4) |
+| `linux-arm` | Linux | ARM (Raspberry Pi 3) |
+| `osx-x64` | macOS | Intel |
+| `osx-arm64` | macOS | Apple Silicon |
+
+## 🔄 CI/CD Pipelines
+
+This project uses GitHub Actions for automated builds:
+
+| Workflow | Trigger | Output |
+|----------|---------|--------|
+| **docker-build.yml** | Push to `main`, Tags `v*` | Docker Image → GHCR + Release |
+| **build-gateway.yml** | Tags `v*` | Gateway Binaries (all platforms) |
+
+### Docker Image
+
+```bash
+# Pull from GitHub Container Registry
+docker pull ghcr.io/cbries/railhq.io:latest
+
+# Or load from release tar.gz
+gunzip -c railhq.io-1.64.tar.gz | docker load
 ```
 
 ## 🤝 Contributing
