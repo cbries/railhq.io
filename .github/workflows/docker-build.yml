@@ -16,7 +16,12 @@ on:
       push_image:
         description: 'Push image to registry'
         required: false
-        default: 'false'
+        default: false
+        type: boolean
+      save_image:
+        description: 'Save image as tar.gz (like --save flag)'
+        required: false
+        default: false
         type: boolean
 
 env:
@@ -24,15 +29,64 @@ env:
   IMAGE_NAME: ${{ github.repository }}
 
 jobs:
-  build:
+  # Job 1: Build Documentation (Docusaurus)
+  build-docs:
+    name: Build Documentation
     runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+          cache-dependency-path: WebDoc/yarn.lock
+
+      - name: Install dependencies
+        working-directory: WebDoc
+        run: yarn install --frozen-lockfile
+
+      - name: Build documentation
+        working-directory: WebDoc
+        run: yarn build
+
+      - name: Move documentation to WebApp
+        run: |
+          rm -rf WebApp/railyWebIndex/wwwroot/documentation || true
+          mv WebDoc/build WebApp/railyWebIndex/wwwroot/documentation
+
+      - name: Upload documentation artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: documentation
+          path: WebApp/railyWebIndex/wwwroot/documentation
+          retention-days: 1
+
+  # Job 2: Build Docker Image
+  build:
+    name: Build Docker Image
+    runs-on: ubuntu-latest
+    needs: build-docs
+    
     permissions:
       contents: read
       packages: write
 
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Download documentation
+        uses: actions/download-artifact@v4
+        with:
+          name: documentation
+          path: WebApp/railyWebIndex/wwwroot/documentation
 
       - name: Read version from file
         id: version
@@ -65,12 +119,45 @@ jobs:
             type=raw,value=${{ steps.version.outputs.version }}
             type=raw,value=latest,enable={{is_default_branch}}
 
-      - name: Build and push Docker image
+      - name: Build Docker image
+        id: build
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
-          push: ${{ github.event_name != 'pull_request' }}
+          push: false
+          load: true
+          tags: railhq.io:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Export Docker image (--save equivalent)
+        if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.save_image == 'true'
+        run: |
+          VERSION=${{ steps.version.outputs.version }}
+          echo "Exporting Docker image as railhq.io-$VERSION.tar.gz..."
+          docker save railhq.io:latest | gzip > railhq.io-$VERSION.tar.gz
+          ls -lh railhq.io-$VERSION.tar.gz
+          # Also create latest.tar.gz
+          cp railhq.io-$VERSION.tar.gz latest.tar.gz
+
+      - name: Upload Docker image artifact
+        if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.save_image == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: docker-image-${{ steps.version.outputs.version }}
+          path: |
+            railhq.io-${{ steps.version.outputs.version }}.tar.gz
+            latest.tar.gz
+          retention-days: 30
+
+      - name: Push to Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
@@ -80,74 +167,75 @@ jobs:
       - name: Generate artifact attestation
         if: github.event_name != 'pull_request'
         uses: actions/attest-build-provenance@v1
+        continue-on-error: true
         with:
           subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
           subject-digest: ${{ steps.build.outputs.digest }}
           push-to-registry: true
 
-  # Optional: Build Gateway packages for Linux
-  build-gateway:
+  # Job 3: Create Release (nur bei Tags)
+  release:
+    name: Create Release
     runs-on: ubuntu-latest
     needs: build
-    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    if: startsWith(github.ref, 'refs/tags/')
+    
+    permissions:
+      contents: write
     
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Download Docker image artifact
+        uses: actions/download-artifact@v4
         with:
-          dotnet-version: '8.0.x'
+          name: docker-image-${{ needs.build.outputs.version }}
+          path: ./artifacts
 
-      - name: Read version
-        id: version
-        run: |
-          VERSION=$(cat version.txt | tr -d ' \n\r')
-          echo "version=$VERSION" >> $GITHUB_OUTPUT
+      - name: List artifacts
+        run: ls -lh ./artifacts/
 
-      - name: Install fpm
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y ruby ruby-dev build-essential
-          sudo gem install --no-document fpm
-
-      - name: Build Gateway (x64)
-        run: |
-          cd Gateway/railyGateway
-          dotnet publish -c Release -r linux-x64 --self-contained -o ./publish-x64
-
-      - name: Build Gateway (ARM64)
-        run: |
-          cd Gateway/railyGateway
-          dotnet publish -c Release -r linux-arm64 --self-contained -o ./publish-arm64
-
-      - name: Create DEB packages
-        run: |
-          cd Gateway/railyGateway
-          
-          # x64 package
-          fpm -s dir -t deb \
-            -n railhqgateway \
-            -v ${{ steps.version.outputs.version }} \
-            --architecture amd64 \
-            --prefix /opt/railhqgateway \
-            ./publish-x64/=/opt/railhqgateway/
-          
-          # ARM64 package
-          fpm -s dir -t deb \
-            -n railhqgateway \
-            -v ${{ steps.version.outputs.version }} \
-            --architecture arm64 \
-            --prefix /opt/railhqgateway \
-            ./publish-arm64/=/opt/railhqgateway/
-
-      - name: Upload Gateway packages
-        uses: actions/upload-artifact@v4
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
         with:
-          name: gateway-packages
-          path: Gateway/railyGateway/*.deb
-          retention-days: 30
+          name: railhq.io v${{ needs.build.outputs.version }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            ./artifacts/railhq.io-${{ needs.build.outputs.version }}.tar.gz
+          body: |
+            ## 🚂 railhq.io v${{ needs.build.outputs.version }}
+            
+            ### Docker Image
+            
+            **Option 1: Download & Load from Release**
+            ```bash
+            # Download railhq.io-${{ needs.build.outputs.version }}.tar.gz, then:
+            gunzip -c railhq.io-${{ needs.build.outputs.version }}.tar.gz | docker load
+            ```
+            
+            **Option 2: Pull from GitHub Container Registry**
+            ```bash
+            docker pull ghcr.io/${{ github.repository }}:${{ needs.build.outputs.version }}
+            # or
+            docker pull ghcr.io/${{ github.repository }}:latest
+            ```
+            
+            ### What's Included
+            
+            - 🌐 **railyWebApp** - Main web application
+            - 🔐 **railyWebIndex** - User management and access control
+            - 📚 **Documentation** - Built-in Docusaurus documentation
+            
+            ### Gateway Downloads
+            
+            For Gateway binaries (Windows, Linux, macOS, Raspberry Pi), see the separate [Gateway Releases](https://github.com/${{ github.repository }}/actions/workflows/build-gateway.yml).
+            
+            ### Installation
+            
+            See [INSTALL.md](https://github.com/${{ github.repository }}/blob/main/INSTALL.md) for detailed instructions.
 
       - name: Upload to Release
         if: startsWith(github.ref, 'refs/tags/')

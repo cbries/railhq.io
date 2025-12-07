@@ -85,8 +85,11 @@ Thank you for your interest in contributing to railhq.io! This document provides
    dotnet build
    
    # Test with Docker
-   docker compose build railhq
+   ./docker-build_and_export.sh
    docker compose up -d
+   
+   # Build Gateway for your platform
+   ./build-gateway-local.sh linux-x64
    ```
 
 4. **Commit your changes:**
