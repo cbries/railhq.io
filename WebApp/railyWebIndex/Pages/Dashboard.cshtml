@@ -1,0 +1,297 @@
+@page
+@using libShared
+@using railyWebIndex
+@model railyWebIndex.Pages.DashboardModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName;    
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Übersicht &#8211; Willkommen " + Model.WelcomeName + "!";
+
+    Func<bool, string> getStatusIcon = (status) => status
+        ? "<i class='fas fa-check-circle' style='color: green;'></i> Aktiv"
+        : "<i class='fa-solid fa-plug' style='color: red;'></i> Inaktiv";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/cssPages/dashboard.css" />
+}
+
+<script type="text/javascript">
+    window.__workspaceBearerToken = "@Model.BearerToken";
+
+    $(document).ready(function() {
+        const lastLogin = '@Model.LastLogin';
+        const localDateTime = new Date(lastLogin);
+        document.getElementById('last-login').innerText = formatDate(localDateTime, false);
+    });
+</script>
+
+<link rel="stylesheet" type="text/css" href="/libs/w2ui-2.0/w2ui-2.0.min.css" />
+<script src="/libs/w2ui-2.0/w2ui-2.0.min.js"></script>
+
+<div class="p-4 sm:p-3">
+    <div class="dashboard-container">
+    
+    <!-- Hinweis zur lokalen Netzwerk-Nutzung -->
+    <div class="row d-flex flex-wrap mb-3">
+        <div class="w-full">
+            <div class="alert alert-info" style="background-color: #e7f3ff; border-color: #b6d4fe; border-radius: 10px; padding: 15px;">
+                <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                <strong>Lokaler Netzwerkbetrieb:</strong> 
+                Diese Anwendung ist für den Betrieb im lokalen Heimnetzwerk konzipiert. 
+                Die Anmeldung dient lediglich zur Unterscheidung verschiedener Familienmitglieder und 
+                ist kein umfassendes Sicherheitssystem. Alle Benutzer im lokalen Netzwerk können auf die Steuerung zugreifen.
+            </div>
+        </div>
+    </div>
+    
+    <div class="row d-flex flex-wrap">
+        
+    <!--
+    //
+    //
+    //
+    // Benutzerinfo-Kachel
+    //
+    //
+    //
+    -->
+
+    <div class="w-full sm:w-auto">
+        <div class="dashboard-tile p-3" style="min-width: 275px;">
+            <h3>
+                <i class="fas fa-info dashboardTriangle"></i> Informationen
+            </h3>
+            <p style="display: flex; justify-content: space-between;">
+                <span>Letzte Anmeldung:</span>
+                <span id="last-login"></span>
+            </p>
+
+            <p style="display: flex; justify-content: space-between;">
+                <div style="margin-top: 10px;">
+                    <a href="/features" class="modern-link">Erfahre mehr über den Funktionsumfang!</a>
+                </div>
+            </p>
+        </div>
+    </div>
+    
+    <!--
+    //
+    //
+    //
+    // Steuerung-Kachel
+    //
+    //
+    //
+    -->
+
+    <div class="w-full sm:w-auto">
+        <div class="dashboard-tile p-3">
+
+            <div style="display: flex; justify-content: space-between; align-items: center; height: 100%;">
+                <h3 style="margin: 0; display: flex; align-items: center;">
+                    <i class="fas fa-cogs dashboardTriangle" style="margin-right: 5px;"></i> Arbeitsbereiche
+                </h3>
+                <i class="fas fa-plus" title="Arbeitsbereich erstellen" onclick="arbeitsbereichNeu()"
+                   style="font-size: 1.8em; cursor: pointer; padding-right: 5px; padding-bottom: 5px; transition: color 0.3s ease; display: flex; align-items: center;"
+                   onmouseover="this.style.color = '#0056b3'"
+                   onmouseout="this.style.color = ''">
+                </i>
+                <script>
+                    function arbeitsbereichNeu() {
+                        const neuerName = generateWorkspaceName();
+                        if (neuerName) {
+                            const baseUrl = "@(Model.ServiceUrl)/?workspace=";
+                            window.location.href = baseUrl + neuerName;
+                        }
+                    }
+
+                    function generateWorkspaceName() {
+                        const now = new Date();
+                        const formattedName = `Plan_${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')}_${String(now.getHours()).padStart(2, '0')}-${String(now.getMinutes()).padStart(2, '0')}-${String(now.getSeconds()).padStart(2, '0')}`;
+                        return formattedName;
+                    }
+                </script>
+            </div>
+
+            @if (Model.WorkspaceInfos.Count > 0)
+            {
+                <div style="max-height: 225px; min-width: 300px; overflow-y: auto; margin-top: 10px; border: 0; padding-top: 10px;">
+                    @foreach (var it in Model.WorkspaceInfos)
+                    {
+                        <div class="workspace-item flex justify-between items-center p-1 rounded-lg">
+                            <button onclick="showPreview('@(Model.ApiUrl)', '@(it.Name)')"
+                                    style="margin-left: -13px; margin-right: 3px; padding-bottom: 2px;"
+                                    class="btn btn-primary flex items-center ml-2">
+                                <i class="fas fa-image"></i>
+                            </button>
+                            <p class="workspace-name text-xl font-semibold text-gray-700" style="margin-bottom: 0px; margin-top: -3px;">
+                                @(it.Name)
+                            </p>
+                            <a href="@($"{Model.UrlToPlay}{it.Name}")"
+                               onclick="return checkMobile(event, this.href)"
+                               style="margin-left: 5px; margin-right: 5px;"
+                               class="btn btn-primary text-sm flex items-center px-2 py-1 bg-gray-200 text-gray-800 rounded-md hover:bg-gray-300 transition-colors duration-300">
+                                <i class="fas fa-play-circle" style="margin-left: -10px;"></i>
+                                <span>Öffnen</span>
+                            </a>
+
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="text-center text-gray-400">
+                    <i class="fas fa-info-circle text-4xl mb-2"></i>
+                    <p>Keine Arbeitsbereiche vorhanden</p>
+                </div>
+            }
+        </div>
+    </div>
+    
+    <!--
+    //
+    //
+    //
+    // Systemstatus-Kachel
+    //
+    //
+    //
+    -->
+
+    <div class="w-full sm:w-auto">
+        <div class="dashboard-tile p-3">
+            <h3>
+                <i class="fas fa-exclamation-triangle dashboardTriangle"></i> Systemstatus
+            </h3>
+            <p style="display: flex; justify-content: space-between;">
+                <span>railhq.io Arbeitsbereiche:</span> <span id="status-workspaces"></span>
+            </p>
+            <p style="display: flex; justify-content: space-between;">
+                <span>railhq.io Controller:</span> <span id="status-controller"></span>
+            </p>
+            <p style="display: flex; justify-content: space-between;">
+                <span>railhq.io Datenbank:</span> <span id="status-database"></span>
+            </p>
+            <p style="display: flex; justify-content: space-between;">
+                <span>railhq.io API:</span> <span id="status-api"></span>
+            </p>
+            <p style="display: flex; justify-content: space-between;">
+                <span>railhq.io Gateway:</span> <span id="status-gateway"></span>
+            </p>
+        </div>
+
+        <script>
+            function updateStatusIcons() {
+                fetch(window.getServiceUrl() + '/api/status/current/@(Model.Uid)',
+                        {
+                            method: 'GET',
+                            credentials: 'include'
+                        })
+                    .then(response => response.json())
+                    .then(data => {
+                        document.getElementById("status-workspaces").innerHTML = getStatusIcon(data.workspaces);
+                        document.getElementById("status-controller").innerHTML = getStatusIcon(data.controller);
+                        document.getElementById("status-database").innerHTML = getStatusIcon(data.database);
+                        document.getElementById("status-api").innerHTML = getStatusIcon(data.api);
+                        document.getElementById("status-gateway").innerHTML = getStatusIcon(data.gateway, "Bitte verbinde dich mit dem 'railhq.io - Gateway' um den Status zu ändern.");
+                    })
+                    .catch(error => console.error('Fehler beim Abrufen des Status:', error));
+            }
+
+            function getStatusIcon(status, tooltip = "") {
+                if (status === true) {
+                    return `<i class="fas fa-check-circle text-success" style="color: #28a745;"></i>`; // Grün (Online)
+                } else if (status === false) {
+                    return `<i class="fas fa-plug text-danger" style="color: #dc3545;" title="${tooltip}"></i>`; // Rot (Offline)
+                } else if (status === "warn") {
+                    return `<i class="fas fa-exclamation-circle text-warning" style="color: #ffc107;" title="${tooltip}"></i>`; // Gelb (Warnung)
+                } else {
+                    return `<i class="fas fa-question-circle text-secondary" style="color: #6c757d;" title="${tooltip}"></i>`; // Grau (Unbekannt)
+                }
+            }
+
+            // Alle 10 Sekunden aktualisieren
+            setInterval(updateStatusIcons, 10000);
+            updateStatusIcons(); // Direkt beim Laden der Seite ausführen
+        </script>
+    </div>
+    
+    <!--
+    //
+    //
+    //
+    // Setupvarianten-Kachel
+    //
+    //
+    //
+    -->
+    @{
+        // GitHub Release URL
+        var githubOwner = "cbries";
+        var githubRepo = "railhq.io";
+        var latestVersion = Model.LatestVersion;
+        var releaseBaseUrl = $"https://github.com/{githubOwner}/{githubRepo}/releases/download/v{latestVersion}";
+    }
+
+    <div class="w-full sm:w-auto">
+
+        <div class="dashboard-tile p-3 setup-variants">
+            <h3>
+                <i class="fas fa-download dashboardTriangle"></i> Gateway v@latestVersion
+            </h3>
+
+            <!-- Quick Download Buttons -->
+            <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; margin-bottom: 15px;">
+                <!-- Windows -->
+                <a href="@releaseBaseUrl/railhqGateway-windows-x64-@(latestVersion).zip" 
+                   class="btn btn-primary btn-sm" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <i class="fab fa-windows"></i> Windows
+                </a>
+                <!-- Linux -->
+                <a href="@releaseBaseUrl/railhqGateway-linux-x64-@(latestVersion).tar.gz" 
+                   class="btn btn-warning btn-sm" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <i class="fab fa-linux"></i> Linux
+                </a>
+                <!-- Raspberry Pi -->
+                <a href="@releaseBaseUrl/railhqGateway-linux-arm64-@(latestVersion).tar.gz" 
+                   class="btn btn-danger btn-sm" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <i class="fab fa-raspberry-pi"></i> Pi 4/5
+                </a>
+                <!-- macOS -->
+                <a href="@releaseBaseUrl/railhqGateway-macos-arm64-@(latestVersion).tar.gz" 
+                   class="btn btn-secondary btn-sm" style="display: flex; align-items: center; justify-content: center; gap: 5px;">
+                    <i class="fab fa-apple"></i> macOS
+                </a>
+            </div>
+
+            <!-- Info Text -->
+            <p style="font-size: 0.8em; color: #666; margin-bottom: 15px; text-align: center;">
+                <i class="fas fa-info-circle"></i> Schnellzugriff auf die gängigsten Versionen
+            </p>
+
+            <!-- All Downloads Link -->
+            <div style="text-align: center;">
+                <a href="/Downloads" class="btn btn-outline-info">
+                    <i class="fas fa-list"></i> Alle Downloads anzeigen
+                </a>
+            </div>
+
+            <!-- GitHub Link -->
+            <p style="font-size: 0.75em; color: #888; margin-top: 10px; text-align: center;">
+                <i class="fab fa-github"></i> 
+                <a href="https://github.com/@githubOwner/@githubRepo/releases" target="_blank" style="color: #888;">
+                    GitHub Releases
+                </a>
+            </p>
+
+        </div>
+    </div>
+    
+
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,6 @@
+{
+  "name": "dcc500",
+  "address": 500,
+  "protocol": "DCC",
+  "acctype": "SWITCH"
+}

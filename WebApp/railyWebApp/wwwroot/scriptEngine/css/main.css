@@ -1,0 +1,342 @@
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: translateY(0);
+    }
+
+    40% {
+        transform: translateY(-8px);
+    }
+}
+
+.dot1, .dot2, .dot3 {
+    animation: bounce 1.4s infinite;
+    display: inline-block;
+    font-weight: bold;
+}
+
+.dot2 {
+    animation-delay: 0.2s;
+}
+
+.dot3 {
+    animation-delay: 0.4s;
+}
+
+.script-output {
+    background-color: #1e1e1e;
+    padding: 2px;
+    border-radius: 0px;
+    color: #fff;
+    font-family: monospace;
+    font-size: 1em;
+    overflow-y: auto;
+    white-space: pre-wrap;
+    min-height: 50px;
+}
+
+.script-log {
+    color: #d4d4d4;
+}
+
+.script-warn {
+    color: orange;
+}
+
+.script-error {
+    color: red;
+}
+
+#dragbarScripting:hover {
+    background-color: #555;
+}
+
+
+/* Damit der Editor den verfügbaren Platz ausfüllt */
+#editorScripting {
+    flex: 1 1 auto;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    min-height: 200px; /* falls nötig */
+    height: 100%; /* oder flex-grow: 1 */
+    overflow: auto;
+}
+
+#scriptingTabParent {
+    height: 100%;
+    width: 100%;
+    /* Falls du willst, dass die Höhe das Fenster einnimmt: */
+    /* min-height: 100vh; */
+}
+
+    #scriptingTabParent .selectedScript {
+        background-color: #e0e0e0 !important;
+        border: 1px solid #c0c0c0; /* sehr dezenter Rand */
+    }
+
+    #scriptingTabParent .layout-flex {
+        display: flex;
+        height: 100%;
+    }
+
+    #scriptingTabParent .sidebar {
+        flex: 0 0 280px; /* feste Breite für Sidebar */
+        background-color: #f9fafb;
+        display: flex;
+        flex-direction: column;
+        padding: 2px;
+        box-sizing: border-box;
+        overflow-y: auto;
+        height: 100%;
+    }
+
+    #scriptingTabParent .sidebar-content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        overflow: hidden; /* verhindert Überlauf */
+    }
+
+    #scriptingTabParent .header-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.5rem;
+    }
+
+    #scriptingTabParent .heading {
+        font-size: 1.0rem;
+        font-weight: 600;
+    }
+
+    #scriptingTabParent .icon-button {
+        background: none;
+        border: none;
+        cursor: pointer;
+        font-size: 1rem;
+    }
+
+        #scriptingTabParent .icon-button.green {
+            color: #16a34a;
+        }
+
+            #scriptingTabParent .icon-button.green:hover {
+                color: #15803d;
+            }
+
+    #scriptingTabParent .script-list {
+        flex: 1;
+        max-height: calc(100vh - 345px);
+        overflow-y: auto;
+        margin-bottom: 1rem;
+        padding-left: 0;
+        list-style: none;
+    }
+
+    #scriptingTabParent #taskContainer {
+        flex-shrink: 0;
+        /*border: 1px solid #ccc;*/
+        border-radius: 2px;
+        padding: 0px;
+        background: #f9f9f9;
+        bottom: 0px;
+    }
+
+    #scriptingTabParent #taskGrid .w2ui-grid-body {
+        max-height: 200px;
+        height: 200px;
+        overflow-y: auto;
+    }
+
+    /* Hauptbereich */
+    #scriptingTabParent .main-content {
+        flex: 1 1 auto; /* nimmt den restlichen Platz */
+        display: flex;
+        flex-direction: column;
+        padding: 0px;
+        box-sizing: border-box;
+        overflow: hidden;
+        height: calc(100vh - 60px);
+    }
+
+    #scriptingTabParent .toolbarScripting {
+        flex-shrink: 0;
+        margin-bottom: 0.5rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #scriptingTabParent .toolbar-left,
+    #scriptingTabParent .toolbar-right {
+        padding: 5px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        display: flex;
+        gap: 8px;
+    }
+
+    #scriptingTabParent .toolbar-button {
+        padding: 6px 12px;
+        background-color: #e5e5e5;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+        #scriptingTabParent .toolbar-button:hover {
+            background-color: #d4d4d4;
+        }
+
+    #scriptingTabParent .save-button {
+        padding: 6px 16px;
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+        #scriptingTabParent .save-button:hover {
+            background-color: #1d4ed8;
+        }
+
+    #scriptingTabParent .editor-box {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 0;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    /* Statusbar */
+    #scriptingTabParent .status-bar-scripting {
+        font-size: 0.875rem;
+        color: #374151;
+        padding: 0.5rem 0.75rem;
+        background-color: #f3f4f6;
+        border-top: 1px solid #ccc;
+        border-radius: 0 0 0.25rem 0.25rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* Loader */
+    #scriptingTabParent .loader {
+        position: relative;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+        z-index: 999;
+        width: 100%;
+        height: 100%;
+    }
+
+    #scriptingTabParent .loader-text {
+        font-size: 1.25rem;
+        font-weight: 500;
+        color: #374151;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    #scriptingTabParent #scriptList {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    #scriptingTabParent .script-item {
+        background-color: #f3f4f6; /* etwa Tailwind bg-gray-100 */
+        padding: 2px 6px;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+        display: flex;
+        align-items: center;
+        margin-bottom: 6px;
+    }
+
+        #scriptingTabParent .script-item:hover .drag-handle {
+            color: #555;
+        }
+
+    #scriptingTabParent .drag-handle {
+        cursor: move;
+        margin-right: 10px;
+        color: #888;
+    }
+
+        #scriptingTabParent .drag-handle i {
+            font-size: 16px;
+        }
+
+    #scriptingTabParent .script-name {
+        cursor: pointer;
+        color: #111827; /* dunkelgrau */
+        transition: color 0.2s ease;
+        font-size: 0.9em;
+        flex: 1;
+    }
+
+        #scriptingTabParent .script-name:hover {
+            color: #2563eb; /* blau */
+        }
+
+    #scriptingTabParent .script-actions {
+        display: flex;
+        gap: 2px;
+        font-size: 0.875rem; /* text-sm */
+    }
+
+    #scriptingTabParent .btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 2px 3px;
+        color: inherit;
+        transition: color 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        #scriptingTabParent .btn:focus {
+            outline: 2px solid #2563eb;
+            outline-offset: 2px;
+        }
+
+    #scriptingTabParent .rename-btn {
+        color: #2563eb;
+    }
+
+        #scriptingTabParent .rename-btn:hover {
+            color: #1e40af;
+        }
+
+    #scriptingTabParent .active-btn {
+        color: #16a34a; /* grün */
+    }
+
+        #scriptingTabParent .active-btn:hover {
+            color: #15803d;
+        }
+
+    #scriptingTabParent .inactive-btn {
+        color: #ca8a04; /* gelb */
+    }
+
+        #scriptingTabParent .inactive-btn:hover {
+            color: #a16207;
+        }
+
+    #scriptingTabParent .delete-btn {
+        color: #dc2626; /* rot */
+    }
+
+        #scriptingTabParent .delete-btn:hover {
+            color: #b91c1c;
+        }

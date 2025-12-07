@@ -1,0 +1,105 @@
+@page
+@using railyWebIndex
+@model railyWebIndex.Pages.AboutModel
+@{
+    Layout = "_LayoutLogin";
+    ViewData["Title"] = Globals.AppName + " - About";
+    ViewData["productName"] = Globals.ProductName;
+}
+
+@section Styles {
+    <link rel="stylesheet" type="text/css" href="/loginIndex/css/about.css">
+}
+
+<div class="about-container">
+    <div class="about-header">
+        <p class="tagline">Innovative Cloud-Lösung für Modelleisenbahnen</p>
+    </div>
+
+    <div class="creator-card">
+        <div class="creator-avatar">
+            <i class="fas fa-user-astronaut"></i>
+        </div>
+        <div class="creator-info">
+            <h3>Dr. Christian Benjamin Ries</h3>
+            <p>Erfinder & Erschaffer von railhq.io</p>
+        </div>
+        <div class="creator-links">
+            <a href="https://www.linkedin.com/in/drcbries/" target="_blank" title="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+            <a href="https://github.com/cbries" target="_blank" title="GitHub">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2><i class="fas fa-heart"></i> Community-Projekt</h2>
+        <p>
+            Was als persönliches Projekt begann, ist zu einem Open-Source Community-Projekt geworden. 
+            railhq.io steht nun der gesamten Modellbahn-Community zur Verfügung und wird gemeinsam 
+            weiterentwickelt. Jeder ist eingeladen, sich zu beteiligen, Ideen einzubringen oder 
+            einfach die Software für die eigene Modellbahnsteuerung zu nutzen.
+        </p>
+    </div>
+
+    <div class="about-section">
+        <h2><i class="fas fa-code-branch"></i> Weiterentwicklung</h2>
+        <p>
+            Die Entwicklung von railhq.io wird auf GitHub fortgeführt. Dort findest du den 
+            Quellcode, kannst Issues melden, Feature-Requests einreichen oder selbst zum 
+            Projekt beitragen.
+        </p>
+        <div class="links-grid">
+            <a href="https://github.com/cbries/railhq.io" target="_blank" class="link-card">
+                <i class="fab fa-github"></i>
+                <div class="link-text">
+                    <span class="link-title">GitHub Repository</span>
+                    <span class="link-desc">cbries/railhq.io</span>
+                </div>
+            </a>
+            <a href="/documentation" class="link-card">
+                <i class="fas fa-book"></i>
+                <div class="link-text">
+                    <span class="link-title">Dokumentation</span>
+                    <span class="link-desc">Anleitungen & Guides</span>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2><i class="fas fa-envelope"></i> Kontakt</h2>
+        <p>
+            Bei Fragen rund um das System stehe ich gerne zur Verfügung:
+        </p>
+        <div class="contact-info">
+            <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <a href="mailto:mail@riesolution.de">mail@riesolution.de</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="about-section">
+        <h2><i class="fas fa-users"></i> Community</h2>
+        <p>Folge uns auf Social Media für Updates und Neuigkeiten:</p>
+        <div class="links-grid">
+            <a href="https://www.instagram.com/railhq.io" target="_blank" class="link-card">
+                <i class="fab fa-instagram" style="color: #E4405F;"></i>
+                <div class="link-text">
+                    <span class="link-title">Instagram</span>
+                    <span class="link-desc">@@railhq.io</span>
+                </div>
+            </a>
+            <a href="https://www.youtube.com/@@railhqio" target="_blank" class="link-card">
+                <i class="fab fa-youtube" style="color: #FF0000;"></i>
+                <div class="link-text">
+                    <span class="link-title">YouTube</span>
+                    <span class="link-desc">@@railhqio</span>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>

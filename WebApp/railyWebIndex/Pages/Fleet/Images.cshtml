@@ -1,0 +1,141 @@
+@page
+@inject IWebHostEnvironment Environment
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Hosting
+@model railyWebIndex.Pages.Fleet.ImagesModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Flottendaten: Lokomotivbilder bearbeiten";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Flottendaten: Lokomotivbilder bearbeiten";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+<script type="text/javascript">
+    window.__workspaceBearerToken = "@Model.BearerToken";
+    // __serviceUrl is set in the layout
+</script>
+
+<script src="/libs/cropper.min.js"></script>
+<link rel="stylesheet" href="/libs/cropper.min.css">
+
+
+@if (Environment.IsProduction())
+{
+    <script src="/railhqlocimgs.min.js" type="text/javascript"></script>
+}
+else
+{
+    <script src="/railhqlocimgs.js" type="text/javascript"></script>
+}
+
+<div class="grid grid-cols-1 gap-6 p-6 flex justify-center items-center">
+    <div class="p-6 border rounded-lg shadow-md">
+
+        <!-- Dropdown -->
+        <div class="mb-4">
+            <label for="trainSelect" class="block text-sm font-medium text-gray-700">Wähle eine Lokomotive:</label>
+            <div class="relative">
+                <select id="trainSelect" name="trainSelect" 
+                        style="font-family: monospace;"
+                        class="mt-1 block w-full p-2 pl-10 pr-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="" disabled selected>Bitte eine Lokomotive wählen</option>
+                    @foreach (var train in Model.LocsData)
+                    {
+                        if (string.IsNullOrEmpty(train?.DisplayName?.Trim())) continue;
+
+                        string nameCol = train.DisplayName;
+                        string driverAccessor = $"{train.DriverName}_{train.ObjectId}";
+                        string driverCol = $"{train.DriverName}::{train.ObjectId}";
+
+                        <option value="@(driverAccessor)">
+                            @($"{nameCol} ► {driverCol}")
+                        </option>
+                    }
+                </select>
+                <i class="fas fa-train absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+            </div>
+        </div>
+
+        <div id="image-container"
+             style="overflow: hidden;"
+             class="border-2 border-dashed border-gray-400 p-6 flex flex-col items-center justify-center cursor-pointer text-gray-600 hover:bg-gray-50 transition relative">
+            <p class="text-center">Ziehe ein Bild hierher</p>
+            <input type="file" id="imageInput" accept="image/*" hidden />
+            <img id="image" src="" alt="Lokomotive" class="max-w-full mt-4 hidden rounded-lg shadow-md" />
+        </div>
+
+        <!-- Preview Container -->
+        <div class="previewContainer flex flex-row gap-4 py-4 hidden">
+            <!-- Linke Seite: Bildvorschau -->
+            <div class="flex flex-col items-center">
+                <p class="text-gray-500 text-sm mb-2">
+                    <i class="fas fa-eye mr-2"></i>Vorschau
+                </p>
+                <div class="image-preview w-72 h-72 border border-gray-300 rounded-lg overflow-hidden flex items-center justify-center shadow-sm bg-gray-100">
+                    <img id="preview-image" src="" alt="Preview" class="hidden">
+                </div>
+            </div>
+
+            <div class="flex flex-col space-y-4 text-gray-700">
+                <!-- Details -->
+                <div>
+                    <p class="text-gray-500 text-sm" style="padding-bottom: 10px;"><i class="fas fa-clipboard"></i> Details</p>
+
+                    <p>Bildgröße: <span id="cropper-geometry" class="font-bold">-</span></p>
+                    <p>Auswahlgröße: <span id="cropper-size" class="font-bold">-</span></p>
+                    <p>Dateigröße: <span id="cropper-filesize" class="font-bold">-</span></p>
+                </div>
+
+                <!-- Buttons für Spiegelung -->
+                <div class="flex gap-4 mt-4">
+                    <button id="flip-x" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm rounded-md">
+                        Spiegeln (X-Achse)
+                    </button>
+                    <button id="flip-y" class="px-4 py-2 bg-gray-200 hover:bg-gray-300 text-sm rounded-md">
+                        Spiegeln (Y-Achse)
+                    </button>
+                </div>
+
+                <div class="mt-8 py-4">
+                    <p class="text-sm text-gray-600 mb-4">
+                        Wähle hier ein Lokomotivenbild aus, um deine Lokomotiven schnell und individuell zu gestalten. 
+                        Diese Bilder werden von railhq.io zur Verfügung gestellt und dienen dazu, die Anpassung zu beschleunigen. 
+                        Die ausgewählten Bilder werden in deinen eigenen Flottenbestand übernommen.
+                    </p>
+
+                    <div class="flex items-center gap-6">
+                        <div class="flex flex-col">
+                            <label for="locomotive-select" class="block text-sm font-medium text-gray-700">Lokomotive auswählen</label>
+                            <select id="locomotive-select"
+                                    class="block w-64 border border-gray-300 bg-white py-2 px-4 pr-10 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 text-sm">
+                                <option value="" disabled selected>Wähle eine Lokomotive...</option>
+                            </select>
+                        </div>
+
+                        <div class="w-32 aspect-[16/9] overflow-hidden rounded-md shadow flex justify-start" id="preview-container">
+                            <img id="preview-image2" class="w-full h-full object-cover" src="" alt="Vorschau">
+                        </div>
+
+                        <button id="apply-image"
+                                class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-md shadow">
+                            Übernehmen
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <button id="save-image" 
+                class="mt-4 w-full bg-blue-600 text-white py-2 px-4 rounded-lg shadow-md hover:bg-blue-700 transition disabled:bg-gray-400" disabled>
+            Bild speichern
+        </button>
+    </div>
+</div>

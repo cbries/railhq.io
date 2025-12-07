@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ApplicationDescription}}">
+    <meta name="author" content="{{Author}}">
+    <meta name="application-name" content="{{ApplicationName}}">
+    <link href="favicon.ico" type="image/x-icon" rel="icon" />
+    <link href="favicon.ico" type="image/x-icon" rel="shortcut icon" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ApplicationName}}</title>
+    <script type="text/javascript" src="libs/jquery-2.1.0.min.js"></script>
+    <script type="text/javascript" src="errorHandler.js"></script>
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="libs/w2ui-2.0/w2ui-2.0.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/fontawesome-6.0.0-beta3-all.min.css" />
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8 col-lg-6">
+
+                <div class="card">
+                    <div class="card-body" style="padding-top: 5px; margin-top: 0;">
+                        <div class="d-flex justify-content-between align-items-center text-center">
+                            <!-- Titel links -->
+                            <h2 class="card-title m-2 text-center" id="pageTitle">
+                                {{ApplicationName}}
+                            </h2>
+
+                            <!-- QR-Code + Hinweis rechts, vertikal gestapelt -->
+                            <div class="text-center mt-0 qrArea">
+                                <img id="qrCodeImage" src="data:image/png;base64,##QRCODE##"
+                                     alt="QR-Code {{ApplicationName}}"
+                                     style="width: 100px; height: 100px;">
+                                <p class="text-muted small mb-1">
+                                    <i class="fas fa-mobile-alt"></i> Mit dem Smartphone scannen
+                                </p>
+                            </div>
+                        </div>
+
+                        <script>
+                        function getQueryParameter(name) {
+                            const urlParams = new URLSearchParams(window.location.search);
+                            return urlParams.get(name);
+                        }
+                        if (getQueryParameter('qrcode') === 'true') {
+                            document.getElementsByClassName('qrArea')[0].style.display = 'none';
+
+                            $('#pageTitle').addClass("fs-3");
+                        } else {
+                            $('#pageTitle').removeClass("fs-3");
+                        }
+                    </script>
+
+                        <div id="form" style="width: 100%;"></div>
+
+                        <div id="response"></div>
+
+                        <div class="d-flex justify-content-between mt-3">
+                            <!-- Links bleibt der Logs & Status Link -->
+                            <a href="#" id="showLogOverlay"
+                               data-lang-de="Logs & Status"
+                               data-lang-en="Logs & State"
+                               style="font-size: small; opacity: 0.5; text-decoration: none;">Logs & State</a>
+
+                            <!-- Sprachwahl mit Bootstrap-Styling (rechts) -->
+                            <div class="ms-auto">
+                                <a href="#" class="lang-switch btn btn-link ms-2" data-lang="de" onclick="setLanguage('de')">
+                                    <span style="font-size: 16px;">🇩🇪</span>
+                                </a>
+                                <a href="#" class="lang-switch btn btn-link ms-2" data-lang="en" onclick="setLanguage('en')">
+                                    <span style="font-size: 16px;">🇬🇧</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="sessionOverlay" style="display: none; overflow: hidden;">
+        <div class="overlayContent">
+            <div class="overlayText"></div>
+        </div>
+    </div>
+
+    <!-- Overlay für Protokollanzeige -->
+    <div id="logOverlay" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); justify-content: center; align-items: center; z-index: 100000;">
+        <div style="background: white; padding: 10px; border-radius: 5px; width: 90%; max-height: 100vh; overflow-y: auto; position: relative;">
+            <button id="closeLogOverlay" style="position: absolute; top: 10px; right: 10px; background: none; border: none; font-size: 20px; cursor: pointer;">✖</button>
+            <h3 data-lang-de="Logs & Status" data-lang-en="Logs & State">Logs & State</h3>
+            <div id="gatewayInfo" style="margin-bottom: 15px;"></div>
+            <div id="extensionsList" style="margin-bottom: 15px;"></div>
+            <label for="logContent" data-lang-de="Letzte Logs:" data-lang-en="Last logs:">Last logs:</label>
+            <textarea id="logContent" readonly style="width: 100%; min-height: 200px;"></textarea>
+        </div>
+    </div>
+
+    <div class="container text-center mt-4">
+        <p class="copyright">&copy; 2025 <a href="https://railhq.io">{{ServiceName}}</a> <span data-lang-en="by" data-lang-de="von">by</span> <a href="https://www.riesolution.de" target="_blank">riesolution</a></p>
+    </div>
+
+    <script src="libs/w2ui-2.0/w2ui-2.0.min.js"></script>
+    <script src="libs/bootstrap.min.js"></script>
+    <script src="libs/popper.min.js"></script>
+    <script src="index.js" type="module"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</body>
+</html>

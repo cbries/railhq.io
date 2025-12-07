@@ -1,0 +1,86 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <RunMinifier>true</RunMinifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="log4net.config" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <!-- Swagger -->
+  <PropertyGroup>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);1591</NoWarn>
+    <!-- Unterdrückt Warnungen zu fehlenden XML-Kommentaren -->
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.13" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="9.0.3" />
+    <PackageReference Include="Microsoft.AspNetCore.ResponseCompression" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="SkiaSharp" Version="3.116.1" />
+    <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.116.1" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="8.1.4" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Annotations" Version="8.1.4" />
+    <PackageReference Include="System.Drawing.Common" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libAutomaticModus\libAutomaticModus.csproj" />
+    <ProjectReference Include="..\..\Libraries\libEsuEcos\libEsuEcos.csproj" />
+    <ProjectReference Include="..\..\Libraries\libMetamodel\libMetamodel.csproj" />
+    <ProjectReference Include="..\..\Libraries\libShared\libShared.csproj" />
+    <ProjectReference Include="..\..\Libraries\libTrackplan\libTrackplan.csproj" />
+    <ProjectReference Include="..\..\Libraries\libUserspace\libUserspace.csproj" />
+    <ProjectReference Include="..\..\Libraries\libUtilities\libUtilities.csproj" />
+    <ProjectReference Include="..\..\Libraries\libZ21\libZ21.csproj" />
+    <ProjectReference Include="..\..\Tools\Converter\Converter.csproj" />
+  </ItemGroup>
+
+  <Target Name="CopyFilesAfterBuild" AfterTargets="Build" Condition="'$(IsWindows)'!='true'">
+    <Exec Command="cp -rvf &quot;$(ProjectDir)wwwroot\&quot; &quot;$(OutDir)wwwroot&quot;" />
+    <Exec Command="cp -rvf &quot;$(ProjectDir)..\..\resources\&quot; &quot;$(OutDir)resources&quot;" />
+  </Target>
+  <!--
+  <Target Name="CopyFilesAfterBuild" AfterTargets="Build" Condition="'$(IsWindows)'!='true'">
+    <Exec Command="cp -rvf &quot;../../certificates/railhq.io.pfx&quot; &quot;$(OutDir)&quot;" />
+  </Target>
+-->
+  <ItemGroup>
+    <None Include="$(UserProfile)\.nuget\packages\skiasharp.nativeassets.linux\2.88.3\runtimes\linux-x64\native\*.*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <MinifyPath Include="wwwroot/src" />
+    <MinifyPath Include="wwwroot/css" />
+
+    <MinifyPath Include="wwwroot/scriptEngine/libs" />
+    <MinifyPath Include="wwwroot/scriptEngine/ui" />
+    <MinifyPath Include="wwwroot/scriptEngine/css" />
+  </ItemGroup>
+  <Target Name="PreBuildMinify" BeforeTargets="Build" Condition="'$(RunMinifier)' == 'true'">
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/index.js" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/locomotive.js" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/shared.js" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/libs/w2ui-1.5.rc1.css" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/libs/w2ui-1.5.rc1.js" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/libs/contextual.theme.css" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/libs/contextual.css" />
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebApp/wwwroot/libs/contextual.js" />
+
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj %(MinifyPath.Identity)" />
+  </Target>
+</Project>

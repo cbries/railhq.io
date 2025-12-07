@@ -1,0 +1,10 @@
+[
+  "snippet.shouldStop.js",
+  "snippet.finalize.js",
+  
+  "sample.getStatusLocomotive.js",
+  "sample.changeSwitchNtimes.js",
+  "sample.pendelLocomotive.js",
+  "sample.showSnapshot.js",
+  "sample.mqttClient.js"
+]

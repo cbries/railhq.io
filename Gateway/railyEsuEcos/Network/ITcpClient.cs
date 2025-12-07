@@ -1,0 +1,22 @@
+﻿// Copyright (c) 2021 Dr. Christian Benjamin Ries
+// Licensed under the MIT License
+// File: ITcpClient.cs
+
+using System.Net;
+using System.Threading.Tasks;
+
+namespace railyEsuEcos.Network
+{
+    public interface ITcpClient
+    {
+        System.Net.Sockets.TcpClient NativeClient { get; set; }
+        System.Threading.Thread ThreadInstance { get; }
+        IPAddress Ip { get; }
+        int Port { get; }
+
+        bool IsConnected { get; }
+        void Disconnect();
+        bool SendMessage(string msg);
+        Task HandleLines();
+    }
+}

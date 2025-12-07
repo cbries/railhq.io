@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libInterop\libInterop.csproj" />
+    <ProjectReference Include="..\..\Libraries\libMetamodel\libMetamodel.csproj" />
+    <ProjectReference Include="..\..\Libraries\libShared\libShared.csproj" />
+    <ProjectReference Include="..\..\Libraries\libTrackplan\libTrackplan.csproj" />
+    <ProjectReference Include="..\..\Libraries\libUtilities\libUtilities.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.66" />
+    <PackageReference Include="Microsoft.AspNetCore.Http" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.3.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Session" Version="2.3.0" />
+    <PackageReference Include="Microsoft.Data.Sqlite" Version="9.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\libAutomaticModus\libAutomaticModus.csproj" />
+    <ProjectReference Include="..\libMetamodel\libMetamodel.csproj" />
+    <ProjectReference Include="..\libShared\libShared.csproj" />
+    <ProjectReference Include="..\libTrackplan\libTrackplan.csproj" />
+    <ProjectReference Include="..\libUtilities\libUtilities.csproj" />
+  </ItemGroup>
+
+</Project>

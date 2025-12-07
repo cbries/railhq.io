@@ -1,0 +1,1409 @@
+﻿[
+  {
+    "wsName": "Beschleunigung",
+    "items": {
+      "itemTypes": {
+        "10": 8,
+        "17": 4,
+        "200": 4,
+        "150": 2
+      },
+      "noSwitches": 0,
+      "noSignals": 0,
+      "noBlocks": 2,
+      "noSensors": 4
+    },
+    "routes": [
+      {
+        "name": "Block_2[-]_Block_1[-]",
+        "noTracks": 6,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_1[+]",
+        "noTracks": 6,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_2[-]",
+        "noTracks": 6,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Block_2[+]",
+        "noTracks": 6,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 4,
+      "noSensors": 4
+    }
+  },
+  {
+    "wsName": "Demoplan",
+    "items": {
+      "itemTypes": {
+        "59": 1,
+        "11": 22,
+        "200": 14,
+        "10": 56,
+        "1010": 2,
+        "50": 3,
+        "150": 7,
+        "17": 4,
+        "51": 2,
+        "14": 1,
+        "13": 3,
+        "1012": 1,
+        "15": 1,
+        "253": 1
+      },
+      "noSwitches": 6,
+      "noSignals": 0,
+      "noBlocks": 7,
+      "noSensors": 14
+    },
+    "routes": [
+      {
+        "name": "Block_3[+]_Block_1[+]",
+        "noTracks": 19,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_7[+]",
+        "noTracks": 20,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_2[+]",
+        "noTracks": 19,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[-]_Block_2[+]",
+        "noTracks": 12,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[-]_Block_7[+]",
+        "noTracks": 13,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_5[+]_Block_1[+]",
+        "noTracks": 24,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_5[+]_Block_7[+]",
+        "noTracks": 25,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_5[+]_Block_2[+]",
+        "noTracks": 24,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Block_5[+]",
+        "noTracks": 24,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Block_3[+]",
+        "noTracks": 19,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Block_4[+]",
+        "noTracks": 21,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_7[+]_Block_5[-]",
+        "noTracks": 18,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_7[+]_Block_3[-]",
+        "noTracks": 13,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_7[+]_Block_4[-]",
+        "noTracks": 15,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_7[+]_Block_5[+]",
+        "noTracks": 25,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_7[+]_Block_3[+]",
+        "noTracks": 20,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_7[+]_Block_4[+]",
+        "noTracks": 22,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[-]_Block_6[+]",
+        "noTracks": 9,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_5[+]",
+        "noTracks": 24,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_3[+]",
+        "noTracks": 19,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_4[+]",
+        "noTracks": 21,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_5[-]",
+        "noTracks": 17,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_3[-]",
+        "noTracks": 12,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_4[-]",
+        "noTracks": 14,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_6[+]_Block_2[-]",
+        "noTracks": 9,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_4[+]_Block_1[+]",
+        "noTracks": 21,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_4[+]_Block_7[+]",
+        "noTracks": 22,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_4[+]_Block_2[+]",
+        "noTracks": 21,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_4[-]_Block_2[+]",
+        "noTracks": 14,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_4[-]_Block_7[+]",
+        "noTracks": 15,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 14,
+      "noSensors": 14
+    }
+  },
+  {
+    "wsName": "Lokpositionierung",
+    "items": {
+      "itemTypes": {
+        "10": 4,
+        "200": 2,
+        "13": 2,
+        "150": 1
+      },
+      "noSwitches": 0,
+      "noSignals": 0,
+      "noBlocks": 1,
+      "noSensors": 2
+    },
+    "routes": [],
+    "settings": {
+      "noBlocks": 2,
+      "noSensors": 2
+    }
+  },
+  {
+    "wsName": "Mein-erster-Gleisplan",
+    "items": {
+      "itemTypes": {
+        "10": 14,
+        "150": 3,
+        "11": 4,
+        "50": 1,
+        "200": 6,
+        "51": 1
+      },
+      "noSwitches": 2,
+      "noSignals": 0,
+      "noBlocks": 3,
+      "noSensors": 6
+    },
+    "routes": [
+      {
+        "name": "Block_1[+]_Block_3[+]",
+        "noTracks": 8,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Block_2[+]",
+        "noTracks": 6,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_3[-]",
+        "noTracks": 8,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_2[-]",
+        "noTracks": 6,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[-]_Block_1[-]",
+        "noTracks": 8,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_1[+]",
+        "noTracks": 8,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[-]_Block_1[-]",
+        "noTracks": 6,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_1[+]",
+        "noTracks": 6,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 6,
+      "noSensors": 6
+    }
+  },
+  {
+    "wsName": "Pendeln",
+    "items": {
+      "itemTypes": {
+        "10": 18,
+        "11": 3,
+        "13": 5,
+        "150": 3,
+        "200": 10,
+        "151": 2,
+        "50": 1
+      },
+      "noSwitches": 1,
+      "noSignals": 0,
+      "noBlocks": 5,
+      "noSensors": 10
+    },
+    "routes": [
+      {
+        "name": "Block_3[+]_Block_1[-]",
+        "noTracks": 5,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_2[-]",
+        "noTracks": 7,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_3[+]",
+        "noTracks": 5,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_4[-]_Block_5[+]",
+        "noTracks": 8,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_5[+]_Block_4[-]",
+        "noTracks": 8,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[-]_Block_3[+]",
+        "noTracks": 7,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 10,
+      "noSensors": 10
+    }
+  },
+  {
+    "wsName": "Plan_2025-07-07_08-28-29",
+    "items": {
+      "itemTypes": {},
+      "noSwitches": 0,
+      "noSignals": 0,
+      "noBlocks": 0,
+      "noSensors": 0
+    },
+    "routes": [],
+    "settings": {
+      "noBlocks": 0,
+      "noSensors": 0
+    }
+  },
+  {
+    "wsName": "railhq.io-Basement",
+    "items": {
+      "itemTypes": {
+        "51": 20,
+        "10": 178,
+        "200": 89,
+        "150": 12,
+        "52": 1,
+        "11": 32,
+        "1010": 8,
+        "101": 10,
+        "13": 10,
+        "152": 5,
+        "59": 1,
+        "50": 8,
+        "17": 14,
+        "14": 5,
+        "58": 1,
+        "104": 1
+      },
+      "noSwitches": 31,
+      "noSignals": 11,
+      "noBlocks": 12,
+      "noSensors": 89
+    },
+    "routes": [
+      {
+        "name": "BK_2[+]_BK_Wendel_Innen[+]",
+        "noTracks": 13,
+        "noSwitches": 4,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_2[+]_BK_Wendel_Aussen[+]",
+        "noTracks": 13,
+        "noSwitches": 5,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_2[+]_BK_Wendel_Innen[+]",
+        "noTracks": 13,
+        "noSwitches": 6,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "AB_1[-]_Block_1[+]",
+        "noTracks": 5,
+        "noSwitches": 1,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_BK_Wendel_Aussen[+]",
+        "noTracks": 8,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_BK_Wendel_Innen[+]",
+        "noTracks": 8,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_8[+]_BK_Wendel_Aussen[-]",
+        "noTracks": 9,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_8[-]_BK_Wendel_Innen[-]",
+        "noTracks": 28,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_8[-]_BK_5[-]",
+        "noTracks": 15,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_8[-]_BK_6[-]",
+        "noTracks": 16,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_6[+]_BK_Wendel_Innen[-]",
+        "noTracks": 8,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_6[-]_BK_8[-]",
+        "noTracks": 16,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_6[-]_BK_9[-]",
+        "noTracks": 16,
+        "noSwitches": 5,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_6[-]_BK_7[-]",
+        "noTracks": 15,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_6[-]_BK_10[-]",
+        "noTracks": 12,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "AB_2[-]_Block_1[+]",
+        "noTracks": 5,
+        "noSwitches": 2,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_1[+]_BK_Wendel_Innen[+]",
+        "noTracks": 14,
+        "noSwitches": 4,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_1[+]_BK_Wendel_Aussen[+]",
+        "noTracks": 14,
+        "noSwitches": 5,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_1[+]_BK_Wendel_Innen[+]",
+        "noTracks": 14,
+        "noSwitches": 6,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_Block_1[-]",
+        "noTracks": 8,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_BK_2[+]",
+        "noTracks": 13,
+        "noSwitches": 5,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_BK_1[+]",
+        "noTracks": 14,
+        "noSwitches": 5,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_BK_3[+]",
+        "noTracks": 14,
+        "noSwitches": 5,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_AB_5[+]",
+        "noTracks": 23,
+        "noSwitches": 5,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_AB_4[+]",
+        "noTracks": 23,
+        "noSwitches": 6,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_AB_3[+]",
+        "noTracks": 23,
+        "noSwitches": 7,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_AB_2[+]",
+        "noTracks": 23,
+        "noSwitches": 8,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[+]_AB_1[+]",
+        "noTracks": 24,
+        "noSwitches": 8,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[-]_BK_9[+]",
+        "noTracks": 10,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[-]_BK_7[+]",
+        "noTracks": 8,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Aussen[-]_BK_8[+]",
+        "noTracks": 9,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_10[-]_BK_Wendel_Innen[-]",
+        "noTracks": 24,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_10[-]_BK_5[-]",
+        "noTracks": 11,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_10[-]_BK_6[-]",
+        "noTracks": 12,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "AB_3[-]_Block_1[+]",
+        "noTracks": 5,
+        "noSwitches": 3,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_5[+]_BK_Wendel_Innen[-]",
+        "noTracks": 7,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_5[-]_BK_8[-]",
+        "noTracks": 15,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_5[-]_BK_9[-]",
+        "noTracks": 15,
+        "noSwitches": 5,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_5[-]_BK_7[-]",
+        "noTracks": 14,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_5[-]_BK_10[-]",
+        "noTracks": 11,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_3[+]_BK_Wendel_Innen[+]",
+        "noTracks": 14,
+        "noSwitches": 4,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_3[+]_BK_Wendel_Aussen[+]",
+        "noTracks": 14,
+        "noSwitches": 5,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_3[+]_BK_Wendel_Innen[+]",
+        "noTracks": 14,
+        "noSwitches": 6,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_7[+]_BK_Wendel_Aussen[-]",
+        "noTracks": 8,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_7[-]_BK_Wendel_Innen[-]",
+        "noTracks": 27,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_7[-]_BK_5[-]",
+        "noTracks": 14,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_7[-]_BK_6[-]",
+        "noTracks": 15,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "AB_4[-]_Block_1[+]",
+        "noTracks": 5,
+        "noSwitches": 4,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "AB_5[-]_Block_1[+]",
+        "noTracks": 6,
+        "noSwitches": 4,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_9[+]_BK_Wendel_Aussen[-]",
+        "noTracks": 10,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_9[-]_BK_Wendel_Innen[-]",
+        "noTracks": 28,
+        "noSwitches": 5,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_9[-]_BK_5[-]",
+        "noTracks": 15,
+        "noSwitches": 5,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_9[-]_BK_6[-]",
+        "noTracks": 16,
+        "noSwitches": 5,
+        "noSensors": 2,
+        "noSignals": 2,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_Block_1[-]",
+        "noTracks": 8,
+        "noSwitches": 3,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_BK_2[+]",
+        "noTracks": 13,
+        "noSwitches": 6,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_BK_1[+]",
+        "noTracks": 14,
+        "noSwitches": 6,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_BK_3[+]",
+        "noTracks": 14,
+        "noSwitches": 6,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_5[+]",
+        "noTracks": 23,
+        "noSwitches": 6,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_4[+]",
+        "noTracks": 23,
+        "noSwitches": 7,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_3[+]",
+        "noTracks": 23,
+        "noSwitches": 8,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_2[+]",
+        "noTracks": 23,
+        "noSwitches": 9,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_1[+]",
+        "noTracks": 24,
+        "noSwitches": 9,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_BK_2[+]",
+        "noTracks": 13,
+        "noSwitches": 4,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_BK_1[+]",
+        "noTracks": 14,
+        "noSwitches": 4,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_BK_3[+]",
+        "noTracks": 14,
+        "noSwitches": 4,
+        "noSensors": 4,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_5[+]",
+        "noTracks": 23,
+        "noSwitches": 4,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_4[+]",
+        "noTracks": 23,
+        "noSwitches": 5,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_3[+]",
+        "noTracks": 23,
+        "noSwitches": 6,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_2[+]",
+        "noTracks": 23,
+        "noSwitches": 7,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[+]_AB_1[+]",
+        "noTracks": 24,
+        "noSwitches": 7,
+        "noSensors": 14,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[-]_BK_5[+]",
+        "noTracks": 7,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[-]_BK_6[+]",
+        "noTracks": 8,
+        "noSwitches": 2,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[-]_BK_8[-]",
+        "noTracks": 28,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[-]_BK_9[-]",
+        "noTracks": 28,
+        "noSwitches": 5,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[-]_BK_7[-]",
+        "noTracks": 27,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      },
+      {
+        "name": "BK_Wendel_Innen[-]_BK_10[-]",
+        "noTracks": 24,
+        "noSwitches": 4,
+        "noSensors": 2,
+        "noSignals": 1,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 22,
+      "noSensors": 90
+    }
+  },
+  {
+    "wsName": "Staging",
+    "items": {
+      "itemTypes": {
+        "152": 1,
+        "10": 16,
+        "51": 1,
+        "11": 4,
+        "200": 8,
+        "150": 2,
+        "50": 1
+      },
+      "noSwitches": 2,
+      "noSignals": 0,
+      "noBlocks": 2,
+      "noSensors": 8
+    },
+    "routes": [
+      {
+        "name": "Stage_1[-]_Block_1[-]",
+        "noTracks": 4,
+        "noSwitches": 1,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Block_2[+]",
+        "noTracks": 13,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[+]_Stage_1[+]",
+        "noTracks": 8,
+        "noSwitches": 1,
+        "noSensors": 5,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_2[-]",
+        "noTracks": 5,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Stage_1[-]",
+        "noTracks": 4,
+        "noSwitches": 1,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[-]_Block_1[-]",
+        "noTracks": 5,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[+]_Block_1[+]",
+        "noTracks": 13,
+        "noSwitches": 1,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 4,
+      "noSensors": 8
+    }
+  },
+  {
+    "wsName": "Tutorial_Staging",
+    "items": {
+      "itemTypes": {
+        "10": 16,
+        "200": 6,
+        "11": 4,
+        "150": 1,
+        "152": 1
+      },
+      "noSwitches": 0,
+      "noSignals": 0,
+      "noBlocks": 1,
+      "noSensors": 6
+    },
+    "routes": [
+      {
+        "name": "Block_1[+]_Stage_1[+]",
+        "noTracks": 11,
+        "noSwitches": 0,
+        "noSensors": 5,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Stage_1[-]_Block_1[-]",
+        "noTracks": 9,
+        "noSwitches": 0,
+        "noSensors": 1,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 2,
+      "noSensors": 6
+    }
+  },
+  {
+    "wsName": "z21",
+    "items": {
+      "itemTypes": {
+        "50": 1,
+        "150": 2,
+        "200": 4,
+        "51": 1
+      },
+      "noSwitches": 2,
+      "noSignals": 0,
+      "noBlocks": 2,
+      "noSensors": 4
+    },
+    "routes": [],
+    "settings": {
+      "noBlocks": 1,
+      "noSensors": 2
+    }
+  },
+  {
+    "wsName": "z21-Teststrecke",
+    "items": {
+      "itemTypes": {
+        "200": 4,
+        "150": 4,
+        "13": 4,
+        "15": 4,
+        "10": 13,
+        "50": 1,
+        "11": 5,
+        "51": 1
+      },
+      "noSwitches": 2,
+      "noSignals": 0,
+      "noBlocks": 4,
+      "noSensors": 4
+    },
+    "routes": [
+      {
+        "name": "Block_4[-]_Block_3[+]",
+        "noTracks": 14,
+        "noSwitches": 2,
+        "noSensors": 0,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_2[-]",
+        "noTracks": 7,
+        "noSwitches": 1,
+        "noSensors": 0,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_1[-]",
+        "noTracks": 12,
+        "noSwitches": 2,
+        "noSensors": 0,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_3[+]_Block_4[-]",
+        "noTracks": 14,
+        "noSwitches": 2,
+        "noSensors": 0,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_2[-]_Block_3[+]",
+        "noTracks": 7,
+        "noSwitches": 1,
+        "noSensors": 0,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_3[+]",
+        "noTracks": 12,
+        "noSwitches": 2,
+        "noSensors": 0,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 8,
+      "noSensors": 4
+    }
+  },
+  {
+    "wsName": "Zeitanzeige",
+    "items": {
+      "itemTypes": {
+        "150": 2,
+        "13": 2,
+        "200": 4,
+        "10": 4
+      },
+      "noSwitches": 0,
+      "noSignals": 0,
+      "noBlocks": 2,
+      "noSensors": 4
+    },
+    "routes": [
+      {
+        "name": "Block_2[+]_Block_1[-]",
+        "noTracks": 2,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      },
+      {
+        "name": "Block_1[-]_Block_2[+]",
+        "noTracks": 2,
+        "noSwitches": 0,
+        "noSensors": 2,
+        "noSignals": 0,
+        "noBlocks": 2
+      }
+    ],
+    "settings": {
+      "noBlocks": 4,
+      "noSensors": 4
+    }
+  }
+]

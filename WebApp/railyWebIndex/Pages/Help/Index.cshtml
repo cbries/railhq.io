@@ -1,0 +1,19 @@
+﻿@page
+@model railyWebIndex.Pages.Help.IndexModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Hilfe";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Hilfe";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+<h1 class="Title">
+    TO BE DEFINED !
+</h1>

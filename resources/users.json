@@ -1,0 +1,20 @@
+﻿{
+  "_comment": "This is the default user database file. For production use, change the default password!",
+  "_warning": "Default credentials - Username: free@railhq.io, Password: railhq.io",
+  "Users": [
+    {
+      "Id": "b0ca0843-1d51-4c31-84c8-00f4fa9c196b",
+      "Email": "free@railhq.io",
+      "EmailConfirmedAt": "2025-12-03T08:01:17.3485203Z",
+      "ConfirmationSentAt": null,
+      "ConfirmedAt": "2025-12-03T08:01:17.3485231Z",
+      "CreatedAt": "2025-12-03T08:01:17.3485196Z",
+      "LastSignInAt": null,
+      "RecoverySentAt": null,
+      "UpdatedAt": null,
+      "BannedUntil": null,
+      "Role": "admin",
+      "PasswordHash": "c83258f8dbcf4640a4c94a9963264b57:DtbCvYrF5pPIrAQwMQmsgyirWuNOxbcO50bxGmS+5+M="
+    }
+  ]
+}

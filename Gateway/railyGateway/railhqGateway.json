@@ -1,0 +1,51 @@
+{
+  "_comment": "Configuration file for railhq Gateway",
+  "_warning": "Default credentials for development only! Change username/password for production!",
+  "_language": "Valid: en (default), de",
+  "language": "de",
+  "connection": {
+    "isEnabled": true,
+    "timeoutSeconds": 10,
+    "host": "localhost",
+    "port": 5001,
+    "username": "free@railhq.io",
+    "password": "railhq.io",
+    "autoconnect": true
+  },
+  "localhost": {
+    "_listenPort": "The local port of the dashboard.",
+    "listenPort": 8090,
+    "_listenDevice": "The IP address of the Network Interface Card (NIC) on which the Dashboard is accessible. `auto` or `internet` queries the device with internet access by pinging to Google's nameserver `8.8.8.8`.",
+    "listenDevice": "auto"
+  },
+  "ecos": {
+    "isEnabled": false,
+    "_comment_ip": "Replace with your ESU ECoS IP address",
+    "ip": "192.168.0.100",
+    "port": 15471
+  },
+  "z21": {
+    "isEnabled": false,
+    "_comment_ip": "Replace with your Roco Z21 IP address",
+    "ip": "192.168.0.111",
+    "port": 21105
+  },
+  "hsi": {
+    "isEnabled": false,
+    "simulation": {
+      "isEnabled": false,
+      "__simulationMode": "random:=_rnd.Next(0, 255) || countUp:=1..(left+middle+right)*16",
+      "simulationMode": "countUp",
+      "betweenTicksMs": 30000
+    },
+    "left": 0,
+    "middle": 0,
+    "right": 1,
+    "devicePath": "\\\\.\\HsiUsb1",
+    "debounce": {
+      "checkIntervalMs": 25,
+      "onMs": 25,
+      "offMs": 1000
+    }
+  }
+}

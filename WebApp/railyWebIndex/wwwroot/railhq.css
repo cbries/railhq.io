@@ -1,0 +1,133 @@
+﻿
+/* Navigations Sidebar */
+.riesSideBarRoot {
+    background-color: rgba(210, 220, 230, 1);
+    z-index: 100;
+    height: 100%;
+}
+
+.riesNavLi {
+    color: #1e3c72;
+    font-weight: 500;
+}
+
+.riesNavLiOff {
+    color: #1e3c72;
+    font-weight: 500;
+    margin-bottom: 40px;
+}
+
+/* Hashtags-Erkennung */
+.hashtag {
+    color: #007bff; /* Blaue Farbe für Hashtags */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .hashtag:hover {
+        text-decoration: underline;
+    }
+
+/* Farben der Icon in den Kacheltiteln */
+.dashboardTriangle {
+    color: #0056b3;
+}
+
+/* Link um mehr Informationen zum Service zu erhalten */
+.modern-link {
+    color: #007bff;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+    .modern-link:hover {
+        color: #0056b3;
+        text-decoration: underline;
+    }
+
+/* Benachrichtungskachel */
+div.notifications {
+    max-width: 756px;
+}
+
+/*
+    Dashboard / Kacheln
+*/
+.dashboard-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.riesWorkspaceTile, .dashboard-tile {
+    background-color: #f4f4f4;
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+    border-left: 1px solid rgba(0, 0, 0, 0.05);
+    box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.2);
+}
+
+    .dashboard-tile .fas {
+        padding-left: 10px;
+        padding-right: 0px;
+    }
+
+    .dashboard-tile h3 .fas {
+        padding-left: 0px;
+        padding-right: 5px;
+    }
+
+    .dashboard-tile h3 {
+        font-size: 1.1em;
+        font-weight: bold;
+        padding-top: 0px;
+        padding-bottom: 10px;
+    }
+
+    .dashboard-tile p {
+        font-size: 1.0em;
+        margin-top: 5px;
+    }
+
+    .dashboard-tile a {
+    }
+
+    .dashboard-tile .btn:hover {
+        text-decoration: underline;
+    }
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/*
+    Workspace-Auflistung im Dashboard
+*/
+.workspace-item {
+    margin-bottom: 1px;
+    display: flex;
+    justify-content: space-between; /* Stellt sicher, dass der Name und der Button an den Enden ausgerichtet werden */
+    align-items: center;
+}
+
+.workspace-name {
+    flex-grow: 1; /* Ermöglicht, dass der Name den verfügbaren Platz einnimmt */
+    font-size: 1.0em;
+}
+
+.workspace-item .btn {
+    margin-left: 0px; /* Abstand zwischen Namen und Button */
+    display: inline-flex;
+    align-items: center;
+}
+
+    .workspace-item .btn:hover {
+        text-decoration: none;
+        color: #0056b3;
+    }
+
+    .workspace-item .btn i {
+        margin-right: 5px; /* Abstand zwischen Icon und Text */
+    }

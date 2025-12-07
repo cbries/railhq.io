@@ -1,0 +1,588 @@
+{
+  "blockSensors": [
+    {
+      "BlockId": "BK_3[+]",
+      "FbEnter": "fb_Enter_BK_3",
+      "FbIn": "fb_In_BK_3"
+    },
+    {
+      "BlockId": "BK_3[-]",
+      "FbIn": "fb_Enter_BK_3",
+      "FbEnter": "fb_In_BK_3"
+    },
+    {
+      "BlockId": "BK_1[+]",
+      "FbEnter": "fb_Enter_BK_1",
+      "FbIn": "fb_In_BK_1"
+    },
+    {
+      "BlockId": "BK_1[-]",
+      "FbIn": "fb_Enter_BK_1",
+      "FbEnter": "fb_In_BK_1"
+    },
+    {
+      "BlockId": "BK_2[+]",
+      "FbEnter": "fb_Enter_BK_2",
+      "FbIn": "fb_In_BK_2"
+    },
+    {
+      "BlockId": "BK_2[-]",
+      "FbIn": "fb_Enter_BK_2",
+      "FbEnter": "fb_In_BK_2"
+    },
+    {
+      "BlockId": "BK_5[+]",
+      "FbEnter": "fb+_BK_5",
+      "FbIn": "fb-_BK_5"
+    },
+    {
+      "BlockId": "BK_5[-]",
+      "FbIn": "fb+_BK_5",
+      "FbEnter": "fb-_BK_5"
+    },
+    {
+      "BlockId": "BK_6[+]",
+      "FbEnter": "fb+_BK_6",
+      "FbIn": "fb-_BK_6"
+    },
+    {
+      "BlockId": "BK_6[-]",
+      "FbIn": "fb+_BK_6",
+      "FbEnter": "fb-_BK_6"
+    },
+    {
+      "BlockId": "BK_9[+]",
+      "FbEnter": "fb+_BK_9",
+      "FbIn": "fb-_BK_9"
+    },
+    {
+      "BlockId": "BK_9[-]",
+      "FbIn": "fb+_BK_9",
+      "FbEnter": "fb-_BK_9"
+    },
+    {
+      "BlockId": "BK_8[+]",
+      "FbEnter": "fb+_BK_8",
+      "FbIn": "fb-_BK_8"
+    },
+    {
+      "BlockId": "BK_8[-]",
+      "FbIn": "fb+_BK_8",
+      "FbEnter": "fb-_BK_8"
+    },
+    {
+      "BlockId": "BK_7[+]",
+      "FbEnter": "fb+_BK_7",
+      "FbIn": "fb-_BK_7"
+    },
+    {
+      "BlockId": "BK_7[-]",
+      "FbIn": "fb+_BK_7",
+      "FbEnter": "fb-_BK_7"
+    },
+    {
+      "BlockId": "BK_Wendel_Aussen[+]",
+      "FbEnter": "fb_Plus_Wendel_Aussen",
+      "FbIn": "fb_Minus_Wendel_Aussen"
+    },
+    {
+      "BlockId": "BK_Wendel_Aussen[-]",
+      "FbEnter": "fb_Minus_Wendel_Aussen",
+      "FbIn": "fb_Plus_Wendel_Aussen"
+    },
+    {
+      "BlockId": "BK_Wendel_Innen[+]",
+      "FbEnter": "fb_Plus_Wendel_Innen",
+      "FbIn": "fb_Minus_Wendel_Innen"
+    },
+    {
+      "BlockId": "BK_Wendel_Innen[-]",
+      "FbEnter": "fb_Minus_Wendel_Innen",
+      "FbIn": "fb_Plus_Wendel_Innen"
+    },
+    {
+      "BlockId": "BK_Ausfahrt[+]"
+    },
+    {
+      "BlockId": "BK_Ausfahrt[-]"
+    },
+    {
+      "BlockId": "BK_10[+]",
+      "FbEnter": "fb10+_BK_10",
+      "FbIn": "fb10-_BK_10"
+    },
+    {
+      "BlockId": "BK_10[-]",
+      "FbIn": "fb10+_BK_10",
+      "FbEnter": "fb10-_BK_10"
+    },
+    {
+      "BlockId": "BK_9_kurz[+]",
+      "FbEnter": "fb+_BK_9_kurz",
+      "FbIn": "fb-_BK_9"
+    },
+    {
+      "BlockId": "BK_9_kurz[-]",
+      "FbEnter": "fb-_BK_9",
+      "FbIn": "fb+_BK_9_kurz"
+    }
+  ],
+  "sensors": [
+    {
+      "name": "fb_Enter_AB_1",
+      "provider": "ecos",
+      "address": "20"
+    },
+    {
+      "name": "fb_Enter_AB_2",
+      "provider": "ecos",
+      "address": "17"
+    },
+    {
+      "name": "fb_Enter_AB_3",
+      "provider": "ecos",
+      "address": "7"
+    },
+    {
+      "name": "fb_Enter_AB_4",
+      "provider": "ecos",
+      "address": "4"
+    },
+    {
+      "name": "fb_Enter_AB_5",
+      "provider": "ecos",
+      "address": "1"
+    },
+    {
+      "name": "fb_in1_AB_1",
+      "provider": "ecos",
+      "address": "22"
+    },
+    {
+      "name": "fb_in1_AB_2",
+      "provider": "ecos",
+      "address": "19"
+    },
+    {
+      "name": "fb_in1_AB_3",
+      "provider": "ecos",
+      "address": "9"
+    },
+    {
+      "name": "fb_in1_AB_4",
+      "provider": "ecos",
+      "address": "6"
+    },
+    {
+      "name": "fb_in1_AB_5",
+      "provider": "ecos",
+      "address": "3"
+    },
+    {
+      "name": "fb_in2_AB_1",
+      "provider": "ecos",
+      "address": "31"
+    },
+    {
+      "name": "fb_in2_AB_2",
+      "provider": "ecos",
+      "address": "28"
+    },
+    {
+      "name": "fb_in2_AB_3",
+      "provider": "ecos",
+      "address": "25"
+    },
+    {
+      "name": "fb_in2_AB_4",
+      "provider": "ecos",
+      "address": "13"
+    },
+    {
+      "name": "fb_in2_AB_5",
+      "provider": "ecos",
+      "address": "16"
+    },
+    {
+      "name": "fb_in3_AB_1",
+      "provider": "ecos",
+      "address": "47"
+    },
+    {
+      "name": "fb_in3_AB_2",
+      "provider": "ecos",
+      "address": "44"
+    },
+    {
+      "name": "fb_in3_AB_3",
+      "provider": "ecos",
+      "address": "41"
+    },
+    {
+      "name": "fb_in3_AB_4",
+      "provider": "ecos",
+      "address": "38"
+    },
+    {
+      "name": "fb_in4_AB_1",
+      "provider": "ecos",
+      "address": "63"
+    },
+    {
+      "name": "fb_in4_AB_2",
+      "provider": "ecos",
+      "address": "60"
+    },
+    {
+      "name": "fb_in4_AB_3",
+      "provider": "ecos",
+      "address": "57"
+    },
+    {
+      "name": "fb_in4_AB_4",
+      "provider": "ecos",
+      "address": "54"
+    },
+    {
+      "name": "fb_in4_AB_5",
+      "provider": "ecos",
+      "address": "51"
+    },
+    {
+      "name": "fb_be1_AB_1",
+      "provider": "ecos",
+      "address": "21"
+    },
+    {
+      "name": "fb_be2_AB_1",
+      "provider": "ecos",
+      "address": "30"
+    },
+    {
+      "name": "fb_be3_AB_1",
+      "provider": "ecos",
+      "address": "46"
+    },
+    {
+      "name": "fb_be4_AB_1",
+      "provider": "ecos",
+      "address": "62"
+    },
+    {
+      "name": "fb_be1_AB_2",
+      "provider": "ecos",
+      "address": "18"
+    },
+    {
+      "name": "fb_be1_AB_3",
+      "provider": "ecos",
+      "address": "8"
+    },
+    {
+      "name": "fb_be2_AB_2",
+      "provider": "ecos",
+      "address": "27"
+    },
+    {
+      "name": "fb_be2_AB_3",
+      "provider": "ecos",
+      "address": "24"
+    },
+    {
+      "name": "fb_be3_AB_2",
+      "provider": "ecos",
+      "address": "43"
+    },
+    {
+      "name": "fb_be3_AB_3",
+      "provider": "ecos",
+      "address": "40"
+    },
+    {
+      "name": "fb_be4_AB_2",
+      "provider": "ecos",
+      "address": "59"
+    },
+    {
+      "name": "fb_be4_AB_3",
+      "provider": "ecos",
+      "address": "56"
+    },
+    {
+      "name": "fb_be4_AB_4",
+      "provider": "ecos",
+      "address": "53"
+    },
+    {
+      "name": "fb_be4_AB_5",
+      "provider": "ecos",
+      "address": "50"
+    },
+    {
+      "name": "fb_be3_AB_5",
+      "provider": "ecos",
+      "address": "34"
+    },
+    {
+      "name": "fb_be3_AB_4",
+      "provider": "ecos",
+      "address": "37"
+    },
+    {
+      "name": "fb_be2_AB_4",
+      "provider": "ecos",
+      "address": "12"
+    },
+    {
+      "name": "fb_be1_AB_5",
+      "provider": "ecos",
+      "address": "2"
+    },
+    {
+      "name": "fb_be1_AB_4",
+      "provider": "ecos",
+      "address": "5"
+    },
+    {
+      "name": "fb_be_BK_3",
+      "provider": "ecos",
+      "address": "78"
+    },
+    {
+      "name": "fb_Enter_BK_3",
+      "provider": "ecos",
+      "address": "77"
+    },
+    {
+      "name": "fb_In_BK_3",
+      "provider": "ecos",
+      "address": "79"
+    },
+    {
+      "name": "fb_Enter_BK_1",
+      "provider": "ecos",
+      "address": "71"
+    },
+    {
+      "name": "fb_Enter_BK_2",
+      "provider": "ecos",
+      "address": "74"
+    },
+    {
+      "name": "fb_be_BK_1",
+      "provider": "ecos",
+      "address": "72"
+    },
+    {
+      "name": "fb_be_BK_2",
+      "provider": "ecos",
+      "address": "75"
+    },
+    {
+      "name": "fb_In_BK_1",
+      "provider": "ecos",
+      "address": "73"
+    },
+    {
+      "name": "fb_In_BK_2",
+      "provider": "ecos",
+      "address": "76"
+    },
+    {
+      "name": "fb+_BK_5",
+      "provider": "ecos",
+      "address": "83"
+    },
+    {
+      "name": "fb+_BK_6",
+      "provider": "ecos",
+      "address": "84"
+    },
+    {
+      "name": "fb-_BK_5",
+      "provider": "ecos",
+      "address": "81"
+    },
+    {
+      "name": "fb-_BK_6",
+      "provider": "ecos",
+      "address": "82"
+    },
+    {
+      "name": "fb+_BK_9",
+      "provider": "ecos",
+      "address": "92"
+    },
+    {
+      "name": "fb-_BK_9",
+      "provider": "ecos",
+      "address": "86"
+    },
+    {
+      "name": "fb+_BK_8",
+      "provider": "ecos",
+      "address": "91"
+    },
+    {
+      "name": "fb+_BK_7",
+      "provider": "ecos",
+      "address": "90"
+    },
+    {
+      "name": "fb-_BK_7",
+      "provider": "ecos",
+      "address": "87"
+    },
+    {
+      "name": "fb-_BK_8",
+      "provider": "ecos",
+      "address": "85"
+    },
+    {
+      "name": "fb_Enter2_AB5",
+      "provider": "ecos",
+      "address": "14"
+    },
+    {
+      "name": "fb_Enter3_AB5",
+      "provider": "ecos",
+      "address": "33"
+    },
+    {
+      "name": "fb_Enter4_AB5",
+      "provider": "ecos",
+      "address": "49"
+    },
+    {
+      "name": "fb_Enter2_AB4",
+      "provider": "ecos",
+      "address": "11"
+    },
+    {
+      "name": "fb_Enter3_AB4",
+      "provider": "ecos",
+      "address": "36"
+    },
+    {
+      "name": "fb_Enter4_AB4",
+      "provider": "ecos",
+      "address": "52"
+    },
+    {
+      "name": "fb_Enter2_AB3",
+      "provider": "ecos",
+      "address": "23"
+    },
+    {
+      "name": "fb_Enter3_AB3",
+      "provider": "ecos",
+      "address": "39"
+    },
+    {
+      "name": "fb_Enter4_AB3",
+      "provider": "ecos",
+      "address": "55"
+    },
+    {
+      "name": "fb_Enter2_AB2",
+      "provider": "ecos",
+      "address": "26"
+    },
+    {
+      "name": "fb_Enter3_AB2",
+      "provider": "ecos",
+      "address": "42"
+    },
+    {
+      "name": "fb_Enter4_AB2",
+      "provider": "ecos",
+      "address": "58"
+    },
+    {
+      "name": "fb_Enter2_AB1",
+      "provider": "ecos",
+      "address": "29"
+    },
+    {
+      "name": "fb_Enter3_AB1",
+      "provider": "ecos",
+      "address": "45"
+    },
+    {
+      "name": "fb_Enter4_AB1",
+      "provider": "ecos",
+      "address": "61"
+    },
+    {
+      "name": "fb_Belegt_Wendel_Aussen",
+      "provider": "ecos",
+      "address": "65"
+    },
+    {
+      "name": "fb_Belegt_Wendel_Innen",
+      "provider": "ecos",
+      "address": "66"
+    },
+    {
+      "name": "fb_Plus_Wendel_Aussen",
+      "provider": "ecos",
+      "address": "70"
+    },
+    {
+      "name": "fb_Plus_Wendel_Innen",
+      "provider": "ecos",
+      "address": "69"
+    },
+    {
+      "name": "fb_Minus_Wendel_Aussen",
+      "provider": "ecos",
+      "address": "67"
+    },
+    {
+      "name": "fb_Minus_Wendel_Innen",
+      "provider": "ecos",
+      "address": "68"
+    },
+    {
+      "name": "fb_be2_AB_5",
+      "provider": "ecos",
+      "address": "15"
+    },
+    {
+      "name": "fb_in3_AB_5",
+      "provider": "ecos",
+      "address": "35"
+    },
+    {
+      "name": "fb_in_Ausfahrt",
+      "provider": "ecos",
+      "address": "80"
+    },
+    {
+      "name": "bk1+",
+      "provider": "ecos",
+      "address": "0"
+    },
+    {
+      "name": "bk1-",
+      "provider": "ecos",
+      "address": "0"
+    },
+    {
+      "name": "fb10-_BK_10",
+      "provider": "ecos",
+      "address": "88"
+    },
+    {
+      "name": "fb10+_BK_10",
+      "provider": "ecos",
+      "address": "89"
+    },
+    {
+      "name": "fb+_BK_9_kurz",
+      "provider": "ecos",
+      "address": "93"
+    }
+  ],
+  "accessories": []
+}

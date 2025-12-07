@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>railhq.io - LDT-S88 Driver</AssemblyTitle>
+    <AssemblyName>railhqHsiS88</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libInterop\libInterop.csproj" />
+    <ProjectReference Include="..\..\Libraries\libUtilities\libUtilities.csproj" />
+  </ItemGroup>
+
+</Project>

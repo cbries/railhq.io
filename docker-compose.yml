@@ -1,0 +1,183 @@
+
+name: railhq
+
+services:
+  #
+  # Service für den Bau des Images 'railhq.io:latest'.
+  # - manuelle Ausführung mit `docker compose build railhq`
+  #
+  # Manueller Aufruf sieht wie folgt aus:
+  #  $ sudo docker build -t railhq.io:latest .
+  #
+  railhq:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: railhq.io:latest
+    profiles:
+      - manual
+
+  # nginx Reverse-Proxy
+  # Konfiguration wird über NGINX_CONF in .env gesteuert:
+  #   RAILHQ_USE_TLS=true  -> NGINX_CONF=nginx-https.conf
+  #   RAILHQ_USE_TLS=false -> NGINX_CONF=nginx-http.conf
+  nginx:
+    image: nginx:latest
+    networks:
+      - internal-network  # Nur intern erreichbar
+      - public-network    # Hat Zugriff aufs Internet
+    container_name: railhq.io-nginx
+    volumes:
+      - "${NGINX_CFG_DIR}/${NGINX_CONF}:/etc/nginx/nginx.conf:z"
+      - "${NGINX_CFG_DIR}/runtime:/usr/share/nginx/html/runtime:z"
+      - "${TLS_CERT_DIR}:/etc/nginx/certificates:z"
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+
+  #
+  # Redis-Cache-Service für railhq.
+  # - Läuft als separater Container mit dem Namen 'railhq.io-redis'.
+  # - Startet automatisch neu, falls er abstürzt oder Docker neugestartet wird.
+  # - Bindet Redis an alle Schnittstellen (0.0.0.0).
+  #
+  redis:
+    image: redis
+    networks:
+      - internal-network  # Nur intern erreichbar
+    container_name: railhq.io-redis
+    restart: unless-stopped
+    volumes:
+      - "${RAILHQ_DATA_DIR}/resourcesRedis:/data:z"
+    command: redis-server --bind 0.0.0.0
+
+  # Web-Index-Service für die Benutzerverwaltung und Zugriffssteuerung.
+  index:
+    image: railhq.io:latest
+    networks:
+      - internal-network  # Kann mit Redis kommunizieren
+      - public-network    # Hat Zugriff aufs Internet
+    container_name: railhq.io-index
+    restart: unless-stopped
+    environment:
+      - RAILHQ_LOCAL_MODE=${RAILHQ_LOCAL_MODE}
+      - RAILHQ_USE_TLS=${RAILHQ_USE_TLS}
+      - TLS_CERT_PW=${TLS_CERT_PW}
+    depends_on:
+      - redis
+    volumes:
+      - "${TLS_CERT_DIR}:/app/certificates:z"
+      - "${RAILHQ_DATA_DIR}/resources:/app/resources:z"
+      - "${RAILHQ_DATA_DIR}/resourcesSetups:/app/resourcesSetups:z"
+    working_dir: /app/railyWebIndex
+    entrypoint: >
+        dotnet railyWebIndex.dll
+
+  # Hauptanwendung 'app' von railhq.
+  app:
+    image: railhq.io:latest
+    networks:
+      - internal-network  # Kann mit Redis kommunizieren
+      - public-network    # Hat Zugriff aufs Internet
+    container_name: railhq.io-app
+    restart: unless-stopped
+    environment:
+      - RAILHQ_LOCAL_MODE=${RAILHQ_LOCAL_MODE}
+      - RAILHQ_USE_TLS=${RAILHQ_USE_TLS}
+      - TLS_CERT_PW=${TLS_CERT_PW}
+    depends_on:
+      - redis
+    volumes:
+      - "${TLS_CERT_DIR}:/app/certificates:z"
+      - "${RAILHQ_DATA_DIR}/resources:/app/resources:z"
+    ports:
+      - "5001:5001"
+    working_dir: /app/railyWebApp
+    entrypoint: sh -c "dotnet railyWebApp.dll"
+
+
+  #
+  # Backup-Job (muss manuell gestartet werden)
+  # - Wird NICHT automatisch mit 'docker compose up' gestartet.
+  # - Kann mit folgendem Befehl ausgeführt werden:
+  #   $ docker compose run --rm backup
+  # - Erstellt ein Backup des Volumes 'railhq.io-app_resources' als tar.gz-Archiv.
+  # - Speichert das Backup im Verzeichnis ${BACKUP_DIRECTORY_PATH}.
+  # - Beendet sich nach der Erstellung automatisch.
+  #
+  backup:
+    image: alpine
+    container_name: railhq.io-backup
+    volumes:
+      - "${RAILHQ_DATA_DIR}/resources:/data:z"
+      - "${RAILHQ_DATA_DIR}/resourcesSetups:/data2:z"
+      - ${BACKUP_DIRECTORY_PATH}:/backup:Z
+    entrypoint: >
+      sh -c "
+        tar czvf backup/railhq.io-app_resources_$(date +%Y-%m-%d_%H-%M-%S).tar.gz -C /data . && \
+        tar czvf backup/latestResources.tar.gz -C /data . && \
+        tar czvf backup/railhq.io-app_resourcesSetups_$(date +%Y-%m-%d_%H-%M-%S).tar.gz -C /data2 . && \
+        tar czvf backup/latestResourcesSetups.tar.gz -C /data2 . "
+    restart: "no"
+    profiles:
+      - manual
+
+  #
+  # - Kann mit folgendem Befehl ausgeführt werden:
+  #   $ docker compose run restoreResources
+  #
+  restoreResources:
+    image: alpine
+    container_name: railhq.io-restore
+    volumes:
+      - "${RAILHQ_DATA_DIR}/resources:/data:z"
+      - ${BACKUP_DIRECTORY_PATH}:/backup:Z
+    entrypoint: sh -c "tar xzvf /backup/latestResources.tar.gz -C /data"
+    restart: "no"
+    profiles:
+      - manual
+
+  #
+  # - Kann mit folgendem Befehl ausgeführt werden:
+  #   $ docker compose run restoreSetups
+  #
+  restoreSetups:
+    image: alpine
+    container_name: railhq.io-restore
+    volumes:
+      - "${RAILHQ_DATA_DIR}/resourcesSetups:/data:z"
+      - ${BACKUP_DIRECTORY_PATH}:/backup:Z
+    entrypoint: sh -c "tar xzvf /backup/latestResourcesSetups.tar.gz -C /data"
+    restart: "no"
+    profiles:
+      - manual
+
+#
+# Bei "external: true" muss es vorher erstellt werden:
+#  $ docker network create railhq.io-network
+#
+networks:
+  # 🔒 Internes Netz für RailHQ (z. B. Datenbanken, Dienste ohne Internetzugriff)
+  # Dienste in diesem Netz sind komplett vom Internet abgeschottet
+  internal-network:
+    driver: bridge
+    internal: true
+
+  # 🌍 Öffentliches Netz für RailHQ-Services, die Internetzugriff benötigen
+  # z. B. für API-Zugriffe, Updates, oder externe Downloads
+  public-network:
+    driver: bridge
+
+# Keine externen Volumes mehr nötig - alle Daten werden über Bind Mounts
+# mit der Umgebungsvariable RAILHQ_DATA_DIR gesteuert.
+#
+# Beispiel für .env:
+#   Linux:   RAILHQ_DATA_DIR=~/railhq.io
+#   Windows: RAILHQ_DATA_DIR=C:/Users/username/railhq.io
+#
+# Verzeichnisstruktur:
+#   ${RAILHQ_DATA_DIR}/
+#   ├── resources/
+#   ├── resourcesSetups/
+#   └── redis/

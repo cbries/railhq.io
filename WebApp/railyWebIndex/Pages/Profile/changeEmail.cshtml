@@ -1,0 +1,59 @@
+@page
+@using railyWebIndex.Pages.Profile
+@model ChangeEmailModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Profil";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Profil - E-Mail-Adresse ändern";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+@if (ViewData["statusMessage"] != null)
+{
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:">
+            <use xlink:href="#check-circle-fill"></use>
+        </svg>
+        <div>
+            🎉 @ViewData["statusMessage"]
+        </div>
+    </div>
+}
+
+<form class="max-w-lg mx-auto my-3 p-6 border rounded-lg shadow-md" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div class="mb-4">
+        <label for="email" class="riesLabel block mb-2">E-Mail-Adresse (aktuell)</label>
+        <div class="flex items-center space-x-4">
+            <div class="w-3/4">
+                <input type="email" id="email" name="EMail" class="riesInputField bg-gray-200 cursor-not-allowed"
+                       placeholder="E-Mail-Adresse" value="@Model.EMail" readonly>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mb-4">
+        <label for="email" class="riesLabel block mb-2">E-Mail-Adresse (neu)</label>
+        <div class="flex items-center space-x-4">
+            <div class="w-3/4">
+                <input type="email" id="emailNew" name="EMailNew" class="riesInputField bg-gray-200"
+                       placeholder="E-Mail-Adresse" value="@Model.EMailNew">
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-6">
+        <button type="submit" class="riesButton">
+            Speichern
+        </button>
+    </div>
+</form>

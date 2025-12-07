@@ -1,0 +1,158 @@
+name: Build and Push Docker Image
+
+on:
+  push:
+    branches:
+      - main
+      - master
+    tags:
+      - 'v*'
+  pull_request:
+    branches:
+      - main
+      - master
+  workflow_dispatch:
+    inputs:
+      push_image:
+        description: 'Push image to registry'
+        required: false
+        default: 'false'
+        type: boolean
+
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Read version from file
+        id: version
+        run: |
+          VERSION=$(cat version.txt | tr -d ' \n\r')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          echo "Version: $VERSION"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Log in to Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Extract metadata for Docker
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=ref,event=branch
+            type=ref,event=pr
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=raw,value=${{ steps.version.outputs.version }}
+            type=raw,value=latest,enable={{is_default_branch}}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          push: ${{ github.event_name != 'pull_request' }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+          platforms: linux/amd64,linux/arm64
+
+      - name: Generate artifact attestation
+        if: github.event_name != 'pull_request'
+        uses: actions/attest-build-provenance@v1
+        with:
+          subject-name: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          subject-digest: ${{ steps.build.outputs.digest }}
+          push-to-registry: true
+
+  # Optional: Build Gateway packages for Linux
+  build-gateway:
+    runs-on: ubuntu-latest
+    needs: build
+    if: github.event_name == 'push' && startsWith(github.ref, 'refs/tags/')
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Read version
+        id: version
+        run: |
+          VERSION=$(cat version.txt | tr -d ' \n\r')
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+
+      - name: Install fpm
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ruby ruby-dev build-essential
+          sudo gem install --no-document fpm
+
+      - name: Build Gateway (x64)
+        run: |
+          cd Gateway/railyGateway
+          dotnet publish -c Release -r linux-x64 --self-contained -o ./publish-x64
+
+      - name: Build Gateway (ARM64)
+        run: |
+          cd Gateway/railyGateway
+          dotnet publish -c Release -r linux-arm64 --self-contained -o ./publish-arm64
+
+      - name: Create DEB packages
+        run: |
+          cd Gateway/railyGateway
+          
+          # x64 package
+          fpm -s dir -t deb \
+            -n railhqgateway \
+            -v ${{ steps.version.outputs.version }} \
+            --architecture amd64 \
+            --prefix /opt/railhqgateway \
+            ./publish-x64/=/opt/railhqgateway/
+          
+          # ARM64 package
+          fpm -s dir -t deb \
+            -n railhqgateway \
+            -v ${{ steps.version.outputs.version }} \
+            --architecture arm64 \
+            --prefix /opt/railhqgateway \
+            ./publish-arm64/=/opt/railhqgateway/
+
+      - name: Upload Gateway packages
+        uses: actions/upload-artifact@v4
+        with:
+          name: gateway-packages
+          path: Gateway/railyGateway/*.deb
+          retention-days: 30
+
+      - name: Upload to Release
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v1
+        with:
+          files: Gateway/railyGateway/*.deb
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

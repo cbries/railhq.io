@@ -1,0 +1,112 @@
+﻿body {
+    height: 100vh;
+    margin: 0;
+}
+
+div .informCustomer {
+    font-family: Poppins-Regular;
+    font-size: 14px;
+    color: #808080;
+    line-height: 1.2;
+    margin: 20px;
+}
+
+.informCustomerDatenschutz {
+    font-family: Poppins-Regular;
+    color: #333;
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0px auto; /* Abstand oben und unten */
+    padding: 20px;
+    padding-top: 0;
+    height: calc(100vh - 500px); /* Höhe des Viewports minus Abstand */
+    overflow-y: auto; /* Vertikales Scrollen aktivieren */
+    border-radius: 5px;
+}
+
+    /* Styling der Scrollbar */
+    .informCustomerDatenschutz::-webkit-scrollbar {
+        width: 8px; /* Dünnere Scrollbar */
+    }
+
+    .informCustomerDatenschutz::-webkit-scrollbar-track {
+        background: #f0f0f0; /* Heller Hintergrund */
+        border-radius: 4px;
+    }
+
+    .informCustomerDatenschutz::-webkit-scrollbar-thumb {
+        background: #999; /* Graue Scrollbar */
+        border-radius: 4px;
+    }
+
+        .informCustomerDatenschutz::-webkit-scrollbar-thumb:hover {
+        }
+
+
+h1, h2, h3, h4 {
+    color: #222;
+    margin-top: 20px;
+}
+
+h1 {
+    font-size: 26px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 5px;
+}
+
+h2 {
+    font-size: 22px;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 5px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+p {
+    margin: 10px 0;
+}
+
+a {
+    color: #666666;
+    text-decoration: none;
+}
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+.generator_user_input {
+    font-weight: bold;
+    color: #000;
+}
+
+.generator_results_content ul {
+    padding-left: 20px;
+}
+
+.generator_results_content li {
+    list-style-type: disc !important;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-family: Poppins-Regular;
+}
+
+@media (max-width: 767px) {
+    .container-login100 {
+        padding: 5px;
+    }
+
+    .footer, .footer p, .footer a {
+        font-size: 12px !important;
+    }
+    
+        .footerItem02, .footerItem03 {
+            display: none !important;
+        }
+}

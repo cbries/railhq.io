@@ -1,0 +1,82 @@
+@using Microsoft.AspNetCore.Hosting
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using Microsoft.Extensions.Hosting
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+@inject railyWebIndex.HostConfiguration HostConfig
+@{
+}
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Modellbahn, Modellbahnsteuerung, RailHQ, digitale Modellbahn, Modellbahnsoftware, Eisenbahnsteuerung, DCC, Märklin, Rocrail, Modellbahntechnik, Cloud-Modellbahn, Modellbahn-App, digitale Zugsteuerung">
+    <meta name="description" content="Innovative Cloud-Lösung für Modelleisenbahnen – einzigartig in ihrem Funktionsumfang">
+    <meta name="author" content="riesolution - Dr. Christian Benjamin Ries">
+    <meta name="robots" content="index, follow">
+    <title>@(ViewData["Title"] ?? "RailHQ – Modellbahn-Cloudsteuerung")</title>
+    <link rel="shortcut icon"
+          type="image/x-icon"
+          href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/loginIndex/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/fas/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/vendor/animate/animate.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/vendor/css-hamburgers/hamburgers.min.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/vendor/animsition/css/animsition.min.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/vendor/select2/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/vendor/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/css/main.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/css/general.css">
+
+    @await RenderSectionAsync("Styles", required: false)
+    
+    <script>
+        window.dataLayer = window.dataLayer || [];
+    </script>
+
+</head>
+<body>
+    <div id="background-video"></div>
+
+    <div class="limiter">
+        <div class="container-login100" style="padding-bottom: 75px;">
+            <div class="wrap-login100">
+                <div class="login100-form-title" style="background-image: url(/images/bg-03.png);">
+                    <span class="login100-form-title-1">
+                        <i class="fas fa-train"></i> @ViewData["productName"]
+                    </span>
+                </div>
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+
+    <partial name="Shared/_Footer2" />
+
+    <script src="/loginIndex/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/generalIndex/videoCover.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#background-video").randomVideo({
+                videos: ["/cover/video.mp4"],
+                changeOnEnd: false,
+                overlayColor: "rgba(255, 255, 255, 0.2)"
+            });
+        });
+    </script>
+    <script src="/loginIndex/vendor/animsition/js/animsition.min.js"></script>
+    <script src="/loginIndex/vendor/bootstrap/js/popper.js"></script>
+    <script src="/loginIndex/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="/loginIndex/vendor/select2/select2.min.js"></script>
+    <script src="/loginIndex/vendor/daterangepicker/moment.min.js"></script>
+    <script src="/loginIndex/vendor/daterangepicker/daterangepicker.js"></script>
+    <script src="/loginIndex/vendor/countdowntime/countdowntime.js"></script>
+    <script src="/loginIndex/js/main.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+
