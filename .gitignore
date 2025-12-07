@@ -34,6 +34,7 @@ bld/
 [Oo]bj/
 [Ll]og/
 [Ll]ogs/
+publish-local/
 
 # NuGet
 *.nupkg
