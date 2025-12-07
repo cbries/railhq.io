@@ -3,6 +3,7 @@
 [![.NET](https://img.shields.io/badge/.NET-8.0-512BD4?logo=dotnet)](https://dotnet.microsoft.com/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-2496ED?logo=docker)](https://www.docker.com/)
 [![License](https://img.shields.io/badge/License-MIT-green)](LICENSE)
+[![Docs](https://img.shields.io/badge/Docs-railhq.io-blue)](https://railhq.io/docs)
 [![Security](https://img.shields.io/badge/Security-Policy-blue)](SECURITY.md)
 
 **railhq.io** is a web-based control center for model railways. It provides a modern, browser-based interface to control locomotives, switches, signals, and more - all from any device on your network.
