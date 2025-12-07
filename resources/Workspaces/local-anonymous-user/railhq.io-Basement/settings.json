@@ -1,0 +1,1425 @@
+﻿{
+  "uuid": "cb756ddc-9957-4fb8-bdf8-da0f0392cbb0",
+  "debugging": {
+    "runtime": true,
+    "accessories": true,
+    "locomotives": true,
+    "routes": true,
+    "exceptions": false
+  },
+  "locomotives": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1002,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 3,
+        "minimum": 2,
+        "entering": 5,
+        "staging": 2,
+        "traveling": 7,
+        "maximum": 14
+      },
+      "minimumBlockWait": 30,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 0,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "right",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1037,
+      "assignedToBlock": "BK_6",
+      "enterSide": "Plus",
+      "speed": {
+        "stepping": 1,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "left",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1001,
+      "assignedToBlock": "BK_Wendel_Innen",
+      "enterSide": "Minus",
+      "speed": {
+        "stepping": 2,
+        "minimum": 3,
+        "entering": 12,
+        "staging": 3,
+        "traveling": 15,
+        "maximum": 18
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "2025-05-07T17:35:38.9956354+02:00",
+      "minimumBlockWaitAfterError": 0,
+      "earlistNextTimeAfterError": "2025-05-07T17:35:28.9956447+02:00",
+      "machineType": 3,
+      "length": 30,
+      "isCommuter": true,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1036,
+      "assignedToBlock": "BK_5",
+      "enterSide": "Plus",
+      "speed": {
+        "stepping": 1,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "left",
+      "orientationPrevious": "none"
+    }
+  ],
+  "routes": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_7[-]_BK_6[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_2[+]_BK_Wendel_Innen[+]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "BK_2[+]_BK_Wendel_Innen[+]",
+      "uid": "71caa778-7682-4ad0-bc0f-651e0434086f",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_7[-]_BK_Wendel_Innen[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_Wendel_Innen[+]_BK_2[+]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_5[+]_BK_Wendel_Innen[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_7[-]_BK_5[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_Wendel_Innen[+]_AB_1[+]",
+      "uid": null,
+      "isOccupied": true,
+      "isOccupiedReason": "Occupied by BR_232_371-5 [ecos::1001]"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "BK_6[+]_BK_Wendel_Innen[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    }
+  ],
+  "blockSensors": [
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_1[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Enter_BK_1",
+      "sensorOcc": "",
+      "sensorIn": "fb_In_BK_1",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_1[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_In_BK_1",
+      "sensorOcc": "",
+      "sensorIn": "fb_Enter_BK_1",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_10[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb10+_BK_10",
+      "sensorOcc": "",
+      "sensorIn": "fb10-_BK_10",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_2[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Enter_BK_2",
+      "sensorOcc": "",
+      "sensorIn": "fb_In_BK_2",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_Wendel_Aussen[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Plus_Wendel_Aussen",
+      "sensorOcc": "",
+      "sensorIn": "fb_Minus_Wendel_Aussen",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_Wendel_Aussen[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Minus_Wendel_Aussen",
+      "sensorOcc": "",
+      "sensorIn": "fb_Plus_Wendel_Aussen",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_Wendel_Innen[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Minus_Wendel_Innen",
+      "sensorOcc": "",
+      "sensorIn": "fb_Plus_Wendel_Innen",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_5[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb+_BK_5",
+      "sensorOcc": "",
+      "sensorIn": "fb-_BK_5",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_7[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb-_BK_7",
+      "sensorOcc": "",
+      "sensorIn": "fb+_BK_7",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_8[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb-_BK_8",
+      "sensorOcc": "",
+      "sensorIn": "fb+_BK_8",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_3[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Enter_BK_3",
+      "sensorOcc": "",
+      "sensorIn": "fb_In_BK_3",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_6[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb+_BK_6",
+      "sensorOcc": "",
+      "sensorIn": "fb-_BK_6",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_6[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb-_BK_6",
+      "sensorOcc": "",
+      "sensorIn": "fb+_BK_6",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_9[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb-_BK_9",
+      "sensorOcc": "",
+      "sensorIn": "fb+_BK_9",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_7[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb+_BK_7",
+      "sensorOcc": "",
+      "sensorIn": "fb-_BK_7",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_9[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb+_BK_9",
+      "sensorOcc": "",
+      "sensorIn": "fb-_BK_9",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_8[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb+_BK_8",
+      "sensorOcc": "",
+      "sensorIn": "fb-_BK_8",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_3[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_In_BK_3",
+      "sensorOcc": "",
+      "sensorIn": "fb_Enter_BK_3",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_5[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb-_BK_5",
+      "sensorOcc": "",
+      "sensorIn": "fb+_BK_5",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_10[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb10-_BK_10",
+      "sensorOcc": "",
+      "sensorIn": "fb10+_BK_10",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "identifier": "BK_2[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_In_BK_2",
+      "sensorOcc": "",
+      "sensorIn": "fb_Enter_BK_2",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "BK_Wendel_Innen[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "fb_Plus_Wendel_Innen",
+      "sensorOcc": "",
+      "sensorIn": "fb_Minus_Wendel_Innen",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    }
+  ],
+  "sensors": [
+    {
+      "name": "fb_Enter_AB_3",
+      "provider": "ecos",
+      "address": "7"
+    },
+    {
+      "name": "fb_Enter3_AB3",
+      "provider": "ecos",
+      "address": "39"
+    },
+    {
+      "name": "fb_Enter4_AB5",
+      "provider": "ecos",
+      "address": "49"
+    },
+    {
+      "name": "fb-_BK_9",
+      "provider": "ecos",
+      "address": "86"
+    },
+    {
+      "name": "fb_in4_AB_5",
+      "provider": "ecos",
+      "address": "51"
+    },
+    {
+      "name": "fb-_BK_8",
+      "provider": "ecos",
+      "address": "85"
+    },
+    {
+      "name": "bk1+",
+      "provider": "ecos",
+      "address": "0"
+    },
+    {
+      "name": "fb_Enter4_AB3",
+      "provider": "ecos",
+      "address": "55"
+    },
+    {
+      "name": "fb_in1_AB_4",
+      "provider": "ecos",
+      "address": "6"
+    },
+    {
+      "name": "fb_in1_AB_2",
+      "provider": "ecos",
+      "address": "19"
+    },
+    {
+      "name": "fb_be4_AB_5",
+      "provider": "ecos",
+      "address": "50"
+    },
+    {
+      "name": "fb_in1_AB_5",
+      "provider": "ecos",
+      "address": "3"
+    },
+    {
+      "name": "fb_be4_AB_2",
+      "provider": "ecos",
+      "address": "59"
+    },
+    {
+      "name": "fb_in3_AB_1",
+      "provider": "ecos",
+      "address": "47"
+    },
+    {
+      "name": "fb_be3_AB_3",
+      "provider": "ecos",
+      "address": "40"
+    },
+    {
+      "name": "fb+_BK_5",
+      "provider": "ecos",
+      "address": "83"
+    },
+    {
+      "name": "fb_be3_AB_5",
+      "provider": "ecos",
+      "address": "34"
+    },
+    {
+      "name": "fb_be1_AB_4",
+      "provider": "ecos",
+      "address": "5"
+    },
+    {
+      "name": "fb-_BK_6",
+      "provider": "ecos",
+      "address": "82"
+    },
+    {
+      "name": "fb_Enter_AB_5",
+      "provider": "ecos",
+      "address": "1"
+    },
+    {
+      "name": "fb10+_BK_10",
+      "provider": "ecos",
+      "address": "89"
+    },
+    {
+      "name": "fb_be2_AB_5",
+      "provider": "ecos",
+      "address": "15"
+    },
+    {
+      "name": "fb_in3_AB_5",
+      "provider": "ecos",
+      "address": "35"
+    },
+    {
+      "name": "fb_Enter3_AB2",
+      "provider": "ecos",
+      "address": "42"
+    },
+    {
+      "name": "fb_be3_AB_2",
+      "provider": "ecos",
+      "address": "43"
+    },
+    {
+      "name": "fb+_BK_8",
+      "provider": "ecos",
+      "address": "91"
+    },
+    {
+      "name": "fb_be2_AB_4",
+      "provider": "ecos",
+      "address": "12"
+    },
+    {
+      "name": "fb_be4_AB_4",
+      "provider": "ecos",
+      "address": "53"
+    },
+    {
+      "name": "fb_In_BK_3",
+      "provider": "ecos",
+      "address": "79"
+    },
+    {
+      "name": "fb_be4_AB_3",
+      "provider": "ecos",
+      "address": "56"
+    },
+    {
+      "name": "fb_in2_AB_3",
+      "provider": "ecos",
+      "address": "25"
+    },
+    {
+      "name": "fb_Enter3_AB4",
+      "provider": "ecos",
+      "address": "36"
+    },
+    {
+      "name": "fb_Enter2_AB4",
+      "provider": "ecos",
+      "address": "11"
+    },
+    {
+      "name": "fb_in4_AB_1",
+      "provider": "ecos",
+      "address": "63"
+    },
+    {
+      "name": "Sensor_1",
+      "provider": "ecos",
+      "address": "80"
+    },
+    {
+      "name": "fb-_BK_7",
+      "provider": "ecos",
+      "address": "87"
+    },
+    {
+      "name": "fb_Belegt_Wendel_Innen",
+      "provider": "ecos",
+      "address": "66"
+    },
+    {
+      "name": "fb+_BK_6",
+      "provider": "ecos",
+      "address": "84"
+    },
+    {
+      "name": "fb_in2_AB_2",
+      "provider": "ecos",
+      "address": "28"
+    },
+    {
+      "name": "fb_Enter_AB_4",
+      "provider": "ecos",
+      "address": "4"
+    },
+    {
+      "name": "fb_be_BK_2",
+      "provider": "ecos",
+      "address": "75"
+    },
+    {
+      "name": "fb_be2_AB_2",
+      "provider": "ecos",
+      "address": "27"
+    },
+    {
+      "name": "fb_In_BK_2",
+      "provider": "ecos",
+      "address": "76"
+    },
+    {
+      "name": "fb_in2_AB_1",
+      "provider": "ecos",
+      "address": "31"
+    },
+    {
+      "name": "fb_be1_AB_3",
+      "provider": "ecos",
+      "address": "8"
+    },
+    {
+      "name": "fb_be1_AB_5",
+      "provider": "ecos",
+      "address": "2"
+    },
+    {
+      "name": "fb_in4_AB_2",
+      "provider": "ecos",
+      "address": "60"
+    },
+    {
+      "name": "fb_be_BK_3",
+      "provider": "ecos",
+      "address": "78"
+    },
+    {
+      "name": "fb_Enter2_AB2",
+      "provider": "ecos",
+      "address": "26"
+    },
+    {
+      "name": "fb+_BK_7",
+      "provider": "ecos",
+      "address": "90"
+    },
+    {
+      "name": "fb_Belegt_Wendel_Aussen",
+      "provider": "ecos",
+      "address": "65"
+    },
+    {
+      "name": "fb_in1_AB_1",
+      "provider": "ecos",
+      "address": "22"
+    },
+    {
+      "name": "fb-_BK_5",
+      "provider": "ecos",
+      "address": "81"
+    },
+    {
+      "name": "fb_Enter4_AB2",
+      "provider": "ecos",
+      "address": "58"
+    },
+    {
+      "name": "fb+_BK_9",
+      "provider": "ecos",
+      "address": "92"
+    },
+    {
+      "name": "fb_Enter2_AB3",
+      "provider": "ecos",
+      "address": "23"
+    },
+    {
+      "name": "fb_be1_AB_1",
+      "provider": "ecos",
+      "address": "21"
+    },
+    {
+      "name": "fb_be3_AB_4",
+      "provider": "ecos",
+      "address": "37"
+    },
+    {
+      "name": "fb_Plus_Wendel_Aussen",
+      "provider": "ecos",
+      "address": "70"
+    },
+    {
+      "name": "fb_Enter3_AB1",
+      "provider": "ecos",
+      "address": "45"
+    },
+    {
+      "name": "fb_Enter2_AB5",
+      "provider": "ecos",
+      "address": "14"
+    },
+    {
+      "name": "fb_Enter_AB_1",
+      "provider": "ecos",
+      "address": "20"
+    },
+    {
+      "name": "bk1-",
+      "provider": "ecos",
+      "address": "0"
+    },
+    {
+      "name": "fb_Minus_Wendel_Innen",
+      "provider": "ecos",
+      "address": "68"
+    },
+    {
+      "name": "fb_in4_AB_4",
+      "provider": "ecos",
+      "address": "54"
+    },
+    {
+      "name": "fb_Enter2_AB1",
+      "provider": "ecos",
+      "address": "29"
+    },
+    {
+      "name": "fb_be2_AB_3",
+      "provider": "ecos",
+      "address": "24"
+    },
+    {
+      "name": "fb_In_BK_1",
+      "provider": "ecos",
+      "address": "73"
+    },
+    {
+      "name": "fb10-_BK_10",
+      "provider": "ecos",
+      "address": "88"
+    },
+    {
+      "name": "fb_Minus_Wendel_Aussen",
+      "provider": "ecos",
+      "address": "67"
+    },
+    {
+      "name": "fb_in2_AB_5",
+      "provider": "ecos",
+      "address": "16"
+    },
+    {
+      "name": "fb_Enter4_AB1",
+      "provider": "ecos",
+      "address": "61"
+    },
+    {
+      "name": "fb_Plus_Wendel_Innen",
+      "provider": "ecos",
+      "address": "69"
+    },
+    {
+      "name": "fb_Enter4_AB4",
+      "provider": "ecos",
+      "address": "52"
+    },
+    {
+      "name": "fb_in3_AB_2",
+      "provider": "ecos",
+      "address": "44"
+    },
+    {
+      "name": "fb_Enter_BK_2",
+      "provider": "ecos",
+      "address": "74"
+    },
+    {
+      "name": "fb_in3_AB_4",
+      "provider": "ecos",
+      "address": "38"
+    },
+    {
+      "name": "fb_in3_AB_3",
+      "provider": "ecos",
+      "address": "41"
+    },
+    {
+      "name": "fb_be2_AB_1",
+      "provider": "ecos",
+      "address": "30"
+    },
+    {
+      "name": "fb_Enter_AB_2",
+      "provider": "ecos",
+      "address": "17"
+    },
+    {
+      "name": "fb_Enter3_AB5",
+      "provider": "ecos",
+      "address": "33"
+    },
+    {
+      "name": "fb_Enter_BK_3",
+      "provider": "ecos",
+      "address": "77"
+    },
+    {
+      "name": "fb_in2_AB_4",
+      "provider": "ecos",
+      "address": "13"
+    },
+    {
+      "name": "fb_Enter_BK_1",
+      "provider": "ecos",
+      "address": "71"
+    },
+    {
+      "name": "fb_be3_AB_1",
+      "provider": "ecos",
+      "address": "46"
+    },
+    {
+      "name": "fb_be4_AB_1",
+      "provider": "ecos",
+      "address": "62"
+    },
+    {
+      "name": "fb_in1_AB_3",
+      "provider": "ecos",
+      "address": "9"
+    },
+    {
+      "name": "fb_in4_AB_3",
+      "provider": "ecos",
+      "address": "57"
+    },
+    {
+      "name": "fb_be_BK_1",
+      "provider": "ecos",
+      "address": "72"
+    },
+    {
+      "name": "fb_be1_AB_2",
+      "provider": "ecos",
+      "address": "18"
+    }
+  ],
+  "accessories": [
+    {
+      "planfieldControlIdentifier": "BK_1_Status",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "BK_1_Status",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "RI_3",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "RI_3",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_1",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_1",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg-_BK_7",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg-_BK_7",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O2_1",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O2_1",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg+_BK_7",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg+_BK_7",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S2_6",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S2_6",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O2_4",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O2_4",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_3",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_3",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_7",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_7",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg5",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S1_5",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S1_2",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_5",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_5",
+      "invert": true,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O2_3",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O2_3",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg3",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "RI_4",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "RI_4",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "BK_Wendel_Aussen_Status",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "BK_Wendel_Aussen_Status",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_13",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_13",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_8",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_8",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "BK_3_Status",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "BK_3_Status",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "RI_2",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "RI_2",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "Switch_1",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S2_2",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S1_3",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S1_4",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "BK_Wendel_Innen_Status",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "BK_Wendel_Innen_Status",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg+_BK_6",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg+_BK_6",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_6",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_6",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S2_3",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S2_3",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "RI_1",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "RI_1",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O2_2",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O2_2",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_2",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_2",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg-_BK_6",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg-_BK_6",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S2_5",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S2_5",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_9",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_9",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S2_1",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S2_1",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg+_BK_8",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg+_BK_8",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S1_4",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S1_3",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg-_BK_5",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg-_BK_5",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_4",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_4",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg+_BK_5",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg+_BK_5",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_10",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_10",
+      "invert": true,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S1_2",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S1_5",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "S2_4",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "S2_4",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_11",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_11",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "BK_2_Status",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "BK_2_Status",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "sg-_BK_8",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg-_BK_8",
+      "invert": false,
+      "invertUi": true,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "O1_12",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "O1_12",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "",
+      "accessoryDriver": "ecos",
+      "accessoryIdentifier": "sg4",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    }
+  ],
+  "stagings": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "AB_1",
+      "blocks": [
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "AB_1_0",
+          "length": 100,
+          "startDelay": 5,
+          "signalsToRedDelay": 15,
+          "sensorEnter": "fb_Enter_AB_1",
+          "sensorOcc": "fb_be1_AB_1",
+          "sensorIn": "fb_in1_AB_1",
+          "isCommuterAllowedPlus": false,
+          "isCommuterAllowedMinus": false,
+          "signal": "",
+          "vorsignal": ""
+        },
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "AB_1_1",
+          "length": 100,
+          "startDelay": 5,
+          "signalsToRedDelay": 15,
+          "sensorEnter": "fb_Enter2_AB1",
+          "sensorOcc": "fb_be2_AB_1",
+          "sensorIn": "fb_in2_AB_1",
+          "isCommuterAllowedPlus": false,
+          "isCommuterAllowedMinus": false,
+          "signal": "",
+          "vorsignal": ""
+        },
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "AB_1_2",
+          "length": 100,
+          "startDelay": 5,
+          "signalsToRedDelay": 15,
+          "sensorEnter": "fb_Enter3_AB1",
+          "sensorOcc": "fb_be3_AB_1",
+          "sensorIn": "fb_in3_AB_1",
+          "isCommuterAllowedPlus": false,
+          "isCommuterAllowedMinus": false,
+          "signal": "",
+          "vorsignal": ""
+        },
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "AB_1_3",
+          "length": 100,
+          "startDelay": 5,
+          "signalsToRedDelay": 15,
+          "sensorEnter": "fb_Enter4_AB1",
+          "sensorOcc": "fb_be4_AB_1",
+          "sensorIn": "fb_in4_AB_1",
+          "isCommuterAllowedPlus": false,
+          "isCommuterAllowedMinus": false,
+          "signal": "",
+          "vorsignal": ""
+        }
+      ]
+    }
+  ]
+}

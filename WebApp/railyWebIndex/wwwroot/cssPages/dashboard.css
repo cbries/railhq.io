@@ -1,0 +1,22 @@
+.show-more-link {
+    font-size: 0.85rem;
+    color: #888;
+    text-decoration: none;
+    transition: color 0.2s ease, text-decoration 0.2s ease;
+    margin-left: 10px;
+}
+
+.show-more-link i {
+    padding-left: 5px !important;
+    transition: transform 0.2s ease;
+}
+
+.show-more-link:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+
+.show-more-link:hover i {
+    transform: translateY(2px);
+}
+  

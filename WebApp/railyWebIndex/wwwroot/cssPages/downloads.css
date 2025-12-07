@@ -1,0 +1,57 @@
+
+.download a:hover {
+    text-decoration: underline;
+}
+
+.help-title {
+    font-weight: bold;
+    font-size: 16px;
+    color: #0056b3;
+    margin-bottom: 10px;
+}
+
+.help-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.help-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.help-icon {
+    color: #007bff;
+}
+
+.release-notes-container {
+    padding: 10px;
+    margin-top: 10px;
+}
+
+.release-notes-title {
+    font-weight: bold;
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.release-notes-list {
+    list-style: none;
+    padding-left: 20px;
+    margin: 0;
+}
+
+.release-notes-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+}
+
+.release-notes-icon {
+    color: #007bff;
+}

@@ -1,0 +1,79 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>railhq.io - Systray</AssemblyTitle>
+    <OutputType>winexe</OutputType>
+    <AssemblyName>railhqSystray</AssemblyName>
+    <EnableDefaultEmbeddedResourceItems>true</EnableDefaultEmbeddedResourceItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="..\railyGateway\railhqGateway.json" Link="railhqGateway.json" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1701</NoWarn>
+    <ApplicationIcon>railhq_icon2.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="H.NotifyIcon" Version="2.2.0" />
+    <PackageReference Include="H.NotifyIcon.Wpf" Version="2.2.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libShared\libShared.csproj" />
+    <ProjectReference Include="..\..\Libraries\libUtilities\libUtilities.csproj" />
+    <ProjectReference Include="..\railyGateway\railyGateway.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <RailyGatewayOutput Include="$(SolutionDir)\Gateway\railyGateway\bin\$(Configuration)\$(TargetFramework)\*.dll" />
+    <RailyGatewayOutput Include="$(SolutionDir)\Gateway\railyGateway\bin\$(Configuration)\$(TargetFramework)\*.exe" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <AdditionalFiles Remove="Resources\Resources.de.resx" />
+    <AdditionalFiles Remove="Resources\Resources.resx" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="railhq_icon2.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\Icons.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Icons.resx</DependentUpon>
+    </Compile>
+    <Compile Update="Resources\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\Icons.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Icons.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resources.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Resources\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <Target Name="CopyFiles" AfterTargets="Build">
+    <Copy SourceFiles="@(AdditionalFiles)" DestinationFolder="$(OutputPath)\" SkipUnchangedFiles="true" />
+    <Copy SourceFiles="@(RailyGatewayOutput)" DestinationFolder="$(OutputPath)\" SkipUnchangedFiles="true" />
+  </Target>
+
+</Project>

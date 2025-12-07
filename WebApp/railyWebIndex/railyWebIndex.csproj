@@ -1,0 +1,42 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Release'">
+    <RunMinifier>true</RunMinifier>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Auth\Helper\**" />
+    <Content Remove="Pages\Auth\Helper\**" />
+    <EmbeddedResource Remove="Pages\Auth\Helper\**" />
+    <None Remove="Pages\Auth\Helper\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\railyWebApp\Controller\Helper\CacheHelper.cs" Link="Controller\Helper\CacheHelper.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="9.0.3" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="9.0.2" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.3" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libUserspace\libUserspace.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Pages\Profile\PODs\" />
+  </ItemGroup>
+
+  <Target Name="PreBuildMinify" BeforeTargets="Build" Condition="'$(RunMinifier)' == 'true'">
+    <Exec Command="dotnet run --no-launch-profile --project $(SolutionDir)Tools/Minifier/Minifier.csproj -single $(SolutionDir)WebApp/railyWebIndex/wwwroot/railhqlocimgs.js" />
+  </Target>
+  
+<!--
+  <Target Name="CopyFilesAfterBuild" AfterTargets="Build" Condition="'$(IsWindows)'!='true'">
+    <Exec Command="cp -rvf &quot;../../certificates/railhq.io.pfx&quot; &quot;$(OutDir)&quot;" />
+  </Target>
+-->
+</Project>

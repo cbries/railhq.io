@@ -1,0 +1,55 @@
+﻿html, body {
+    font-family: Verdana,Arial,sans-serif;
+    background: #fcfcfc;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* hide vertical scrollbars */
+    overflow-y: auto;
+}
+
+#response {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    display: none;
+}
+
+.lang-switch {
+    margin-right: 0px; /* Abstand zwischen den Flaggen */
+    transition: transform 0.3s; /* Sanfter Hover-Effekt */
+}
+
+/**
+    Error Overlay
+*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlayContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 80%;
+}
+
+.overlayText {
+    font-size: 1.0em;
+    margin-bottom: 20px; /* Mehr Abstand zum Link */
+    color: #333;
+}

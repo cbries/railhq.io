@@ -1,0 +1,23 @@
+/* Original-Schriftzug ausblenden */
+.swagger-ui .topbar .topbar-wrapper a svg {
+    display: none;
+}
+
+/* Eigenes Logo einfügen */
+.swagger-ui .topbar .topbar-wrapper a:before {
+    content: '';
+    display: inline-block;
+    width: 100px;
+    height: 100px;
+    background-image: url('/swagger-ui/logo-125x125.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    vertical-align: middle;
+}
+
+.swagger-ui .topbar { background-color: rgba(210, 220, 230, 1); }
+
+    .swagger-ui .topbar .topbar-wrapper span {
+        color: #1e3c72;
+    }

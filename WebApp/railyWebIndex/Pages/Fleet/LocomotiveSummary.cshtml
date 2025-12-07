@@ -1,0 +1,17 @@
+﻿@page
+@model railyWebIndex.Pages.Fleet.LocomotiveSummaryModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Fleet Zusammenfassung";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Fleet Zusammenfassung";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+<h1>Zusammenfassung</h1>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Loksteuerung</title>
+</head>
+<body>
+  <h1>Lokgeschwindigkeit, Richtung und Funktionen</h1>
+
+  <form id="speedForm">
+    <label for="driverName">Treibername:</label>
+    <input type="text" id="driverName" name="driverName" value="ecos" required><br><br>
+
+    <label for="address">Adresse:</label>
+    <input type="number" id="address" name="address" value="1010" required><br><br>
+
+    <label for="speed">Geschwindigkeit:</label>
+    <input type="number" id="speed" name="speed" value="50" required><br><br>
+
+    <button type="submit">Geschwindigkeit senden</button>
+    <button type="button" id="queryStatus">Lokstatus abfragen</button>
+  </form>
+
+  <h2>Richtung ändern</h2>
+  <button id="directionBackward">Rückwärts</button>
+  <button id="directionForward">Vorwärts</button>
+
+  <h2>Funktionen (F0–F31)</h2>
+  <div id="functionsContainer"></div>
+
+  <h2>Antwort / Lokstatus</h2>
+  <pre id="response"></pre>
+  <textarea id="statusText" rows="10" cols="80" readonly></textarea>
+
+  <script>
+    const baseUrl = "https://railhq.io:5001/api/automation/locomotive";
+
+    async function sendDirection(forward) {
+      const driverName = document.getElementById('driverName').value;
+      const address = document.getElementById('address').value;
+
+      const body = { forward: forward };
+
+      try {
+        const response = await fetch(`${baseUrl}/${driverName}/${address}/direction`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const result = await response.json();
+        document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+      } catch (err) {
+        document.getElementById('response').textContent = 'Fehler bei Richtung: ' + err.message;
+      }
+    }
+
+    async function toggleFunction(index, state) {
+      const driverName = document.getElementById('driverName').value;
+      const address = document.getElementById('address').value;
+
+      const body = { active: state };
+
+      try {
+        const response = await fetch(`${baseUrl}/${driverName}/${address}/function/${index}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const result = await response.json();
+        document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+      } catch (err) {
+        document.getElementById('response').textContent = `Fehler bei Funktion F${index}: ` + err.message;
+      }
+    }
+
+    async function queryStatus() {
+      const driverName = document.getElementById('driverName').value;
+      const address = document.getElementById('address').value;
+
+      try {
+        const response = await fetch(`${baseUrl}/${driverName}/${address}/status`, {
+          method: 'GET'
+        });
+
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const result = await response.json();
+        document.getElementById('statusText').value = JSON.stringify(result, null, 2);
+        document.getElementById('response').textContent = '';
+      } catch (err) {
+        document.getElementById('statusText').value = 'Fehler beim Abrufen des Status: ' + err.message;
+      }
+    }
+
+    document.getElementById('directionForward').addEventListener('click', () => sendDirection(true));
+    document.getElementById('directionBackward').addEventListener('click', () => sendDirection(false));
+    document.getElementById('queryStatus').addEventListener('click', queryStatus);
+
+    document.getElementById('speedForm').addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      const driverName = document.getElementById('driverName').value;
+      const address = document.getElementById('address').value;
+      const speed = parseInt(document.getElementById('speed').value);
+
+      const body = { speed: speed };
+
+      try {
+        const response = await fetch(`${baseUrl}/${driverName}/${address}/speed`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(body)
+        });
+        const result = await response.json();
+        document.getElementById('response').textContent = JSON.stringify(result, null, 2);
+      } catch (err) {
+        document.getElementById('response').textContent = 'Fehler bei Geschwindigkeit: ' + err.message;
+      }
+    });
+
+    // Funktionen initialisieren
+    const container = document.getElementById('functionsContainer');
+    for (let i = 0; i < 32; i++) {
+      const label = document.createElement('label');
+      label.style.display = "inline-block";
+      label.style.marginRight = "10px";
+      label.innerText = `F${i}`;
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.id = `func${i}`;
+      checkbox.addEventListener('change', () => {
+        toggleFunction(i, checkbox.checked);
+      });
+
+      label.appendChild(checkbox);
+      container.appendChild(label);
+
+      if ((i + 1) % 8 === 0) container.appendChild(document.createElement('br'));
+    }
+  </script>
+</body>
+</html>

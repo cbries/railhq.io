@@ -1,0 +1,26 @@
+[
+  {
+    "Id": 1,
+    "Name": "Test",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 5/27/2025, 8:19:30 AM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nconst br212Name = \u0022BR_212_215-8\u0022;\n\nconst allLocs = await hqLocomotive.getAllLocomotives();\nfor(let i=0; i \u003C allLocs.length; \u002B\u002Bi) {\n    if(allLocs[i].name === br212Name) {\n        const status = await hqLocomotive.getStatus(allLocs[i].driverName, allLocs[i].address);\n        console.log(allLocs[i].name);\n        console.log(\u0060${ allLocs[i].name } (${ status.driverName }::${ status.address }) f\u00E4hrt mit Geschwindigkeit ${ status.speed }\u0060);\n    }\n}\n\nawait hqHelper.sleepSec(1);\n",
+    "Order": 2
+  },
+  {
+    "Id": 2,
+    "Name": "Test 2",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 5/27/2025, 8:19:30 AM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nconst br212Name = \u0022BR_212_215-8\u0022;\n\nconst allLocs = await hqLocomotive.getAllLocomotives();\nfor(let i=0; i \u003C allLocs.length; \u002B\u002Bi) {\n    if(allLocs[i].name === br212Name) {\n        const status = await hqLocomotive.getStatus(allLocs[i].driverName, allLocs[i].address);\n        console.log(allLocs[i].name);\n        console.log(\u0060${ allLocs[i].name } (${ status.driverName }::${ status.address }) f\u00E4hrt mit Geschwindigkeit ${ status.speed }\u0060);\n    }\n}\n\nawait hqHelper.sleepSec(1);\n",
+    "Order": 1
+  },
+  {
+    "Id": 3,
+    "Name": "Bahnhofsuhr",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 6/12/2025, 4:10:32 PM\n\n//\n// F\u00FCge hier Deinen Code hinzu:\n// \nlog(\u0022Lokf\u00FChrer-Modus aktiviert \uD83D\uDE82\uD83D\uDCA8\u0022);\n\nhqUi.injectDefaultStyles();\nhqUi.register({ id: \u0022Bahnhofsuhr\u0022, type: \u0022clock\u0022, x: 23, y: 8, draggable: true });\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n    hqUi.finalize();\n};\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 3
+  }
+]

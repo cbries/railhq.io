@@ -1,0 +1,64 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <AssemblyTitle>railhq.io - Gateway</AssemblyTitle>
+    <OutputType>exe</OutputType>
+    <AssemblyName>railhqGateway</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="publish\**" />
+    <Content Remove="publish\**" />
+    <EmbeddedResource Remove="publish\**" />
+    <None Remove="publish\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Remove="Resources\images\icon.ico" />
+    <AdditionalFiles Remove="Resources\images\Red.ico" />
+    <AdditionalFiles Remove="Resources\images\trayicon.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="railhq_icon2.ico" />
+  </ItemGroup>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1701</NoWarn>
+    <ApplicationIcon>railhq_icon2.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.0.3" />
+    <PackageReference Include="QRCoder" Version="1.6.0" />
+    <PackageReference Include="WebSocket4Net" Version="0.15.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libShared\libShared.csproj" />
+    <ProjectReference Include="..\railhqZ21\railhqZ21.csproj" />
+    <ProjectReference Include="..\railyEsuEcos\railyEsuEcos.csproj" />
+    <ProjectReference Include="..\railyHsi88Usb\railyHsi88Usb.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="log4net.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="railyGateway.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Resources\" />
+  </ItemGroup>
+
+  <Target Name="CopyFilesAfterBuild" AfterTargets="Build" Condition="'$(IsWindows)'=='true'">
+    <Exec Command="xcopy /E /I /Y &quot;$(ProjectDir)wwwroot\&quot; &quot;..\railySystray\wwwroot\&quot;" />    
+  </Target>
+  
+  <Target Name="CopyFilesAfterBuild" AfterTargets="Build" Condition="'$(IsWindows)'!='true'">
+    <Exec Command="cp -rv &quot;$(ProjectDir)wwwroot/&quot; &quot;../railySystray/wwwroot/&quot;" />
+  </Target> 
+</Project>

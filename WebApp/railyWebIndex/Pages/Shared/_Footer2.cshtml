@@ -1,0 +1,17 @@
+@using libShared
+@using railyWebIndex
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var hasSessionString = HttpContextAccessor.HttpContext?.Session.GetString(SessionGlobals.AuthUserSession) ?? string.Empty;
+    var hasSession = !string.IsNullOrEmpty(hasSessionString);
+    var targetLink = hasSession ? $"target=\"_blank\"" : string.Empty;
+}
+
+<div class="footer">
+    <p style="color: #999999;">&copy; 2025 <a href="/dashboard" style="margin-left: 0;">@Globals.AppName</a> &ndash; Open Source Community Project</p>
+    <p>
+        <a href="/about" class="txt1 footerItem01" @targetLink>About</a>
+        <a href="https://github.com/cbries/railhq.io" class="txt1 footerItem03" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+    </p>
+</div>

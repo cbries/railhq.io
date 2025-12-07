@@ -1,0 +1,251 @@
+﻿{
+  "uuid": "f33419c7-cdbc-494a-a3d9-4e976160e92c",
+  "debugging": {
+    "runtime": false,
+    "accessories": false,
+    "locomotives": true,
+    "routes": false,
+    "exceptions": false
+  },
+  "locomotives": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "demo",
+      "objectId": 9901,
+      "assignedToBlock": "Block_1",
+      "enterSide": "Minus",
+      "speed": {
+        "stepping": 3,
+        "minimum": 3,
+        "entering": 35,
+        "staging": 3,
+        "traveling": 45,
+        "maximum": 55
+      },
+      "minimumBlockWait": 30,
+      "earlistTimeForNextTrip": "2025-04-10T18:23:47.8947386+02:00",
+      "minimumBlockWaitAfterError": 0,
+      "earlistNextTimeAfterError": "2025-04-10T18:23:17.8947407+02:00",
+      "machineType": 3,
+      "length": 30,
+      "isCommuter": true,
+      "orientation": "left",
+      "orientationPrevious": "none"
+    }
+  ],
+  "routes": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_3[+]_Block_1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_5[+]_Block_4[-]",
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_1[-]_Block_3[+]",
+      "isOccupied": true,
+      "isOccupiedReason": "Occupied by VT_92_502_MHI [demo::9901]"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_3[+]_Block_2[-]",
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    }
+  ],
+  "blockSensors": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_2[-]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_4",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_3",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_5[-]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_7",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_8",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_3[-]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_6",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_5",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_3[+]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_5",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_6",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[-]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_2",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_1",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_2[+]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_3",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_4",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[+]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_1",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_2",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_4[+]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_9",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_10",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_5[+]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_8",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_7",
+      "isCommuterAllowedPlus": true,
+      "isCommuterAllowedMinus": false
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_4[-]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_10",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_9",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": true
+    }
+  ],
+  "sensors": [
+    {
+      "name": "Sensor_3",
+      "provider": "ecos",
+      "address": "3"
+    },
+    {
+      "name": "Sensor_9",
+      "provider": "ecos",
+      "address": "10"
+    },
+    {
+      "name": "Sensor_10",
+      "provider": "ecos",
+      "address": "11"
+    },
+    {
+      "name": "Sensor_4",
+      "provider": "ecos",
+      "address": "4"
+    },
+    {
+      "name": "Sensor_6",
+      "provider": "ecos",
+      "address": "6"
+    },
+    {
+      "name": "Sensor_7",
+      "provider": "ecos",
+      "address": "13"
+    },
+    {
+      "name": "Sensor_5",
+      "provider": "ecos",
+      "address": "5"
+    },
+    {
+      "name": "Sensor_1",
+      "provider": "ecos",
+      "address": "1"
+    },
+    {
+      "name": "Sensor_8",
+      "provider": "ecos",
+      "address": "12"
+    },
+    {
+      "name": "Sensor_2",
+      "provider": "ecos",
+      "address": "2"
+    }
+  ],
+  "accessories": [
+    {
+      "planfieldControlIdentifier": "Switch_1",
+      "accessoryDriver": "demo",
+      "accessoryIdentifier": "S1_2",
+      "invert": false,
+      "isMaintenaceEnabled": false
+    }
+  ],
+  "stagings": []
+}

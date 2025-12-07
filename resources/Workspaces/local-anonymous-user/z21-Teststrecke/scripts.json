@@ -1,0 +1,122 @@
+[
+  {
+    "Id": 3,
+    "Name": "Status",
+    "Description": null,
+    "IsActive": false,
+    "Code": "//\r\n// Status\r\n//\r\n\r\nhqLocomotive.getStatus(\u0022ecos\u0022, 21).then(status =\u003E {\r\n  log(status.driverName \u002B \u0022::\u0022 \u002B status.address \u002B \u0022: \u0022 \u002B status.name);\r\n});\r\n\r\nasync function main() {\r\n    const status = await hqLocomotive.getStatus(\u0022ecos\u0022, 21);\r\n    log(\u0060Lok: ${status.driverName}::${status.address}\u0060);\r\n}\r\n\r\nmain();\r\n",
+    "Order": 13
+  },
+  {
+    "Id": 8,
+    "Name": "Schaltartikel",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 5/24/2025, 1:55:33 PM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nconst Turn = 1;\nconst Straight = 0;\n\nfor(let i = 0; i \u003C 10; \u002B\u002Bi){\n    let acc0 = await hqAccessory.getStatus(\u0022ecos\u0022, 20001);\n    if(acc0.currentState == Straight) {\n       await hqAccessory.switch(\u0022ecos\u0022, 20001, Turn);\n    }  else {\n       await hqAccessory.switch(\u0022ecos\u0022, 20001, Straight); \n    }\n\n    await hqHelper.sleep1Sec();\n    acc0 = await hqAccessory.getStatus(\u0022ecos\u0022, 20001);\n    log(acc0);\n}\n",
+    "Order": 11
+  },
+  {
+    "Id": 9,
+    "Name": "Events: Pendelverkehr",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\nconst data = {\n    driver: \u0022z21\u0022,\n    fbPort: 2, fbPinRight: 2, fbPinLeft: 1,\n    locAddr: 9, locSpeed: 45\n};\n\nlog(\u0022Gestartet...\u0022);\n\nhqSensors.on(data.driver, data.fbPort, data.fbPinRight, true, async (ev) =\u003E {\n    log(\u0060RECHTS ${ev.driver}::${ev.port}::${ev.pin} ist AN\u0060);\n    await hqLocomotive.stop(data.driver, data.locAddr);\n    await hqHelper.sleep1Sec();\n    await hqLocomotive.setDirectionAndSpeed(data.driver, data.locAddr, false, data.locSpeed);\n});\n\nhqSensors.on(data.driver, data.fbPort, data.fbPinLeft, true, async (ev) =\u003E {\n    log(\u0060LINKS ${ev.driver}::${ev.port}::${ev.pin} ist AN\u0060);\n    await hqLocomotive.stop(data.driver, data.locAddr);\n    await hqHelper.sleep1Sec();\n    await hqLocomotive.setDirectionAndSpeed(data.driver, data.locAddr, true, data.locSpeed);\n});\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n    await hqLocomotive.stop(data.driver, data.locAddr);\n};\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}",
+    "Order": 10
+  },
+  {
+    "Id": 10,
+    "Name": "Lokomotive (Fahre links/rechts)",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 5/26/2025, 10:41:36 AM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nconst data = {\n    driver: \u0022z21\u0022,\n    fbPort: 2, fbPinRight: 2, fbPinLeft: 1,\n    locAddr: 9, locSpeed: 25\n};\n\nfor(let i = 0; i \u003C 2; \u002B\u002Bi) {\n\n    log(\u0022vorw\u00E4rts\u0022)\n    await hqLocomotive.setDirectionAndSpeed(data.driver, data.locAddr, true, data.locSpeed);\n    await hqHelper.sleep5Sec();\n    hqLocomotive.stop(data.driver, data.locAddr);\n\n    await hqHelper.sleep5Sec();\n\n    log(\u0022r\u00FCckw\u00E4rts\u0022)\n    await hqLocomotive.setDirectionAndSpeed(data.driver, data.locAddr, false, data.locSpeed);\n    await hqHelper.sleep5Sec();\n    hqLocomotive.stop(data.driver, data.locAddr);\n\n    await hqHelper.sleep5Sec();\n}\n",
+    "Order": 12
+  },
+  {
+    "Id": 11,
+    "Name": "Exceptions \u0026 Logging",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\r\nfor (let i = 0; i \u003C 5; \u002B\u002Bi) {\r\n    const state = await hqLocomotive.getStatus(\u0022ecos\u0022, 21);\r\n    const msg = \u0060${i \u002B 1} -\u003E Lok: ${state.driverName}::${state.address} f\u00E4hrt mit ${state.speed}\u0060;\r\n\r\n    log(msg);\r\n    warn(msg);\r\n    error(msg);\r\n    \r\n    console.log(msg);\r\n\r\n    await hqHelper.sleepAbortable(1000, hqAbortSignal);\r\n}\r\n\r\nhqHelper.finalize = async () =\u003E {\r\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);    \r\n};\r\n\r\nthrow new Error(\u0022Etwas ist schiefgelaufen\u0022);\r\n\r\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\r\nwhile (!api.shouldStop?.()) {\r\n    log(\u0022Wait for stop...\u0022)\r\n    await new Promise(resolve =\u003E setTimeout(resolve, 1000));\r\n}\r\n",
+    "Order": 1
+  },
+  {
+    "Id": 12,
+    "Name": "Events: Lokomotive",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 6/7/2025, 6:33:06 AM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nconst br74Name = \u0022BR_74_854\u0022;\n\nconst allLocs = await hqLocomotive.getAllLocomotives();\nfor(let i=0; i \u003C allLocs.length; \u002B\u002Bi) {\n    if(allLocs[i].name === br74Name) {\n        const status = await hqLocomotive.getStatus(allLocs[i].driverName, allLocs[i].address);\n        log(allLocs[i].name);\n        log(\u0060${ allLocs[i].name } (${ status.driverName }::${ status.address }) f\u00E4hrt mit Geschwindigkeit ${ status.speed }\u0060);\n\n        hqLocomotive.onChange(status.driverName, status.address, (data) =\u003E {\n            const name = data.name;\n            const driverName = data.driverName;\n            const address = data.objectId;\n            const speed = data.speedstep;\n\n            log(\u0060${name} (${driverName}::${address}) f\u00E4hrt mit Geschwindigkeit ${speed}\u0060);\n        });\n    }\n}\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 7
+  },
+  {
+    "Id": 13,
+    "Name": "Events: Schaltartikel",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 6/7/2025, 8:20:14 AM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nhqAccessory.onChange(\u0022demo\u0022, 7, (data) =\u003E {\n            const name = data.name1;\n            const driverName = data.driverName;\n            const address = data.addr;\n            const state = data.state;\n\n            log(\u0060${name} (${driverName}::${address}) -\u003E ${state}\u0060);\n        });\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 9
+  },
+  {
+    "Id": 14,
+    "Name": "Events: Schaltzentrale",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 6/8/2025, 6:36:24 AM\n//\n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nhqControlStation.onChange(\u0022demo\u0022, (data) =\u003E {\n    console.log(data);\n});\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}",
+    "Order": 8
+  },
+  {
+    "Id": 17,
+    "Name": "mqtt: PV-Anlage",
+    "Description": null,
+    "IsActive": false,
+    "Code": "startMqttOverlay(\u0022192.168.178.29\u0022);\n\nasync function startMqttOverlay(mqttHost) {\n\n    const brokerUrl = \u0027wss://\u0027 \u002B mqttHost \u002B \u0027:9001\u0027;\n    const topics = {\n        \u0027Haus/PV/ProductionFront\u0027: { label: \u0027Dach\u0027, unit: \u0027kW\u0027, icon: \u0027fas fa-solar-panel\u0027 },\n        \u0027Haus/PV/ProductionBack\u0027: { label: \u0027Garage\u0027, unit: \u0027kW\u0027, icon: \u0027fas fa-solar-panel\u0027 },\n        \u0027Haus/Data/Temperature\u0027: { label: \u0027Temperatur\u0027, unit: \u0027\u00B0C\u0027, icon: \u0027fas fa-thermometer-half\u0027 },\n        \u0027Haus/Data/Humidity\u0027: { label: \u0027Luftfeuchte\u0027, unit: \u0027%\u0027, icon: \u0027fas fa-tint\u0027 }\n    };\n\n    hqUi.injectDefaultStyles();\n\n    // Komponenten registrieren\n    let x = 2;\n    let y = 2;\n    for (const topic in topics) {\n        const cfg = topics[topic];\n        hqUi.register({ id: topic, label: cfg.label, unit: cfg.unit, icon: cfg.icon, x: x, y: y });\n        x \u002B= 4;\n    }\n\n    // MQTT-Verbindung aufbauen\n    try {\n        await hqMqttClient.connect(brokerUrl);\n        log(\u0027MQTT verbunden:\u0027, brokerUrl);\n    } catch (err) {\n        error(\u0027MQTT-Verbindung fehlgeschlagen:\u0027, err);\n        return;\n    }\n\n    // MQTT-Daten empfangen\n    for (const topic of Object.keys(topics)) {\n        hqMqttClient.subscribe(topic, (receivedTopic, payload) =\u003E {\n            const value = payload.split(\u0022 \u0022)[0];\n            hqUi.update(receivedTopic, value);\n        });\n    }\n\n    // Cleanup registrieren\n    hqHelper.finalize = async () =\u003E {\n        log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n\n        hqUi.finalize(); // alle Tiles entfernen\n\n        try {\n            await hqMqttClient.disconnect();\n            hqMqttClient.cleanupAll();\n        } catch (e) {\n            warn(\u0022Fehler beim Trennen der MQTT-Verbindung:\u0022, e);\n        }\n\n        log(\u0022Cleanup abgeschlossen!\u0022);\n    };\n}\n\n// Skript am Leben halten, bis Stop gedr\u00FCckt wird\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 6
+  },
+  {
+    "Id": 19,
+    "Name": "mqtt: Steckdosen",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\nconst brokerUrl = \u0022wss://192.168.178.29:9001\u0022;\n\ntry {\n    await hqMqttClient.connect(brokerUrl);\n    log(\u0027MQTT verbunden:\u0027, brokerUrl);\n} catch (err) {\n    error(\u0027MQTT-Verbindung fehlgeschlagen:\u0027, err);\n    return;\n}\n\nfor (let i = 0; i \u003C 10; \u002B\u002Bi) {\n    log(\u0060Lauf ${i \u002B 1}\u0060);\n    \n    hqMqttClient.publish(\u0022Haus/Switches/Railway01\u0022, \u0022true\u0022);\n    hqMqttClient.publish(\u0022Haus/Switches/Railway02\u0022, \u0022true\u0022);\n    hqMqttClient.publish(\u0022Haus/Switches/Railway03\u0022, \u0022true\u0022);\n    hqMqttClient.publish(\u0022Haus/Switches/Railway04\u0022, \u0022true\u0022);\n    await hqHelper.sleep1Sec();\n    \n    hqMqttClient.publish(\u0022Haus/Switches/Railway01\u0022, \u0022false\u0022);\n    hqMqttClient.publish(\u0022Haus/Switches/Railway02\u0022, \u0022false\u0022);\n    hqMqttClient.publish(\u0022Haus/Switches/Railway03\u0022, \u0022false\u0022);\n    hqMqttClient.publish(\u0022Haus/Switches/Railway04\u0022, \u0022false\u0022);\n    await hqHelper.sleep1Sec();\n}\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n\n    try {\n        await hqMqttClient.disconnect();\n        hqMqttClient.cleanupAll();\n    } catch (e) {\n        warn(\u0022Fehler beim Trennen der MQTT-Verbindung:\u0022, e);\n    }\n\n    log(\u0022Cleanup abgeschlossen!\u0022);\n};\n\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 1000));\n}\n",
+    "Order": 5
+  },
+  {
+    "Id": 20,
+    "Name": "uiEngine",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 6/9/2025, 8:10:52 AM\n\n//\n// F\u00FCge hier Deinen Code hinzu:\n// \nlog(\u0022Lokf\u00FChrer-Modus aktiviert \uD83D\uDE82\uD83D\uDCA8\u0022);\n\nhqUi.injectDefaultStyles();\nhqUi.register({id: \u0022Tile 1\u0022, type: \u0022tile\u0022, label: \u0022Label 1\u0022, unit: \u0022Unit 1\u0022, icon: \u0027fas fa-solar-panel\u0027, x: 2, y: 10 });\nhqUi.register({\n    id: \u0022btnSteckdose01on\u0022, type: \u0022button\u0022, label: \u0022Steckdose 1 einschalten\u0022, icon: \u0022fas fa-plug\u0022, x: 6, y: 10,\n    onClick: async () =\u003E {\n        log(\u0022Steckdose eingeschaltet\u0022);\n        await hqMqttClient.publishOnce(\u0022wss://192.168.178.29:9001\u0022, \u0022Haus/Switches/Railway01\u0022, \u0022true\u0022);\n    }\n});\nhqUi.register({\n    id: \u0022btnSteckdose01off\u0022, type: \u0022button\u0022, label: \u0022Steckdose 1 ausschalten\u0022, icon: \u0022fas fa-plug\u0022, x: 6, y: 12,\n    onClick: async () =\u003E {\n        log(\u0022Steckdose ausgschaltet\u0022);\n        await hqMqttClient.publishOnce(\u0022wss://192.168.178.29:9001\u0022, \u0022Haus/Switches/Railway01\u0022, \u0022false\u0022);\n    }\n});\nhqUi.register({\n    id: \u0022slider1\u0022,\n    type: \u0022slider\u0022,\n    label: \u0022Helligkeit\u0022,\n    icon: \u0022fas fa-sun\u0022,\n    min: 0,\n    max: 100,\n    value: 75,\n    unit: \u0022%\u0022,\n    onChange: (val) =\u003E {\n        log(\u0022Helligkeit:\u0022, val);\n    }, x: 10, y: 10\n});\n\nhqUi.register({\n    id: \u0022toggle1\u0022,\n    type: \u0022toggle\u0022,\n    label: \u0022Steckdose 2\u0022,\n    icon: \u0022fas fa-plug\u0022,\n    value: false,\n    onToggle: async (state) =\u003E {\n        log(\u0022Steckdose ist jetzt\u0022, state ? \u0022an\u0022 : \u0022aus\u0022);\n        await hqMqttClient.publishOnce(\u0022wss://192.168.178.29:9001\u0022, \u0022Haus/Switches/Railway02\u0022, \u0060${state}\u0060);\n    }, x: 14, y: 10\n});\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n    hqUi.finalize();\n};\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 4
+  },
+  {
+    "Id": 21,
+    "Name": "Uhr",
+    "Description": null,
+    "IsActive": true,
+    "Code": "\n// Standard-Skriptvorlage f\u00FCr die Modelleisenbahn-Steuerung\n// Generiert am: 6/10/2025, 10:49:33 AM\n//  \n// Diese Vorlage bietet einen Einstiegspunkt f\u00FCr eigene Automatisierungen.\n// Sie zeigt, wie du die API (hqLocomotive) und Hilfsfunktionen (hqHelper) nutzt.\n// Erg\u00E4nze hier deinen individuellen Steuerungs-Code.\n\nhqUi.injectDefaultStyles();\nhqUi.register({ id: \u0022bahnhofsuhr\u0022, type: \u0022clock\u0022, x: 19, y: 0, draggable: true });\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n    hqUi.finalize();\n};\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n} ",
+    "Order": 14
+  },
+  {
+    "Id": 22,
+    "Name": "WebcamsUi",
+    "Description": null,
+    "IsActive": true,
+    "Code": "\nhqUi.injectDefaultStyles();\n\nhqUi.register({\n    id: \u0022snapshot1\u0022,\n    type: \u0022snapshot\u0022,\n    label: \u0027Bielefeld\u0027,\n    url: \u0027https://www.bicos.de/webcam/webcam1.jpg\u0027,\n    x: 19,\n    y: 6,\n    draggable: true,\n    ratio: 4 / 3,\n    width: 9,           // in Tiles (32px * 10)\n    intervalMsec: 4000      // alle 4 Sekunden neues Bild\n});\n\n// hqUi.register({\n//     id: \u0022snapshot2\u0022,\n//     type: \u0022snapshot\u0022,\n//     label: \u0027Bielefeld - H\u00FCneburg\u0027,\n//     url: \u0027https://hamnet-bielefeld.de/webcam/bielefeld/current/640.jpg\u0027,\n//     x: 0,\n//     y: 10,\n//     draggable: true,\n//     ratio: 16 / 9,\n//     width: 12,\n//     intervalMsec: 5000\n// });\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n    hqUi.finalize();\n};\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 2
+  },
+  {
+    "Id": 23,
+    "Name": "StreamsUi",
+    "Description": null,
+    "IsActive": false,
+    "Code": "\nhqUi.injectDefaultStyles();\n\nhqUi.register({\n    id: \u0027Kaiskuru Skistadion, Norway - Snow and Houses\u0027,\n    type: \u0027mjpeg\u0027,\n    x: 21, y: 10,\n    ratio: 4 / 3,\n    url: \u0027http://77.222.181.11:8080/mjpg/video.mjpg\u0027\n})\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n    hqUi.finalize();\n};\n\n// Halte das Skript am Leben, bis \u0022Stop\u0022 gedr\u00FCckt wurde\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 500));\n}\n",
+    "Order": 3
+  },
+  {
+    "Id": 24,
+    "Name": "Dokumentation",
+    "Description": null,
+    "IsActive": false,
+    "Code": "const brokerUrl = \u0022wss://192.168.178.29:9001\u0022;\n\nhqMqttClient.publishOnce(brokerUrl, \u0022Haus/Switches/Railway01\u0022, \u0022true\u0022)\n\ntry {\n    await hqMqttClient.connect(brokerUrl);\n    log(\u0027MQTT verbunden:\u0027, brokerUrl);\n} catch (err) {\n    error(\u0027MQTT-Verbindung fehlgeschlagen:\u0027, err);\n    return;\n}\n\nhqMqttClient.publish(\u0022Haus/Switches/Railway01\u0022, \u0022true\u0022);\nhqMqttClient.publish(\u0022Haus/Switches/Railway02\u0022, \u0022false\u0022);\nhqMqttClient.publish(\u0022Haus/Switches/Railway03\u0022, \u0022true\u0022);\nhqMqttClient.publish(\u0022Haus/Switches/Railway04\u0022, \u0022false\u0022);\n\nhqHelper.finalize = async () =\u003E {\n    log(\u0022Benutzerdefinierter Cleanup l\u00E4uft...\u0022);\n\n    try {\n        await hqMqttClient.disconnect();\n        hqMqttClient.cleanupAll();\n    } catch (e) {\n        warn(\u0022Fehler beim Trennen der MQTT-Verbindung:\u0022, e);\n    }\n\n    log(\u0022Cleanup abgeschlossen!\u0022);\n};\n\nwhile (!api.shouldStop?.()) {\n    await new Promise(resolve =\u003E setTimeout(resolve, 1000));\n}",
+    "Order": 0
+  }
+]

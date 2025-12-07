@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="{{ApplicationDescription}}">
+    <meta name="author" content="{{Author}}">
+    <meta name="application-name" content="{{ApplicationName}}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ApplicationName}}</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+
+    <link rel="stylesheet" href="./libs/jquery-ui.min.css" type="text/css">
+    <link rel="stylesheet" href="./libs/jquery-ui.structure.min.css" type="text/css">
+    <link rel="stylesheet" href="./libs/jquery-ui.theme.min.css" type="text/css">
+
+    <script type="text/javascript" src="./libs/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./libs/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="./libs/tipso.min.js" defer></script>
+    <script type="text/javascript" src="./libs/html2canvas.min.js" defer></script>
+
+    <!--DEBUG
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/colors.css" />
+    <link rel="stylesheet" href="css/gleisplan.css" />
+    DEBUG-->
+    <!--RELEASE
+    <link rel="stylesheet" href="css/styles.min.css" />
+    RELEASE-->
+
+    <link rel="stylesheet" href="./libs/tipso.css" type="text/css" />
+    <link rel="stylesheet" href="./libs/w2ui-1.5.rc1.min.css" type="text/css" />
+    <link rel="stylesheet" href="./libs/fas/css/all.min.css" type="text/css" media="screen" />
+
+    <script type="text/javascript" src="./libs/qrcode.min.js"></script>
+    <script type="text/javascript" src="./libs/chart.js"></script>
+    <script type="text/javascript" src="./libs/mqtt.min.js"></script>
+
+    <!--DEBUG
+    <script type="text/javascript" src="./libs/w2ui-1.5.rc1.js" defer></script>
+
+    <link rel="stylesheet" href="./libs/contextual.min.css" type="text/css" />
+    <link rel="stylesheet" href="./libs/contextual.theme.min.css" type="text/css" />
+    <script type="text/javascript" src="./libs/contextual.js" defer></script>
+    DEBUG-->
+    <!--RELEASE
+    <script type="text/javascript" src="./libs/w2ui-1.5.rc1.min.js" defer></script>
+
+    <link rel="stylesheet" href="./libs/contextual.min.css" type="text/css" />
+    <link rel="stylesheet" href="./libs/contextual.theme.css" type="text/css" />
+    <script type="text/javascript" src="./libs/contextual.min.js" defer></script>
+    RELEASE-->
+    
+    <!-- Server-side configuration for JavaScript -->
+    <script type="text/javascript">
+        window.railhqConfig = {
+            websiteUrl: "{{CONFIG_WEBSITE_URL}}",
+            wikiUrl: "{{CONFIG_WIKI_URL}}"
+        };
+    </script>
+    
+    <!--DEBUG
+    <script type="text/javascript" src="./src/globals.js" defer></script>
+    <script type="text/javascript" src="./src/utilities.js" defer></script>
+    <script type="text/javascript" src="./src/accessories.js" defer></script>
+    <script type="text/javascript" src="./src/staging.js" defer></script>
+    <script type="text/javascript" src="./src/blocks.js" defer></script>
+    <script type="text/javascript" src="./src/editMenuBar.js" defer></script>
+    <script type="text/javascript" src="./src/errorHandler.js" defer></script>
+    <script type="text/javascript" src="./src/events.js" defer></script>
+    <script type="text/javascript" src="./src/planField.js" defer></script>
+    <script type="text/javascript" src="./src/storage.js" defer></script>
+    <script type="text/javascript" src="./src/serverHandling.js" defer></script>
+    <script type="text/javascript" src="./src/websocketSync.js" defer></script>
+    <script type="text/javascript" src="./src/textfieldElement.js" defer></script>
+    <script type="text/javascript" src="./src/toolbox.js" defer></script>
+    <script type="text/javascript" src="./src/occLayer.js" defer></script>
+    <script type="text/javascript" src="./src/locomotiveControl.js" defer></script>
+    <script type="text/javascript" src="./src/locomotives.js" defer></script>
+    <script type="text/javascript" src="./src/routes.js" defer></script>
+    <script type="text/javascript" src="./src/windowGeometryStorage.js" defer></script>
+    <script type="text/javascript" src="./src/sidebar.js" defer></script>
+    <script type="text/javascript" src="./src/gleisplan.js" defer></script>
+    <script type="text/javascript" src="./src/gleisplanTabs.js" defer></script>
+    DEBUG-->
+    <!--RELEASE
+    <script type="text/javascript" src="./src/app.min.js" defer></script>
+    RELEASE-->
+    <!--DEBUG
+        <script type="text/javascript" src="shared.js" defer></script>
+        <script type="text/javascript" src="index.js" defer></script>
+    DEBUG-->
+    <!--RELEASE
+    <script type="text/javascript" src="shared.min.js" defer></script>
+    <script type="text/javascript" src="index.min.js" defer></script>
+    RELEASE-->
+    <!--
+    #############################
+    Scripting
+    #############################
+    -->
+    <!--DEBUG
+    <script type="text/javascript" src="scriptEngine/monaco/vs/loader.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/libs/hqSdk.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/libs/hqSdkHelper.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/libs/scripting.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/libs/scriptingRunner.js" defer></script>
+    <link rel="stylesheet" href="scriptEngine/css/main.css" />
+
+    <script type="text/javascript" src="scriptEngine/ui/engine.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/01_tile.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/button.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/slider.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/toggle.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/snapshot.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/mjpeg.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/ui/clock.js" defer></script>
+    DEBUG-->
+    <!--RELEASE
+    <script type="text/javascript" src="scriptEngine/monaco/vs/loader.js" defer></script>
+    <script type="text/javascript" src="scriptEngine/libs/app.min.js" defer></script>
+    <link rel="stylesheet" href="scriptEngine/css/styles.min.css" />
+
+    <script type="text/javascript" src="scriptEngine/ui/app.min.js" defer></script>
+    RELEASE-->
+
+    <style>
+        /* Fullscreen-Spinner */
+        #loadingSpinner {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        /* Dampf steigt auf */
+        @keyframes smoke-move {
+            0% {
+                opacity: 0;
+                transform: translateY(0) scale(1);
+            }
+
+            50% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                transform: translateY(-30px) scale(1.5);
+            }
+        }
+
+        /* Bewegung der Achsstange */
+        @keyframes axle-move {
+            0% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(5px);
+            }
+
+            100% {
+                transform: translateY(0);
+            }
+        }
+
+        /* Dampf-Wolken */
+        .smoke {
+            animation: smoke-move 2s ease-in-out infinite;
+            fill: lightgray;
+        }
+
+            /* Verzögerung für mehrere Dampfwolken */
+            .smoke:nth-child(1) {
+                animation-delay: 0s;
+            }
+
+            .smoke:nth-child(2) {
+                animation-delay: 0.5s;
+            }
+
+            .smoke:nth-child(3) {
+                animation-delay: 1s;
+            }
+
+        /* Achsstange animieren */
+        .axle {
+            animation: axle-move 0.5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+
+    <image id="output-img" style="z-index: 10000000; width: 500px; height: 500px; background: aliceblue; display: none;"></image>
+
+    <div id="loadingSpinner">
+        <svg width="300" height="300" viewBox="0 0 300 180">
+            <!-- Erweitert die Höhe für den Dampf -->
+            <!-- Lok-Körper -->
+            <rect x="50" y="70" width="120" height="40" fill="black" />
+            <rect x="140" y="50" width="30" height="20" fill="black" />
+
+            <!-- Schornstein -->
+            <rect x="60" y="50" width="20" height="20" fill="black" />
+
+            <!-- Dampf -->
+            <circle cx="60" cy="40" r="8" class="smoke" />
+            <circle cx="75" cy="30" r="10" class="smoke" />
+            <circle cx="90" cy="20" r="12" class="smoke" />
+
+            <!-- Stationäre Räder -->
+            <circle cx="70" cy="120" r="15" fill="gray" />
+            <circle cx="110" cy="120" r="15" fill="gray" />
+            <circle cx="150" cy="120" r="15" fill="gray" />
+
+            <!-- Achsstange zwischen den Rädern -->
+            <line x1="70" y1="120" x2="110" y2="120" stroke="black" stroke-width="4" class="axle" />
+            <line x1="110" y1="120" x2="150" y2="120" stroke="black" stroke-width="4" class="axle" />
+        </svg>
+    </div>
+
+    <div id="loading-overlay">
+        <div class="loading-content">
+            <ul class="loading-steps"></ul>
+            <div class="loading-progress">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="overlay" id="sessionOverlay" style="display: none; overflow: hidden;">
+        <div class="overlayContent">
+            <div class="overlayText"></div>
+            <a href="https://{{GENERATE_NET_HOST}}/dashboard" class="loginLink">Übersicht</a>
+        </div>
+    </div>
+
+    <div id="overlayAufstellbockSettings" style="display: none;">
+    </div>
+
+    <div id="sidebar" style="z-index: 100; height: 100%; width: 225px; float: right;"></div>
+    <div id="toolboxPopup2" title="Toolbox">
+        <div class="toolboxEntries noselect" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div id="planfieldItemEdit">
+        <div class="rot-left"><img src="images/rot-left.png" width="16" height="16"></div>
+        <div class="rot-right"><img src="images/rot-right.png" width="16" height="16"></div>
+        <div class="spacer"></div>
+        <div class="ungroup"><img src="images/ungroup.png" width="16" height="16"></div>
+        <div class="spacer"></div>
+        <div class="delete"><img src="images/delete.png" width="16" height="16"></div>
+    </div>
+    <div>
+
+        <div id="gleisplaeneTabs">
+        </div>
+
+        <!--
+
+        ##########################################
+        START scriptingTab
+        ##########################################
+
+        -->
+        <div id="scriptingTabParent">
+            <div id="scriptingTab" class="layout-flex h-full" style="height: 100vh;">
+
+                <!-- Linke Spalte -->
+                <div class="sidebar">
+                    <div class="header-row">
+                        <h2 class="heading" style="margin-bottom: 5px;">Skripte</h2>
+                        <button id="createButton" class="icon-button green" title="Neu">
+                            <i class="fas fa-plus"></i>
+                        </button>
+                    </div>
+
+                    <!-- Flex-Wrapper für Scriptliste + Task-Container -->
+                    <div class="sidebar-content">
+                        <ul id="scriptList" class="script-list"></ul>
+
+                        <div id="taskContainer">
+                            <h2 class="heading" style="margin-bottom: 5px; position: relative;">
+                                Aktive Skripte
+                                <button id="removeInactiveBtn"
+                                        class="icon-button red"
+                                        title="Inaktive Skripte entfernen"
+                                        style="position: absolute; right: 0; top: 0; border: none; background: transparent; cursor: pointer; font-size: 18px;">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </h2>
+                            <div id="taskGrid" class="task-grid" style="height: 200px;"></div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Rechte Spalte -->
+                <div class="main-content">
+                    <div class="toolbarScripting">
+                        <div class="toolbar-left">
+                            <button onclick="window.__scriptingEditor.trigger('keyboard', 'undo', null)" class="toolbar-button" title="Rückgängig (Undo)">
+                                <i class="fas fa-undo"></i>
+                            </button>
+                            <button onclick="window.__scriptingEditor.trigger('keyboard', 'redo', null)" class="toolbar-button" title="Wiederholen (Redo)">
+                                <i class="fas fa-redo"></i>
+                            </button>
+
+                            <!-- Zoom Buttons -->
+                            <div style="display: inline-flex; align-items: center; margin-left: 10px; gap: 6px;">
+                                <button id="zoomOutBtn" class="toolbar-button" title="Text verkleinern" style="padding: 4px 8px;">
+                                    <i class="fas fa-search-minus"></i>
+                                </button>
+                                <button id="zoomInBtn" class="toolbar-button" title="Text vergrößern" style="padding: 4px 8px;">
+                                    <i class="fas fa-search-plus"></i>
+                                </button>
+                            </div>
+
+                            <span id="filenameLabel" style="
+                                                            margin-left: 10px;
+                                                            font-weight: bold;
+                                                            user-select: none;
+                                                            background-color: #f0f0f0;
+                                                            color: #333;
+                                                            padding: 3px 8px;
+                                                            border-radius: 6px;
+                                                            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+                                                            font-family: monospace;
+                                                            font-size: 1.25em;
+
+                                                            display: inline-flex;
+                                                            align-items: center;
+                                                            height: 1.8em;  /* Höhe etwas über font-size, anpassen nach Geschmack */
+                                                        ">
+                            </span>
+
+                        </div>
+                        <div class="toolbar-right">
+                            <button id="runButton" class="run-button" title="Code ausführen">
+                                <i class="fas fa-play"></i> Ausführen
+                            </button>
+
+                            <button id="saveButton" class="save-button">
+                                <i class="fas fa-save"></i> Speichern
+                            </button>
+                        </div>
+                    </div>
+
+                    <div id="editorScripting" class="editor-box" style="display: none;"></div>
+                    <div id="dragbarScripting" style="height: 4px; background: #888; cursor: ns-resize;"></div>
+
+                    <div id="scriptOutput" class="script-output"></div>
+                    <div id="loader" class="loader">
+                        <div class="loader-text">
+                            <span>Lade Editor</span>
+                            <span class="dot1">.</span>
+                            <span class="dot2">.</span>
+                            <span class="dot3">.</span>
+                        </div>
+                    </div>
+
+                    <div id="statusBarScripting" class="status-bar-scripting">
+                        <span id="statusMessage">Bereit</span>
+                        <span id="cursorPosition">Zeile 1, Spalte 1</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <!--
+
+        ##########################################
+        END scriptingTab
+        ##########################################
+
+        -->
+    </div>
+    <div style="clear: both"></div>
+    <!--
+        <div id="customerUi" style="position: absolute; top: 0; left: 0; width: 1px; height: 1px;"></div>
+    -->
+    <div id="statusBar" class="noselect" style="z-index: 9999;">
+        <div id="statusBar" style="position: relative; height: 100%; width: 100%;">
+            <div class="csStatusEcos" data-station="ECoS">
+                <div class="powerStatus notAvailable noselect" title="ECoS Power"></div>
+                <div class="stationInfo noselect">ECoS nicht verfügbar</div>
+            </div>
+            <div class="csStatusZ21" data-station="Z21">
+                <div class="powerStatus notAvailable noselect" title="Z21 Power"></div>
+                <div class="stationInfo noselect">Z21 nicht verfügbar</div>
+            </div>
+            <div class="csStatusDemo" data-station="Demo">
+                <div class="powerStatus notAvailable noselect" title="Demo Power"></div>
+                <div class="stationInfo noselect">Demo nicht verfügbar</div>
+            </div>
+            <div class="serverInfoPing"><span class="value"></span></div>
+            <div class="automodeInfo"></div>
+            <div class="automodeRuntime"></div>
+            <div class="automodeCancelForceContainer">
+                <button class="automodeCancelForce" style="margin-left: 10px;" onclick="forceStopAutomode()">
+                    <i class="fas fa-ban"></i> Stop
+                </button>
+            </div>
+            <div class="ctrlInfo noselect">&nbsp;</div>
+            <div class="autoMode" data-tipso-title="Automatikmodus ein-/ausgeschaltet"><i class="fas fa-cog"></i></div>
+            <div class="logging" data-tipso-title="Zeigt das Laufzeitprotokoll einer serverseitigen Aufgabe an."><i class="fas fa-book"></i></div>
+        </div>
+
+        <div id="menu-toggle">☰</div>
+
+        <div id="warningBox" class="warning"></div>
+
+        <div id="info-overlay">
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="grid-toggle" style="margin-right: 8px;"> Raster anzeigen
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="paintingarea-toggle" style="margin-right: 8px;"> Zeichenfläche anzeigen
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="minimap-toggle" checked style="margin-right: 8px;"> Minimap anzeigen
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="labels-toggle" style="margin-right: 8px;"> Labels anzeigen
+            </label>
+            <label style="display: flex; align-items: center; cursor: pointer;">
+                <input type="checkbox" id="labels-info-keyboard" style="margin-right: 8px;"> Tastatur Informationen
+            </label>
+            <button id="screenshot-btn" style="margin-top: 10px;
+                                               padding: 4px 8px;
+                                               cursor: pointer; background: rgba(200, 200, 200, 0.5);
+                                               border: 1px solid #ccc;
+                                               color: #555;
+                                               font-size: 14px;
+                                               border-radius: 2px;
+                                               transition: all 0.2s ease-in-out;">
+                📷 Screenshot
+            </button>
+        </div>
+
+        <div id="info-keyboard-overlay">
+            <div class="shortcut">
+                <i class="fas fa-arrows-alt"></i> Bewegung (<b>WASD</b>)
+            </div>
+
+            <div class="shortcut">
+                <i class="fas fa-undo"></i> Uhrzeigersinn (<b>R</b>)
+            </div>
+            <div class="shortcut">
+                <i class="fas fa-redo"></i> Gegen-Uhrzeigersinn (<b>r</b>)
+            </div>
+
+            <div class="shortcut">
+                <i class="fas fa-trash"></i> Selektion löschen (<b>Entf</b>)
+            </div>
+            <div class="shortcut">
+                <i class="fas fa-times"></i> Selektion aufheben (<b>Esc</b>)
+            </div>
+        </div>
+
+        <script>
+            let hideTimer;
+            document.getElementById("menu-toggle").addEventListener("click",
+                () => {
+                    const overlay = document.getElementById("info-overlay");
+                    const button = document.getElementById("menu-toggle");
+                    overlay.style.display = "flex";
+                    button.classList.add("hidden");
+                });
+            document.getElementById("info-overlay").addEventListener("mouseleave",
+                () => {
+                    hideTimer = setTimeout(() => {
+                        document.getElementById("info-overlay").style.display = "none";
+                        document.getElementById("menu-toggle").classList.remove("hidden");
+                    },
+                        250);
+                });
+            document.getElementById("info-overlay").addEventListener("mouseenter",
+                () => {
+                    clearTimeout(hideTimer);
+                });
+            document.getElementById("grid-toggle").addEventListener("change",
+                () => {
+                    this.toggleGrid(document.getElementById("grid-toggle").checked);
+                });
+            document.getElementById("paintingarea-toggle").addEventListener("change",
+                () => {
+                    this.togglePaintingArea(document.getElementById("paintingarea-toggle").checked);
+                });
+            document.getElementById("minimap-toggle").addEventListener("change",
+                () => {
+                    $('.minimap-instance').toggle();
+                });
+
+            document.getElementById("labels-toggle").addEventListener("change",
+                () => {
+                    if (window.labelShown === true) {
+                        toggleAllLabelInformation(false);
+                        window.labelShown = false;
+                    } else {
+                        toggleAllLabelInformation(true);
+                        window.labelShown = true;
+                    }
+                });
+
+            document.getElementById("labels-info-keyboard").addEventListener("change",
+                () => {
+                    const overlay = document.getElementById("info-keyboard-overlay");
+                    overlay.style.display = overlay.style.display === "block" ? "none" : "block";
+                });
+
+            document.getElementById("screenshot-btn").addEventListener("click", function () {
+                window.planfield.createScreenshot();
+            });
+
+            function toggleGrid(show) {
+                const grid = document.getElementsByClassName("ries-grid")[0];
+                if (grid) {
+                    if (show)
+                        $(grid).css({
+                            "backgroundImage": `linear-gradient(to right, rgba(0, 0, 0, 0.3) 1px, transparent 1px),
+                                                                                                                                                                                                                                                                                                                                                                                                linear-gradient(to bottom, rgba(0, 0, 0, 0.3) 1px, transparent 1px)`
+                        });
+                    else
+                        $(grid).css({
+                            "backgroundImage": ""
+                        });
+                }
+            }
+
+            function togglePaintingArea(show) {
+                const grid = document.getElementsByClassName("ries-grid")[0];
+                if (grid) {
+
+                    $.localStorage.setItem("planfieldBgShown", JSON.stringify({ shown: show }));
+
+                    if (show)
+                        $(grid).removeClass("gleisplanBg");
+                    else
+                        $(grid).addClass("gleisplanBg");
+                }
+            }
+        </script>
+    </div>
+
+    <div style="clear: both"></div>
+
+    <div id="latencyChartPopup" style="display:none; position:absolute; background:white; border:1px solid #ccc; padding:10px; z-index:1000;">
+        <canvas id="latencyChart" width="300" height="150"></canvas>
+    </div>
+
+    <div class="debugConsole">
+        <div class="toolbar">
+            <i class="fas fa-chevron-up fa-2x scrollTop"></i>
+            <i class="fas fa-chevron-down fa-2x scrollBottom"></i>
+            <div class="dropdown">
+                <button class="dropdown-btn noselect">⚙️ Einstellungen</button>
+                <div class="dropdown-content noselect">
+                    <label><input type="checkbox" value="debugRuntime"> Laufzeitverhalten</label>
+                    <label><input type="checkbox" value="debugAccessories"> Schaltvorgänge (Weichen/Signale, Sensoren, etc.)</label>
+                    <label><input type="checkbox" value="debugLocomotives"> Lokomotiven (Funktionen, Geschwindigkeit, etc.)</label>
+                    <label><input type="checkbox" value="debugRoutes"> Routenentscheidungen</label>
+                    <label><input type="checkbox" value="debugExceptions"> Ausnahmebehandlungen</label>
+                    <label><input type="checkbox" value="debugFeedbacks"> Feedback (S88, Detectors)</label>
+                </div>
+            </div>
+            <i class="fas fa-align-left fa-2x wordwrapToggle" title="Wordwrap"></i>
+            <i class="fas fa-eraser fa-2x clearDebug"></i>
+        </div>
+        <div class="messageContainer"></div>
+    </div>
+
+    <div id="routePopUp" style="display: none; position: relative;"></div>
+
+    <div id="textfieldElementToolbar"></div>
+    <div class="tplElEditorRoot" style="display: none;">
+        <div class="elEditor"></div>
+    </div>
+
+    <div class="lds-facebookOriginal" style="display: none;">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div id="tplLocomotiveControl" title="CHANGE"
+         style="display: none; overflow: hidden;">
+        <div style="flex: 1;">
+            <div class="qrcodeLocControlerAccess" style="display: none; position: relative;"></div>
+            <div class="relative" style="text-align: center; margin-bottom: 10px;">
+                <img class="locomotiveImage" src="./images/noimage32x32.png" alt="" style="max-height: 80px; border-radius: 5px; margin: auto" ">
+                <div class="speedDisplay"
+                     style="position: absolute; top: 35px; left: 50%; font-size: 24px; font-weight: bold; color: white;">
+                    0
+                </div>
+                <div class="openSettingsDialog"><i class="w2ui-icon-pencil"></i></div>
+                <div class="qrcodeIcon">🔍</div>
+            </div>
+            <div class="locname"></div>
+            <div style="display: flex; justify-content: center; gap: 5px; margin-top: 5px;">
+                <button class="speedLevel0" data-speedstep="level0">⚠</button>
+                <button class="speedLevel1" data-speedstep="levelMinimum">I</button>
+                <button class="speedLevel2" data-speedstep="levelEnter">II</button>
+                <button class="speedLevel3" data-speedstep="levelCruise">III</button>
+                <button class="speedLevel4" data-speedstep="levelMax">IV</button>
+            </div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+                <button class="directionBackward" data-direction="backward">⬅</button>
+                <input type="range"
+                       style="width: 100%; padding: 10px; margin-left: 10px; margin-right: 10px;"
+                       class="locomotiveSpeedometer"
+                       name="locomotiveSpeedometer"
+                       min="0" max="100" value="0" step="1" />
+                <button class="directionForward" data-direction="forward">➡</button>
+            </div>
+            <div class="locomotiveCommandField">   </div>
+        </div>
+        <div style="display: flex; justify-content: space-around; padding: 5px;">
+            <button class="emergencyStop">🚨 Not-Halt</button>
+            <button class="powerOff">⚡ Strom-Aus</button>
+        </div>
+    </div>
+
+    <div id="tplLocomotiveControlQrOverlay"
+         style="display: none; position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; background: rgba(0, 0, 0, 0.8); z-index: 2000;">
+        <div id="qrContainer"
+             style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+                    background: white; padding: 20px; border-radius: 10px;">
+            <span id="qrClose"
+                  style="position: absolute; top: 5px; right: 10px; cursor: pointer; font-size: 24px;">&times;</span>
+            <div id="qrcode"></div>
+            <p style="margin-top: 10px; text-align: center; font-size: 12px; color: #333;">
+                Klicke auf den QR-Code, um die URL in die Zwischenablage zu kopieren.
+            </p>
+        </div>
+    </div>
+
+    <div id="tplLocomotiveInfoCtrl" style="display: none;">
+        <div class="locInfoCtrl">
+            <div class="locInfoStop" style="font-size: 0.8em;">
+                <i class="fas fa-stop-circle" id="locSpeedStop"></i>
+                <i class="fas fa-external-link-alt" id="locOpenDialog" style="cursor: alias;"></i>
+            </div>
+            <div class="locInfoSpeed">
+                <i class="fas fa-minus-square" id="locSpeedMinus"></i>
+                <i class="fas fa-plus-square" id="locSpeedPlus"></i>
+            </div>
+            <div class="locSpeedSteps">
+                <button data-speedstep="levelMinimum">I</button>
+                <button data-speedstep="levelEnter">II</button>
+                <button data-speedstep="levelCruise">III</button>
+                <button data-speedstep="levelMax">IV</button>
+            </div>
+            <div class="locInfoDirection">
+                <i class="fas fa-backward" id="locBackward"></i>
+                <i class="fas fa-forward" id="locForward"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="dialogLocomotives" title="Lokomotiven">
+        <div id="gridLocomotives" style="width: 100%; height: 100%;"></div>
+    </div>
+    <div id="locomotiveDialogContent"></div>
+
+    <div id="dialogRoutes" title="Routen">
+        <div id="gridRoutes" style="width: 100%; height: 100%;"></div>
+    </div>
+
+    <div id="dialogAccessories" title="Schaltartikel">
+        <div id="gridAccessories" style="width: 100%; height: 100%;"></div>
+    </div>
+
+    <div id="dialogBlocks" title="Blöcke">
+        <div id="gridBlocks" style="width: 100%; height: 100%;"></div>
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,236 @@
+name: Build Gateway Packages
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version number (e.g., 1.61)'
+        required: false
+        default: ''
+
+env:
+  DOTNET_VERSION: '8.0.x'
+  BUILD_CONFIGURATION: Release
+
+jobs:
+  build:
+    strategy:
+      matrix:
+        include:
+          # Windows x64
+          - os: windows-latest
+            runtime: win-x64
+            artifact_name: railhqGateway-windows-x64
+            archive_ext: zip
+          # Windows ARM64
+          - os: windows-latest
+            runtime: win-arm64
+            artifact_name: railhqGateway-windows-arm64
+            archive_ext: zip
+          # Linux x64
+          - os: ubuntu-latest
+            runtime: linux-x64
+            artifact_name: railhqGateway-linux-x64
+            archive_ext: tar.gz
+          # Linux ARM64 (Raspberry Pi 4, etc.)
+          - os: ubuntu-latest
+            runtime: linux-arm64
+            artifact_name: railhqGateway-linux-arm64
+            archive_ext: tar.gz
+          # Linux ARM (Raspberry Pi 3, etc.)
+          - os: ubuntu-latest
+            runtime: linux-arm
+            artifact_name: railhqGateway-linux-arm
+            archive_ext: tar.gz
+          # macOS x64 (Intel)
+          - os: macos-latest
+            runtime: osx-x64
+            artifact_name: railhqGateway-macos-x64
+            archive_ext: tar.gz
+          # macOS ARM64 (Apple Silicon)
+          - os: macos-latest
+            runtime: osx-arm64
+            artifact_name: railhqGateway-macos-arm64
+            archive_ext: tar.gz
+
+    runs-on: ${{ matrix.os }}
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Get version
+        id: version
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          elif [ -f "version.txt" ]; then
+            echo "VERSION=$(cat version.txt)" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=0.0.0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Restore dependencies
+        run: dotnet restore Gateway/railyGateway/railyGateway.csproj
+
+      - name: Build Gateway
+        run: |
+          dotnet publish Gateway/railyGateway/railyGateway.csproj \
+            --configuration ${{ env.BUILD_CONFIGURATION }} \
+            --runtime ${{ matrix.runtime }} \
+            --self-contained true \
+            -p:PublishSingleFile=true \
+            -p:IncludeNativeLibrariesForSelfExtract=true \
+            -p:EnableCompressionInSingleFile=true \
+            -o ./publish/${{ matrix.artifact_name }}
+
+      - name: Copy configuration files
+        shell: bash
+        run: |
+          cp Gateway/railyGateway/railhqGateway.json ./publish/${{ matrix.artifact_name }}/ || true
+          cp Gateway/railyGateway/log4net.config ./publish/${{ matrix.artifact_name }}/ || true
+
+      - name: Create archive (Windows)
+        if: matrix.archive_ext == 'zip'
+        shell: pwsh
+        run: |
+          Compress-Archive -Path ./publish/${{ matrix.artifact_name }}/* -DestinationPath ./${{ matrix.artifact_name }}-${{ steps.version.outputs.VERSION }}.zip
+
+      - name: Create archive (Linux/macOS)
+        if: matrix.archive_ext == 'tar.gz'
+        shell: bash
+        run: |
+          cd ./publish
+          tar -czvf ../${{ matrix.artifact_name }}-${{ steps.version.outputs.VERSION }}.tar.gz ${{ matrix.artifact_name }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.artifact_name }}-${{ steps.version.outputs.VERSION }}
+          path: |
+            ./${{ matrix.artifact_name }}-${{ steps.version.outputs.VERSION }}.${{ matrix.archive_ext }}
+          retention-days: 30
+
+  # Systray für Windows bauen (optional)
+  build-systray:
+    runs-on: windows-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ env.DOTNET_VERSION }}
+
+      - name: Get version
+        id: version
+        shell: bash
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            echo "VERSION=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          elif [ -f "version.txt" ]; then
+            echo "VERSION=$(cat version.txt)" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=0.0.0" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build Systray (Windows x64)
+        run: |
+          dotnet publish Gateway/railySystray/railySystray.csproj `
+            --configuration ${{ env.BUILD_CONFIGURATION }} `
+            --runtime win-x64 `
+            --self-contained true `
+            -p:PublishSingleFile=true `
+            -o ./publish/railhqSystray-windows-x64
+
+      - name: Create Systray archive
+        shell: pwsh
+        run: |
+          Compress-Archive -Path ./publish/railhqSystray-windows-x64/* -DestinationPath ./railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}.zip
+
+      - name: Upload Systray artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}
+          path: ./railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}.zip
+          retention-days: 30
+
+  # Release erstellen wenn ein Tag gepusht wurde
+  release:
+    needs: [build, build-systray]
+    runs-on: ubuntu-latest
+    if: startsWith(github.ref, 'refs/tags/')
+    
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Get version
+        id: version
+        run: |
+          if [ -f "version.txt" ]; then
+            echo "VERSION=$(cat version.txt)" >> $GITHUB_OUTPUT
+          else
+            echo "VERSION=${GITHUB_REF#refs/tags/v}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: ./artifacts
+
+      - name: List artifacts
+        run: find ./artifacts -type f
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: railhq.io Gateway v${{ steps.version.outputs.VERSION }}
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+          files: |
+            ./artifacts/**/*.zip
+            ./artifacts/**/*.tar.gz
+          body: |
+            ## railhq.io Gateway v${{ steps.version.outputs.VERSION }}
+            
+            ### Downloads
+            
+            | Betriebssystem | Architektur | Download |
+            |----------------|-------------|----------|
+            | Windows | x64 | `railhqGateway-windows-x64-${{ steps.version.outputs.VERSION }}.zip` |
+            | Windows | ARM64 | `railhqGateway-windows-arm64-${{ steps.version.outputs.VERSION }}.zip` |
+            | Linux | x64 | `railhqGateway-linux-x64-${{ steps.version.outputs.VERSION }}.tar.gz` |
+            | Linux | ARM64 (RPi 4) | `railhqGateway-linux-arm64-${{ steps.version.outputs.VERSION }}.tar.gz` |
+            | Linux | ARM (RPi 3) | `railhqGateway-linux-arm-${{ steps.version.outputs.VERSION }}.tar.gz` |
+            | macOS | Intel | `railhqGateway-macos-x64-${{ steps.version.outputs.VERSION }}.tar.gz` |
+            | macOS | Apple Silicon | `railhqGateway-macos-arm64-${{ steps.version.outputs.VERSION }}.tar.gz` |
+            
+            ### Windows Systray
+            
+            | Komponente | Download |
+            |------------|----------|
+            | Systray (Windows x64) | `railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}.zip` |
+            
+            ### Installation
+            
+            1. Archiv herunterladen und entpacken
+            2. `railhqGateway.json` konfigurieren
+            3. Gateway starten
+            
+            Siehe [INSTALL.md](INSTALL.md) für detaillierte Anleitungen.

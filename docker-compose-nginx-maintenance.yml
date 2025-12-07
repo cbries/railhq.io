@@ -1,0 +1,39 @@
+#
+#
+## Wartungsmodus starten
+# docker compose -f docker-compose-nginx-maintenance.yml up -d
+#
+## Wartungsmodus beenden
+# docker compose -f docker-compose-nginx-maintenance.ymld own
+#
+#
+
+name: railhq-maintenance
+
+services:
+  nginx:
+    image: nginx:latest
+    networks:
+      - public-network    # Hat Zugriff aufs Internet
+      - shared-proxy
+    container_name: railhq.io-nginx-maintenance
+    volumes:
+      - "${NGINX_CFG_DIR}/nginx-maintenance.conf:/etc/nginx/nginx.conf:z"
+      - "${NGINX_CFG_DIR}/runtime:/usr/share/nginx/html/runtime:z"
+      - "${TLS_CERT_DIR}:/etc/nginx/certificates:z"
+      - "${TLS_CERT_DIR2}/ca-bundle.crt:/etc/nginx/certificates/ca-bundle.crt:z"
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+
+networks:
+  # 🌍 Öffentliches Netz für RailHQ-Services, die Internetzugriff benötigen
+  # z. B. für API-Zugriffe, Updates, oder externe Downloads
+  public-network:
+    driver: bridge
+
+  # 🌐 Gemeinsames Netzwerk für Reverse Proxy (z. B. nginx) mit anderen Projekten
+  # Damit können Services über Subdomains vom gleichen Proxy erreicht werden
+  shared-proxy:
+    external: true  # Dieses Netzwerk wird von einem anderen Compose-Projekt bereitgestellts

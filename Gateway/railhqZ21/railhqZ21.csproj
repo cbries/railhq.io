@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyTitle>railhq.io - Z21 Driver</AssemblyTitle>
+    <AssemblyName>railhqZ21</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="log4net" Version="3.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Libraries\libInterop\libInterop.csproj" />
+    <ProjectReference Include="..\..\Libraries\libUtilities\libUtilities.csproj" />
+    <ProjectReference Include="..\..\Libraries\libZ21\libZ21.csproj" />
+  </ItemGroup>
+  
+</Project>

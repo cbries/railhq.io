@@ -1,0 +1,372 @@
+@page
+@model railyWebIndex.Pages.Fleet.TravelingModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Flottendaten: Fahrzeiten";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Flottendaten: Fahrzeiten";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+<div class="container mx-auto my-3 py-4 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+
+        <div class="p-6 border rounded-lg shadow-md overflow-hidden">
+            <div class="mb-6">
+                <p class="text-gray-600 mt-2">Wähle eine Lokomotive aus der Liste, um die bisherigen Fahrten anzuzeigen.</p>
+            </div>
+            <!-- Dropdown -->
+            <div class="mb-4">
+                <label for="trainSelect" class="block text-sm font-medium text-gray-700">Wähle eine Lokomotive:</label>
+                <div class="relative">
+                    <select id="trainSelect" name="trainSelect"
+                            style="font-family: monospace;"
+                            class="mt-1 block w-full p-2 pl-10 pr-3 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500">
+                        <option value="" disabled selected>Bitte eine Lokomotive wählen</option>
+                        @foreach (var train in Model.LocsData)
+                        {
+                            if (string.IsNullOrEmpty(train?.DisplayName?.Trim())) continue;
+
+                            string nameCol = train.DisplayName;
+                            string driverAccessor = $"{train.DriverName}_{train.ObjectId}";
+                            string driverCol = $"{train.DriverName}::{train.ObjectId}";
+
+                            <option value="@($"{driverAccessor}")" data-display-name="@(train.DisplayName)">
+                                @($"{nameCol} ► {driverCol}")
+                            </option>
+                        }
+                    </select>
+                    <i class="fas fa-train absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500"></i>
+                </div>
+            </div>
+
+            <!-- Datumsauswahl -->
+            <div class="mb-4 flex justify-between">
+                <div class="w-1/2 pr-2">
+                    <label for="startDate" class="block text-sm font-medium text-gray-700">Startdatum</label>
+                    <input type="date" id="startDate" class="w-full p-2 border border-gray-300 rounded-md" />
+                </div>
+                <div class="w-1/2 pl-2">
+                    <label for="endDate" class="block text-sm font-medium text-gray-700">Enddatum</label>
+                    <input type="date" id="endDate" class="w-full p-2 border border-gray-300 rounded-md" />
+                </div>
+            </div>
+
+            <!-- Grid für Fahrplan -->
+            <div id="trainScheduleGrid" class="w-full h-96 mt-6"></div>
+
+        </div>
+
+        <div id="noDataContainer" class="bg-white shadow-lg rounded-lg overflow-hidden p-4 text-center flex items-center justify-center">
+            <div>
+                <i class="fas fa-info-circle text-4xl text-gray-500 mb-4"></i>
+                <h5 class="text-xl font-semibold text-gray-700">Keine Daten verfügbar</h5>
+
+                <p class="text-sm text-gray-600 mt-4 py-8">
+                    Es wurden keine Fahrten oder Daten zum Laden gefunden. Möglicherweise sind noch keine Fahrten aufgezeichnet
+                    oder es gibt keine verfügbaren Daten für die ausgewählte Lokomotive. Bitte wähle eine Lokomotive aus,
+                    um die entsprechenden Fahrten und Daten anzuzeigen. Stelle sicher, dass die Lokomotive korrekt mit der
+                    CommandStation synchronisiert ist, um vollständige Informationen zu erhalten.
+                </p>
+            </div>
+        </div>
+
+        <div id="dataContainer" class="bg-white shadow-lg rounded-lg overflow-hidden p-4" style="display: none;">
+
+            <div class="mb-4 text-center">
+                <img id="locImage" src=""
+                     alt="" style="max-width: 350px; max-height: 150px; width: 100%; height: auto;" class="mx-auto mt-2">
+                <h5 class="text-xl font-semibold text-gray-800" id="locNameDisplay"></h5>
+            </div>
+
+            <!-- Ride Stats Section -->
+            <div class="text-gray-700 text-sm">
+                <h6 class="text-lg font-medium text-gray-600 flex items-center mb-1">
+                    <i class="fas fa-train mr-2"></i> Fahrten
+                </h6>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li class="flex justify-between">
+                        <span>Gesamtanzahl der Fahrten:</span>
+                        <span class="font-semibold" id="totalRides">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Gesamte Betriebszeit:</span>
+                        <span class="font-semibold" id="gesamteBetriebszeit">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Ø Fahrtdauer:</span>
+                        <span class="font-semibold" id="durchschnittlicheFahrtdauer">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Mittlere Fahrtdauer (Median):</span>
+                        <span class="font-semibold" id="mittleFahrtdauer">-</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Time Analysis Section -->
+            <div class="mt-4 text-sm">
+                <h6 class="text-base font-medium text-gray-600 flex items-center"><i class="fas fa-clock mr-2"></i> Fahrzeitenanalyse</h6>
+                <div>
+                    <canvas id="timeAnalysisChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Efficiency Section -->
+            <div class="mt-4 text-sm">
+                <h6 class="text-lg font-medium text-gray-600 flex items-center mb-1">
+                    <i class="fas fa-digital-tachograph mr-2"></i> Effizienz
+                </h6>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li class="flex justify-between">
+                        <span>Ø Zeit zwischen zwei Fahrten:</span>
+                        <span class="font-semibold" id="avgTimeBetweenRides">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Max. Fahrzeit pro Tag:</span>
+                        <span class="font-semibold" id="maxDailyRuntime">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Min. Fahrzeit pro Tag:</span>
+                        <span class="font-semibold" id="minDailyRuntime">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Tage ohne Fahrten:</span>
+                        <span class="font-semibold" id="daysWithoutUsage">-</span>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Fleet Comparison Section -->
+            <div class="mt-4 text-sm">
+                <h6 class="text-lg font-medium text-gray-600 flex items-center mb-1">
+                    <i class="fas fa-users mr-2"></i> Flottenvergleich
+                </h6>
+                <ul class="list-disc pl-6 space-y-1">
+                    <li class="flex justify-between">
+                        <span>Flottenrang:</span>
+                        <span class="font-semibold" id="fleetRank">-</span>
+                    </li>
+                    <li class="flex justify-between">
+                        <span>Prozentualer Anteil an der Gesamtflotte:</span>
+                        <span class="flex justify-end ml-auto font-semibold">
+                            <span id="fleetUsagePercentage">-</span> <span>&nbsp;%</span>
+                        </span>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" type="text/css" href="/libs/w2ui-2.0/w2ui-2.0.min.css" />
+<script src="/libs/w2ui-2.0/w2ui-2.0.min.js"></script>
+<script src="/libs/chart.js"></script>
+<script>
+    const __gridName = "trainScheduleGrid";
+    const targetGridEl = $('#' + __gridName);
+
+    window.__tmpChart = null;
+
+    function formatTime(seconds) {
+        const hours = Math.floor(seconds / 3600);
+        const minutes = Math.floor((seconds % 3600) / 60);
+
+        if (hours > 0) {
+            return minutes > 0 ? `${hours} h ${minutes} Min.` : `${hours} h`;
+        }
+        if (minutes > 0) {
+            return `${minutes} Min.`;
+        }
+
+        return `${seconds} Sek.`;
+    }
+
+    function formatDays(days) {
+        if (days >= 1) {
+            return `${days.toFixed(2)} Tage`;
+        }
+        const hours = days * 24;
+        if (hours >= 1) {
+            return `${hours.toFixed(1)} Stunden`;
+        }
+        const minutes = hours * 60;
+        if (minutes >= 1) {
+            return `${Math.floor(minutes)} Minuten`;
+        }
+        const seconds = minutes * 60;
+        return `${Math.floor(seconds)} Sek.`;
+    }
+
+    function initTrainScheduleGrid() {
+        targetGridEl.w2grid({
+            name: __gridName,
+            show: {
+                toolbar: false,
+                footer: true
+            },
+            columns: [
+                { field: 'recid', hidden: true },
+                { field: 'DepartureTime', text: 'Start', size: '20%' },
+                { field: 'StopTime', text: 'Stop', size: '20%' },
+                { field: 'DurationSeconds', text: 'Fahrzeit (Sekunden)', size: '10%' }
+            ],
+            records: []
+        });
+    }
+
+    $('#trainSelect').change(function() {
+        loadFilteredData();
+    });
+
+    $('#startDate, #endDate').change(function() {
+        loadFilteredData();
+    });
+
+    function loadFilteredData() {
+        const trainId = $('#trainSelect').val();
+        const startDate = $('#startDate').val();
+        const endDate = $('#endDate').val();
+
+        const locName = __getTrainSelectedName();
+        const displayName = $('#trainSelect option:selected').data('display-name');
+        $('#locNameDisplay').text(locName);
+        const newImageUrl = window.getServiceUrl() + '/api/locimg/file/' + displayName + ".png";
+        $('#locImage').attr('src', newImageUrl);
+
+        if (!trainId) { return; }
+
+        const token = "@Model.BearerToken";
+        const url = window.getServiceUrl() + `/api/TravelingData/Schedules?selector=${trainId}&startDate=${startDate}&endDate=${endDate}`;
+
+        // https://railhq.io:5001/api/LoggerData?driverName=ecos&objectId=1001
+        const parts = trainId.split('_');
+        const driverName = parts[0]; // "ecos"
+        const objectId = parts[1]; // "1001"
+        const urlStatistic = window.getServiceUrl() + `/api/LoggerData?driverName=${driverName}&objectId=${objectId}`;
+
+        // fetch Statistik
+        fetch(urlStatistic, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`  // Bearer-Token im Header setzen
+            },
+            credentials: 'include'
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        }).then(statisticData => {
+            $('#dataContainer').show();
+            $('#noDataContainer').hide();
+
+            // Fahrten
+            $('#totalRides').text(statisticData.totalRides);
+            $('#gesamteBetriebszeit').text(formatTime(statisticData.durations.totalRuntime));
+            $('#durchschnittlicheFahrtdauer').text(formatTime(statisticData.durations.averageRideDuration));
+            $('#mittleFahrtdauer').text(formatTime(statisticData.durations.medianRideDuration));
+
+            // Time Analysis
+            $('#morningRides').text(statisticData.timeAnalysis.morningRides);
+            $('#afternoonRides').text(statisticData.timeAnalysis.afternoonRides);
+            $('#eveningRides').text(statisticData.timeAnalysis.eveningRides);
+            $('#nightRides').text(statisticData.timeAnalysis.nightRides);
+
+            // Efficiency
+            $('#avgTimeBetweenRides').text(formatDays(statisticData.efficiency.averageTimeBetweenRides));
+            $('#maxDailyRuntime').text(formatTime(statisticData.efficiency.maxDailyRuntime));
+            $('#minDailyRuntime').text(formatTime(statisticData.efficiency.minDailyRuntime));
+            $('#daysWithoutUsage').text(statisticData.efficiency.daysWithoutUsage);
+
+            // Fleet Comparison
+            $('#fleetRank').text(statisticData.fleetComparison.fleetRank);
+            $('#fleetUsagePercentage').text(statisticData.fleetComparison.percentageOfTotalFleetUsage.toFixed(2));
+
+            const timeAnalysisData = {
+                labels: ['Morgen', 'Nachmittag', 'Abend', 'Nacht'],
+                datasets: [{
+                    data: [
+                        statisticData.timeAnalysis.morningRides,
+                        statisticData.timeAnalysis.afternoonRides,
+                        statisticData.timeAnalysis.eveningRides,
+                        statisticData.timeAnalysis.nightRides
+                    ],
+                    backgroundColor: ['#FF6347', '#FF9900', '#4CAF50', '#2196F3'], // Farben für die Segmente
+                    hoverBackgroundColor: ['#FF4500', '#FF8C00', '#388E3C', '#1976D2']
+                }]
+            };
+
+            const timeAnalysisOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'left', // Position der Legende anpassen, wenn nötig
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return " " + tooltipItem.raw + ' Fahrten';
+                            }
+                        }
+                    }
+                },
+                layout: {
+                    padding: 20 // Abstand rund um das Diagramm
+                }
+            };
+
+            const ctx = document.getElementById('timeAnalysisChart').getContext('2d');
+            if (window.__tmpChart != null) {
+                window.__tmpChart.destroy();
+            }
+            window.__tmpChart = new Chart(ctx, {
+                type: 'pie',
+                data: timeAnalysisData,
+                options: timeAnalysisOptions
+            });
+
+
+        }).catch(error => {
+            console.error("Failed:", error);
+        });
+
+        // fetch Fahrzeiten
+        fetch(url, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`  // Bearer-Token im Header setzen
+            },
+            credentials: 'include'
+        }).then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        }).then(tripData => {
+            const grid = w2ui[__gridName];
+            if (grid) {
+                grid.clear();
+                grid.records = tripData;
+                grid.refresh();
+            }
+        }).catch(error => {
+            console.error("Failed:", error);
+        });
+    }
+
+    $(document).ready(function() {
+        initTrainScheduleGrid();
+    });
+</script>
+

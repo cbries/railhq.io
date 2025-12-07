@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "FileInfoHelper": {
+      "commandName": "Project",
+      "commandLineArgs": "$(SolutionDir)\\setup\\railhqGatewaySetup.exe\r\n"
+    }
+  }
+}

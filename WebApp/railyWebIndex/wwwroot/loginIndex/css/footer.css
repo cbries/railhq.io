@@ -1,0 +1,26 @@
+﻿.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background: #f8f9fa;
+    border-top: 1px solid #ddd;
+    z-index: 1000;
+}
+
+.footer p {
+    margin: 0;
+}
+
+    .footer a {
+        text-decoration: none;
+        color: #999999;
+        margin-left: 10px;
+    }
+
+.footer a:hover {
+    text-decoration: underline;
+}

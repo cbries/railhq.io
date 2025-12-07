@@ -1,0 +1,146 @@
+﻿{
+  "18x6": {
+    "identifier": "Block_2",
+    "coord": {
+      "x": 18,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "24x6": {
+    "identifier": "Track_1",
+    "coord": {
+      "x": 24,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 13,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "10x6": {
+    "identifier": "Block_1",
+    "coord": {
+      "x": 10,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "14x6": {
+    "identifier": "Sensor_2",
+    "coord": {
+      "x": 14,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "23x6": {
+    "identifier": "Track_3",
+    "coord": {
+      "x": 23,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "17x6": {
+    "identifier": "Sensor_3",
+    "coord": {
+      "x": 17,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "7x6": {
+    "identifier": "Track_2",
+    "coord": {
+      "x": 7,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 13,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "22x6": {
+    "identifier": "Sensor_4",
+    "coord": {
+      "x": 22,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "16x6": {
+    "identifier": "Track_4",
+    "coord": {
+      "x": 16,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "9x6": {
+    "identifier": "Sensor_1",
+    "coord": {
+      "x": 9,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "8x6": {
+    "identifier": "Track_6",
+    "coord": {
+      "x": 8,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "15x6": {
+    "identifier": "Track_5",
+    "coord": {
+      "x": 15,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  }
+}

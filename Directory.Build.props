@@ -1,0 +1,52 @@
+<Project>
+  <PropertyGroup>
+    <!-- Metainformationen -->
+    <AssemblyTitle>railhq.io</AssemblyTitle>
+    <AssemblyDescription>railHQ.io offers a Software-as-a-Service (SaaS) platform designed to control, manage, and automate the operation of model railway trains and accessories.</AssemblyDescription>
+    <AssemblyCompany>riesolution</AssemblyCompany>
+    <AssemblyProduct>railhq.io</AssemblyProduct>
+    <AssemblyCopyright>Copyright © 2025 riesolution - All rights reserved.</AssemblyCopyright>
+    <AssemblyTrademark>railhq.io by riesolution</AssemblyTrademark>
+    <!--
+    <AssemblyCulture></AssemblyCulture>
+    -->
+
+    <!-- Versionierung: Wird aus version.txt gelesen -->
+    <VersionFile>$([System.IO.Path]::Combine($(MSBuildThisFileDirectory), 'version.txt'))</VersionFile>
+    <VersionFromFile Condition="Exists('$(VersionFile)')">$([System.IO.File]::ReadAllText('$(VersionFile)').Trim())</VersionFromFile>
+    <VersionFromFile Condition="'$(VersionFromFile)' == ''">1.61</VersionFromFile>
+    <Version>$(VersionFromFile)</Version>
+    <AssemblyVersion>$(VersionFromFile).0</AssemblyVersion>
+    <FileVersion>$(VersionFromFile).0</FileVersion>
+    <InformationalVersion>$(VersionFromFile)</InformationalVersion>
+
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <NoWarn>$(NoWarn);NU1900;ASP0019;IDE0052;CS0414;CS1998;ASP0013;CA1416;CS0618</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup>
+	  <SolutionDir>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)'))</SolutionDir>
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <IsWindows Condition="'$(OS)' == 'Windows_NT'">true</IsWindows>
+    <IsContainer Condition="'$(OS)' != 'Windows_NT'">true</IsContainer>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' == 'Windows_NT'">
+    <DefineConstants>$(DefineConstants);WINDOWS_BUILD</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(OS)' != 'Windows_NT'">
+    <DefineConstants>$(DefineConstants);LINUX_BUILD</DefineConstants>
+  </PropertyGroup>
+
+  <!--
+  <PropertyGroup>
+    <DefineConstants>CONTAINER_BUILD;LINUX_BUILD;$(DefineConstants);</DefineConstants>
+  </PropertyGroup>
+  -->
+</Project>

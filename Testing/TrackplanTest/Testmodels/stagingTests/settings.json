@@ -1,0 +1,55 @@
+﻿{
+  "locomotives": [],
+  "routes": [],
+  "blockSensors": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_3[-]",
+      "length": 100,
+      "sensorEnter": "Sensor_2",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_1"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_3[+]",
+      "length": 100,
+      "sensorEnter": "Sensor_1",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_2"
+    }
+  ],
+  "sensors": [
+    {
+      "name": "Sensor_2",
+      "provider": "ecos",
+      "address": "2"
+    },
+    {
+      "name": "Sensor_1",
+      "provider": "ecos",
+      "address": "1"
+    }
+  ],
+  "accessories": [],
+  "stagings": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1",
+      "blocks": [
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "Block_1_0",
+          "length": 100,
+          "sensorEnter": "Sensor_4",
+          "sensorOcc": "",
+          "sensorIn": "Sensor_3"
+        }
+      ]
+    }
+  ]
+}

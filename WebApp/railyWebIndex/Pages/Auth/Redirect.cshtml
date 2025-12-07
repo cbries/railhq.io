@@ -1,0 +1,19 @@
+﻿@page
+@using railyWebIndex
+@model railyWebIndex.Pages.Auth.RedirectModel
+@{
+    Layout = "_LayoutLogin";
+    ViewData["Title"] = Globals.AppName + " Anmeldung";
+    ViewData["productName"] = Globals.ProductName;
+}
+
+<div class="alert alert-info text-center mt-4">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    Sie werden in Kürze weitergeleitet. Falls nichts passiert, <a href="@Model.RedirectUrl">klicken Sie hier</a>.
+</div>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "@Model.RedirectUrl";
+    }, 3000);
+</script>

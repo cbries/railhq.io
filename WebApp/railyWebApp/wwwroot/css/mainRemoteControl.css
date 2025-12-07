@@ -1,0 +1,125 @@
+body {
+}
+
+.copyright {
+    position: relative;
+    bottom: -30px;
+}
+
+.locname,
+.locdriver,
+.locobjectid {
+    display: inline-block;
+}
+
+.locname {
+    font-size: 5vw;
+}
+
+.locomotiveCommandField {
+    z-index: 10;
+}
+
+.reservedIndicator {
+    border-radius: 2px 2px 2px 2px; /* Abgerundete obere Ecken */
+    padding: 4px 0;
+    font-size: 12px;
+}
+
+.footerInfo {
+    position: fixed;
+    bottom: 5px;
+    font-size: 0.6em; /* Dezente Größe */
+    background: rgba(0, 0, 0, 0.6); /* Leicht transparenter Hintergrund */
+    color: white;
+    padding: 4px 10px;
+    border-radius: 8px;
+    text-align: center;
+    min-width: 100px;
+}
+
+/**
+    Circular Slider for Locomotive Speed
+*/
+
+#circularSlider .rs-overlay {
+    background-color: rgb(243 244 246 / var(--tw-bg-opacity, 1));
+}
+
+#circularSlider .rs-handle {
+    background-color: transparent;
+    border: 8px solid transparent;
+    border-right-color: black;
+    margin: -6px 0px 0px 14px !important;
+    border-width: 6px 104px 6px 4px;
+}
+
+#circularSlider .rs-handle:before {
+        display: block;
+        content: " ";
+        position: absolute;
+        height: 22px;
+        width: 22px;
+        background: black;
+        right: -11px;
+        bottom: -11px;
+        border-radius: 100px;
+    }
+
+#circularSlider .rs-handle:hover {
+        transform: scale(1.5);
+        cursor: grab;
+    }
+
+#circularSlider .rs-tooltip {
+    top: 75%;
+    font-size: 11px;
+}
+
+#circularSlider .rs-tooltip div {
+        text-align: center;
+        background: orange;
+        color: white;
+        border-radius: 4px;
+        padding: 1px 5px 2px;
+        margin-top: 4px;
+    }
+
+#circularSlider .rs-range-color {
+    background-color: #DB5959;
+}
+
+#circularSlider .rs-path-color {
+    background-color: #F0C5C5;
+}
+
+/**
+    Scrollareas for Functions and Locomotive Selector
+*/
+
+.scrollable-container {
+    max-height: 300px; /* Höhe des Scrollbereichs */
+    overflow-y: auto; /* Vertikales Scrollen aktivieren */
+    padding-right: 10px; /* Platz für Scrollleiste */
+    background-color: #f3f3f3; /* Dezenter Hintergrund für den Container */
+    border-radius: 10px; /* Abgerundete Ecken */
+}
+
+/* Scrollbar Styling */
+.scrollable-container::-webkit-scrollbar {
+    width: 4px; /* Dünnerer Scrollbalken */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb {
+    background-color: #888; /* Farbe des Scrollbalkens */
+    border-radius: 10px; /* Abgerundete Ecken */
+}
+
+.scrollable-container::-webkit-scrollbar-thumb:hover {
+    background-color: #555; /* Hover-Effekt: Dunklere Farbe */
+}
+
+.scrollable-container::-webkit-scrollbar-track {
+    background: #f0f0f0; /* Hintergrund der Scrollbar-Tracks */
+    border-radius: 10px;
+}
