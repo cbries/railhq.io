@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\libShared\libShared.csproj" />
+    <ProjectReference Include="..\libUtilities\libUtilities.csproj" />
+  </ItemGroup>
+
+</Project>

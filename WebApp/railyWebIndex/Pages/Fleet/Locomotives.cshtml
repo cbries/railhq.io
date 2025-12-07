@@ -1,0 +1,194 @@
+@page
+@model railyWebIndex.Pages.Fleet.LocomotivesModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Flottendaten: Lokomotiven";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Flottendaten: Lokomotiven";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+<div class="container mx-auto my-3 px-4">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        @if (Model.RideStats.Count > 0)
+        {
+            @foreach (var train in Model.RideStats)
+            {
+                var displayName = train?.DisplayName?.Trim();
+                if (string.IsNullOrEmpty(displayName)) continue;
+
+                <div class="p-6 border rounded-lg shadow-md overflow-hidden">
+                    <div class="p-6">
+                        <div class="mb-4 text-center">
+                            <img data-locimg="@(displayName).png" alt="@(displayName)"
+                                 style="max-width: 350px; max-height: 150px; width: 100%; height: auto;" class="mx-auto mt-2 loc-image">
+                            <h5 class="text-xl font-semibold text-gray-800">
+                                @(displayName)
+                            </h5>
+                            <div style="font-size: 0.8em;">@(train.DriverName)::@(train.ObjectId)</div>
+                        </div>
+
+                        <!-- Ride Stats Section -->
+                        <div class="text-gray-700 text-sm">
+                            <h6 class="text-lg font-medium text-gray-600 flex items-center mb-1">
+                                <i class="fas fa-train mr-2"></i> Fahrten
+                            </h6>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li class="flex justify-between">
+                                    <span>Gesamtanzahl der Fahrten:</span>
+                                    <span class="font-semibold">@train.TotalRides</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Gesamte Betriebszeit:</span>
+                                    <span class="font-semibold">@HelperTime.FormatTime(train.Durations.TotalRuntime)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Ø Fahrtdauer:</span>
+                                    <span class="font-semibold">@HelperTime.FormatTime(train.Durations.AverageRideDuration)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Mittlere Fahrtdauer (Median):</span>
+                                    <span class="font-semibold">@HelperTime.FormatTime(train.Durations.MedianRideDuration)</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Time Analysis Section -->
+                        <div class="mt-4 text-sm">
+                            <h6 class="text-base font-medium text-gray-600 flex items-center"><i class="fas fa-clock mr-2"></i> Fahrzeitenanalyse</h6>
+                            <div>
+                                <canvas id="timeAnalysisChart2_@train.ObjectId"></canvas>
+                            </div>
+                            <script>
+                                document.addEventListener("DOMContentLoaded",
+                                    function() {
+                                        const trainId = '@train.ObjectId';
+                                        const timeAnalysisData = {
+                                            labels: ['Morgen', 'Nachmittag', 'Abend', 'Nacht'],
+                                            datasets: [
+                                                {
+                                                    data: [
+                                                        @train.TimeAnalysis.MorningRides,
+                                                        @train.TimeAnalysis.AfternoonRides,
+                                                        @train.TimeAnalysis.EveningRides,
+                                                        @train.TimeAnalysis.NightRides
+                                                    ],
+                                                    backgroundColor: ['#FF6347', '#FF9900', '#4CAF50', '#2196F3'], // Farben für die Segmente
+                                                    hoverBackgroundColor: ['#FF4500', '#FF8C00', '#388E3C', '#1976D2']
+                                                }
+                                            ]
+                                        };
+
+                                        const ctx = document.getElementById('timeAnalysisChart2_' + trainId).getContext('2d');
+                                        new Chart(ctx,
+                                            {
+                                                type: 'pie',
+                                                data: timeAnalysisData,
+                                                options: {
+                                                    responsive: true,
+                                                    maintainAspectRatio: false,
+                                                    elements: { arc: { borderWidth: 1 } },
+                                                    plugins: {
+                                                        legend: { position: 'left' },
+                                                        tooltip: {
+                                                            callbacks: {
+                                                                label: function(tooltipItem) {
+                                                                    return " " + tooltipItem.raw + ' Fahrten';
+                                                                }
+                                                            }
+                                                        }
+                                                    },
+                                                    layout: {
+                                                        padding: 10
+                                                    }
+                                                }
+                                            });
+                                    });
+                            </script>
+                        </div>
+                        <!-- Efficiency Section -->
+                        <div class="mt-4 text-sm">
+                            <h6 class="text-lg font-medium text-gray-600 flex items-center mb-1">
+                                <i class="fas fa-digital-tachograph mr-2"></i> Effizienz
+                            </h6>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li class="flex justify-between">
+                                    <span>Ø Zeit zwischen zwei Fahrten:</span>
+                                    <span class="font-semibold">@HelperTime.FormatDays(train.Efficiency.AverageTimeBetweenRides / 60)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Max. Fahrzeit pro Tag:</span>
+                                    <span class="font-semibold">@HelperTime.FormatTime(train.Efficiency.MaxDailyRuntime)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Min. Fahrzeit pro Tag:</span>
+                                    <span class="font-semibold">@HelperTime.FormatTime(train.Efficiency.MinDailyRuntime)</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Tage ohne Fahrten:</span>
+                                    <span class="font-semibold">@train.Efficiency.DaysWithoutUsage</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <!-- Fleet Comparison Section -->
+                        <div class="mt-4 text-sm">
+                            <h6 class="text-lg font-medium text-gray-600 flex items-center mb-1">
+                                <i class="fas fa-users mr-2"></i> Flottenvergleich
+                            </h6>
+                            <ul class="list-disc pl-6 space-y-1">
+                                <li class="flex justify-between">
+                                    <span>Flottenrang:</span>
+                                    <span class="font-semibold">@train.FleetComparison.FleetRank</span>
+                                </li>
+                                <li class="flex justify-between">
+                                    <span>Prozentualer Anteil an der Gesamtflotte:</span>
+                                    <span class="font-semibold">@train.FleetComparison.PercentageOfTotalFleetUsage.ToString("F2") %</span>
+                                </li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            <div class="p-6 border rounded-lg shadow-md overflow-hidden" style="min-height: 500px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+                <div class="text-center text-gray-400">
+                    <i class="fas fa-info-circle text-4xl text-gray-500 mb-4"></i> <!-- Symbol -->
+                    <h5 class="text-xl font-semibold text-gray-700">Keine Daten verfügbar</h5> <!-- Überschrift -->
+
+                    <p class="text-sm text-gray-600 mt-4 py-8">
+                        Damit Lokomotiven angezeigt werden können, müssen diese mit Deiner CommandStation (z.B. ESU ECoS) synchronisiert sein.
+                        <b>Es werden nur Lokomotiven angezeigt, die bereits in Betrieb waren.</b> Die angezeigten Daten basieren auf den Informationen
+                        Deiner CommandStation und spiegeln die Nutzung sowie den Status Deiner Lokomotiven wider. So kannst Du sicherstellen,
+                        dass nur die relevantesten und aktuellsten Modelle in Deiner Übersicht erscheinen – ideal für eine
+                        präzise Steuerung und Planung Deiner Eisenbahnfahrten.
+                    </p>
+                </div>
+            </div>
+
+        }
+    </div>
+</div>
+
+<script src="/libs/chart.js"></script>
+
+<script>
+    // Set image URLs dynamically based on the service URL
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('img[data-locimg]').forEach(function(img) {
+            var locimg = img.getAttribute('data-locimg');
+            img.src = window.getServiceUrl() + '/api/locimg/file/' + locimg;
+        });
+    });
+</script>

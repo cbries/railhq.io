@@ -1,0 +1,142 @@
+﻿{
+  "uuid": "78256b2c-9030-4be5-bbf2-932decc4bbb1",
+  "debugging": {
+    "runtime": true,
+    "accessories": false,
+    "locomotives": false,
+    "routes": false,
+    "exceptions": false
+  },
+  "locomotives": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "demo",
+      "objectId": 9900,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "demo",
+      "objectId": 9901,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "z21",
+      "objectId": 9,
+      "assignedToBlock": "Block_1",
+      "enterSide": "Plus",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 0,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 3,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "left",
+      "orientationPrevious": "none"
+    }
+  ],
+  "routes": [],
+  "blockSensors": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "Sensor_1",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_2",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    }
+  ],
+  "sensors": [
+    {
+      "name": "Sensor_2",
+      "provider": "z21",
+      "address": "2:2"
+    },
+    {
+      "name": "Sensor_1",
+      "provider": "z21",
+      "address": "2:1"
+    }
+  ],
+  "accessories": [
+    {
+      "planfieldControlIdentifier": "Switch_1",
+      "accessoryDriver": "z21",
+      "accessoryIdentifier": "Weiche 2",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    },
+    {
+      "planfieldControlIdentifier": "Switch_2",
+      "accessoryDriver": "z21",
+      "accessoryIdentifier": "Weiche 1",
+      "invert": false,
+      "invertUi": false,
+      "isMaintenaceEnabled": false
+    }
+  ],
+  "stagings": []
+}

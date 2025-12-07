@@ -1,0 +1,178 @@
+{
+  "2x1": {
+   "editor": {
+    "themeId": 13,
+    "themeDimIdx": 3
+   },
+   "identifier": "TK_0",
+   "coord": {
+    "x": 2,
+    "y": 1
+   }
+  },
+  "2x6": {
+   "editor": {
+    "themeId": 10,
+    "themeDimIdx": 1
+   },
+   "identifier": "TK_1",
+   "coord": {
+    "x": 2,
+    "y": 6
+   }
+  },
+  "3x7": {
+   "editor": {
+    "themeId": 10,
+    "themeDimIdx": 2
+   },
+   "identifier": "TK_2",
+   "coord": {
+    "x": 3,
+    "y": 7
+   }
+  },
+  "3x9": {
+   "editor": {
+    "themeId": 10,
+    "themeDimIdx": 2
+   },
+   "identifier": "TK_3",
+   "coord": {
+    "x": 3,
+    "y": 9
+   }
+  },
+  "2x8": {
+   "editor": {
+    "themeId": 10,
+    "themeDimIdx": 3
+   },
+   "identifier": "TK_4",
+   "coord": {
+    "x": 2,
+    "y": 8
+   }
+  },
+  "2x10": {
+   "editor": {
+    "themeId": 13,
+    "themeDimIdx": 1
+   },
+   "identifier": "TK_5",
+   "coord": {
+    "x": 2,
+    "y": 10
+   }
+  },
+  "5x9": {
+   "editor": {
+    "themeId": 10,
+    "themeDimIdx": 0
+   },
+   "identifier": "TK_6",
+   "coord": {
+    "x": 5,
+    "y": 9
+   }
+  },
+  "4x10": {
+   "editor": {
+    "themeId": 11,
+    "themeDimIdx": 2
+   },
+   "identifier": "TK_7",
+   "coord": {
+    "x": 4,
+    "y": 10
+   }
+  },
+  "5x10": {
+   "editor": {
+    "themeId": 10,
+    "themeDimIdx": 0
+   },
+   "identifier": "TK_8",
+   "coord": {
+    "x": 5,
+    "y": 10
+   }
+  },
+  "4x7": {
+   "editor": {
+    "themeId": 150,
+    "themeDimIdx": 0
+   },
+   "identifier": "BK_1",
+   "coord": {
+    "x": 4,
+    "y": 7
+   }
+  },
+  "6x9": {
+   "editor": {
+    "themeId": 150,
+    "themeDimIdx": 0
+   },
+   "identifier": "BK_2",
+   "coord": {
+    "x": 6,
+    "y": 9
+   }
+  },
+  "6x10": {
+   "editor": {
+    "themeId": 151,
+    "themeDimIdx": 0
+   },
+   "identifier": "BK_3",
+   "coord": {
+    "x": 6,
+    "y": 10
+   }
+  },
+  "2x2": {
+   "editor": {
+    "themeId": 150,
+    "themeDimIdx": 1
+   },
+   "identifier": "BK_0",
+   "coord": {
+    "x": 2,
+    "y": 2
+   }
+  },
+  "4x9": {
+   "editor": {
+    "themeId": 51,
+    "themeDimIdx": 0
+   },
+   "identifier": "SW_0",
+   "coord": {
+    "x": 4,
+    "y": 9
+   }
+  },
+  "2x7": {
+   "editor": {
+    "themeId": 50,
+    "themeDimIdx": 3
+   },
+   "identifier": "SW_1",
+   "coord": {
+    "x": 2,
+    "y": 7
+   }
+  },
+  "2x9": {
+   "editor": {
+    "themeId": 50,
+    "themeDimIdx": 3
+   },
+   "identifier": "SW_2",
+   "coord": {
+    "x": 2,
+    "y": 9
+   }
+  }
+}

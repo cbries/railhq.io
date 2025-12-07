@@ -1,0 +1,193 @@
+@page
+@model railyWebIndex.Pages.DownloadsModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Downloads";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Downloads";
+
+    // GitHub Release URL - passe OWNER und REPO an dein Repository an
+    var githubOwner = "cbries";
+    var githubRepo = "railhq.io";
+    var version = Model.LatestVersion ?? "1.61";
+    var releaseBaseUrl = $"https://github.com/{githubOwner}/{githubRepo}/releases/download/v{version}";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="/cssPages/downloads.css" />
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+<div class="grid grid-cols-1 gap-6 p-3 md:grid-cols-2">
+    
+    <div class="p-6 shadow-md" style="background-color: #f4f4f4;">
+        <h3 style="font-weight: bold; font-size: 1.1em;">
+            <i class="fas fa-download dashboardTriangle"></i> railhq.io - Gateway v@version
+        </h3>
+        <br />
+        
+        <p style="margin-bottom: 20px; color: #666;">
+            Wähle die passende Version für dein Betriebssystem:
+        </p>
+
+        <!-- Windows -->
+        <div class="download-section" style="margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h5 style="margin-bottom: 15px;">
+                <i class="fab fa-windows" style="color: #0078d4; font-size: 1.3em;"></i> Windows
+            </h5>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="@releaseBaseUrl/railhqGateway-windows-x64-@(version).zip" class="btn btn-primary">
+                    <i class="fas fa-download"></i> x64 (64-bit)
+                </a>
+                <a href="@releaseBaseUrl/railhqGateway-windows-arm64-@(version).zip" class="btn btn-outline-primary">
+                    <i class="fas fa-download"></i> ARM64
+                </a>
+            </div>
+            <p style="font-size: 0.85em; color: #888; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Für die meisten Windows-PCs: <strong>x64</strong>
+            </p>
+        </div>
+
+        <!-- Linux -->
+        <div class="download-section" style="margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h5 style="margin-bottom: 15px;">
+                <i class="fab fa-linux" style="color: #fcc624; font-size: 1.3em;"></i> Linux
+            </h5>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="@releaseBaseUrl/railhqGateway-linux-x64-@(version).tar.gz" class="btn btn-warning">
+                    <i class="fas fa-download"></i> x64 (64-bit)
+                </a>
+                <a href="@releaseBaseUrl/railhqGateway-linux-arm64-@(version).tar.gz" class="btn btn-outline-warning">
+                    <i class="fas fa-download"></i> ARM64
+                </a>
+                <a href="@releaseBaseUrl/railhqGateway-linux-arm-@(version).tar.gz" class="btn btn-outline-warning">
+                    <i class="fas fa-download"></i> ARM (32-bit)
+                </a>
+            </div>
+            <p style="font-size: 0.85em; color: #888; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Für Debian, Ubuntu, Fedora etc.: <strong>x64</strong>
+            </p>
+        </div>
+
+        <!-- Raspberry Pi -->
+        <div class="download-section" style="margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h5 style="margin-bottom: 15px;">
+                <i class="fab fa-raspberry-pi" style="color: #c51a4a; font-size: 1.3em;"></i> Raspberry Pi
+            </h5>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="@releaseBaseUrl/railhqGateway-linux-arm64-@(version).tar.gz" class="btn btn-danger">
+                    <i class="fas fa-download"></i> Pi 4/5 (ARM64)
+                </a>
+                <a href="@releaseBaseUrl/railhqGateway-linux-arm-@(version).tar.gz" class="btn btn-outline-danger">
+                    <i class="fas fa-download"></i> Pi 3 (ARM)
+                </a>
+            </div>
+            <p style="font-size: 0.85em; color: #888; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Pi 4/5 mit 64-bit OS: <strong>ARM64</strong> | Pi 3 oder 32-bit OS: <strong>ARM</strong>
+            </p>
+        </div>
+
+        <!-- macOS -->
+        <div class="download-section" style="margin-bottom: 25px; padding: 15px; background: #fff; border-radius: 10px; box-shadow: 0 2px 5px rgba(0,0,0,0.1);">
+            <h5 style="margin-bottom: 15px;">
+                <i class="fab fa-apple" style="color: #555; font-size: 1.3em;"></i> macOS
+            </h5>
+            <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+                <a href="@releaseBaseUrl/railhqGateway-macos-arm64-@(version).tar.gz" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Apple Silicon (M1/M2/M3)
+                </a>
+                <a href="@releaseBaseUrl/railhqGateway-macos-x64-@(version).tar.gz" class="btn btn-outline-secondary">
+                    <i class="fas fa-download"></i> Intel
+                </a>
+            </div>
+            <p style="font-size: 0.85em; color: #888; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Für neuere Macs (ab 2020): <strong>Apple Silicon</strong>
+            </p>
+        </div>
+
+        <!-- Windows Systray -->
+        <div class="download-section" style="margin-bottom: 15px; padding: 15px; background: #f0f0f0; border-radius: 10px;">
+            <h5 style="margin-bottom: 15px;">
+                <i class="fas fa-desktop" style="color: #6c757d; font-size: 1.2em;"></i> Windows Systray (optional)
+            </h5>
+            <a href="@releaseBaseUrl/railhqSystray-windows-x64-@(version).zip" class="btn btn-outline-secondary btn-sm">
+                <i class="fas fa-download"></i> Systray x64
+            </a>
+            <p style="font-size: 0.85em; color: #888; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Zeigt das Gateway-Icon im Windows-Systemtray
+            </p>
+        </div>
+
+        <hr style="margin: 20px 0; border-top: 1px solid #ddd;">
+        
+        <p style="font-size: 0.85em; color: #666;">
+            <i class="fab fa-github"></i> Alle Downloads auch auf 
+            <a href="https://github.com/@githubOwner/@githubRepo/releases" target="_blank">GitHub Releases</a>
+        </p>
+    </div>
+    
+    <div class="p-6 shadow-md" style="background-color: #f4f4f4; padding: 20px;">
+        <h3 style="font-weight: bold; font-size: 1.2em; margin-bottom: 15px;">
+            <i class="fas fa-question-circle dashboardTriangle"></i> Installation
+        </h3>
+        
+        <!-- Windows -->
+        <div style="margin-bottom: 25px; padding: 15px; background: #e3f2fd; border-radius: 8px;">
+            <h5><i class="fab fa-windows" style="color: #0078d4;"></i> Windows</h5>
+            <ol style="padding-left: 20px; margin-top: 10px;">
+                <li>ZIP-Archiv herunterladen und entpacken</li>
+                <li><code>railhqGateway.json</code> konfigurieren</li>
+                <li><code>railhqGateway.exe</code> starten</li>
+            </ol>
+        </div>
+
+        <!-- Linux -->
+        <div style="margin-bottom: 25px; padding: 15px; background: #fff8e1; border-radius: 8px;">
+            <h5><i class="fab fa-linux" style="color: #fcc624;"></i> Linux / Raspberry Pi</h5>
+            <pre style="background-color: #222; color: #fff; padding: 10px; border-radius: 5px; font-size: 0.85em; overflow-x: auto;">tar -xzf railhqGateway-linux-*.tar.gz
+cd railhqGateway-linux-*
+chmod +x railhqGateway
+./railhqGateway</pre>
+        </div>
+
+        <!-- macOS -->
+        <div style="margin-bottom: 25px; padding: 15px; background: #f5f5f5; border-radius: 8px;">
+            <h5><i class="fab fa-apple" style="color: #555;"></i> macOS</h5>
+            <pre style="background-color: #222; color: #fff; padding: 10px; border-radius: 5px; font-size: 0.85em; overflow-x: auto;">tar -xzf railhqGateway-macos-*.tar.gz
+cd railhqGateway-macos-*
+chmod +x railhqGateway
+./railhqGateway</pre>
+            <p style="font-size: 0.85em; color: #888; margin-top: 10px;">
+                <i class="fas fa-info-circle"></i> Bei "nicht verifizierter Entwickler": Rechtsklick → Öffnen
+            </p>
+        </div>
+
+        <hr style="margin: 20px 0; border-top: 1px solid #ddd;">
+
+        <div style="margin-bottom: 20px;">
+            <i class="fas fa-book help-icon" style="color: #17a2b8;"></i>
+            <strong>Dokumentation</strong>
+            <p>Ausführliche Anleitungen findest du in unserer 
+                <a href="/documentation/docs/tutorial-gateway/gateway-start-linux">
+                    <i class="fas fa-external-link-alt"></i> Dokumentation
+                </a>
+            </p>
+        </div>
+
+        <div>
+            <i class="fas fa-life-ring help-icon" style="color: #6c757d;"></i>
+            <strong>Support</strong>
+            <p>Bei Fragen oder Problemen: 
+                <a href="https://github.com/@githubOwner/@githubRepo/issues" target="_blank">
+                    <i class="fab fa-github"></i> GitHub Issues
+                </a>
+            </p>
+        </div>
+    </div>
+</div>

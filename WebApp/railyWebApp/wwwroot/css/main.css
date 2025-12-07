@@ -1,0 +1,1268 @@
+html, body {
+    font-family: Verdana,Arial,sans-serif;
+    background: #fcfcfc;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* hide vertical scrollbars */
+}
+
+/**
+    Countdowns
+*/
+.locomotiveCountdown {
+    display: none;
+    border-radius: 5%;
+    background-color: rgba(180, 180, 180, 0.8);
+    border: 1px solid black;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.0rem;
+    padding: 2px 7px;
+    box-shadow: 0 0 1px rgba(0, 123, 255, 0.4);
+    right: 0;
+}
+
+@keyframes rotateLocomotiveCountdown {
+    0% {
+        transform: rotate(0deg);
+        animation-timing-function: ease-in-out;
+    }
+
+    50% {
+        transform: rotate(180deg);
+        animation-timing-function: ease-out;
+    }
+
+    100% {
+        transform: rotate(360deg);
+        animation-timing-function: ease-in;
+    }
+}
+
+/**
+    Loading StateMachine
+*/
+#loading-overlay {
+    position: fixed;
+    right: 10px;
+    bottom: 40px; /* Abstand von 50 Pixeln vom unteren Rand */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    /*  visibility: hidden; */
+    border-radius: 2px;
+    font-size: 0.8em;
+}
+
+    #loading-overlay .loading-content {
+        background-color: rgba(255,255,255,0.7);
+        padding: 10px;
+        border-radius: 10px;
+        width: 310px;
+        max-width: 350px;
+    }
+
+    #loading-overlay .loading-steps {
+        list-style-type: none;
+        padding: 0;
+    }
+
+        #loading-overlay .loading-steps li {
+            margin: 3px 0;
+            display: flex;
+        }
+
+        #loading-overlay .loading-steps .step-circle {
+            width: 14px;
+            height: 14px;
+            border: 2px solid #ddd;
+            border-radius: 50%;
+            margin-right: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ddd;
+        }
+
+        #loading-overlay .loading-steps .step-completed {
+            background-color: #28a745;
+            border-color: #28a745;
+        }
+
+    #loading-overlay .loading-progress {
+        margin-top: 20px;
+        height: 10px;
+        background-color: #ddd;
+        border-radius: 5px;
+        position: relative;
+    }
+
+        #loading-overlay .loading-progress .progress-bar {
+            height: 100%;
+            width: 0;
+            background-color: #28a745;
+            border-radius: 5px;
+        }
+
+    #loading-overlay .current-step {
+        margin-top: 10px;
+        color: #555;
+    }
+
+/**
+    Loading StateMachine END
+*/
+
+div.elementLabelTxt {
+    position: relative;
+    font-weight: bold;
+}
+
+div.elementLabel {
+    position: relative;
+    opacity: 0.9;
+    /*background-color: white;*/
+}
+
+.w2ui-node,
+.ctrlItemAccessory {
+    cursor: pointer;
+}
+
+.locomotiveInfo {
+    cursor: grab;
+}
+
+/**
+    Screenshot creation progress
+*/
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+#screenshot-progress-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+    #screenshot-progress-overlay .progress-container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        text-align: center;
+        width: 250px;
+    }
+
+    #screenshot-progress-overlay .spinner {
+        width: 40px;
+        height: 40px;
+        border: 5px solid #ccc;
+        border-top-color: #3498db;
+        border-radius: 50%;
+        animation: spin 1s linear infinite;
+        margin: 0 auto 10px;
+    }
+
+    #screenshot-progress-overlay .progress-bar {
+        width: 100%;
+        height: 10px;
+        background: #ddd;
+        border-radius: 5px;
+        overflow: hidden;
+        margin-top: 10px;
+    }
+
+    #screenshot-progress-overlay .progress-fill {
+        width: 0%;
+        height: 100%;
+        background: #3498db;
+        transition: width 1s linear;
+    }
+
+/**
+    warning at the bottom of the page
+*/
+.warning {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(255, 69, 0, 0.8);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    display: none; /* Initial versteckt */
+}
+
+/*
+    invalid indicatorfor s88 
+*/
+.invalid-indicator {
+    position: relative;
+    display: inline-block;
+}
+
+    .invalid-indicator::after {
+        content: "\f071"; /* FontAwesome Exclamation Triangle */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: red;
+        font-size: 0.8em;
+        position: absolute;
+        top: 75%;
+        right: 1px; /* Abstand nach rechts */
+        transform: translateY(-50%);
+    }
+
+
+/**
+    maintenance indicator
+*/
+.maintenance-indicator {
+    position: relative;
+    display: inline-block;
+}
+
+    .maintenance-indicator::after {
+        content: "\f0ad"; /* FontAwesome Wrench */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: orange;
+        font-size: 1.2em;
+        position: absolute;
+        top: 45%;
+        right: 6px; /* Abstand nach rechts */
+        transform: translateY(-50%);
+    }
+
+/**
+    locked indicator
+*/
+.locked-indicator {
+    position: relative;
+    display: inline-block;
+}
+
+    .locked-indicator::before {
+        content: "\f023"; /* FontAwesome Lock */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: red;
+        font-size: 1.2em;
+        position: absolute;
+        top: 45%;
+        right: 6px;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+/**
+    disabled indicator
+*/
+.disabled-indicator {
+    position: relative;
+    display: inline-block;
+}
+
+    .disabled-indicator::after {
+        content: "\f05e"; /* FontAwesome Ban */
+        font-family: "Font Awesome 5 Free";
+        font-weight: 900;
+        color: gray;
+        font-size: 1.2em;
+        position: absolute;
+        top: 45%;
+        left: 6px;
+        transform: translateY(-50%);
+        z-index: 10;
+    }
+
+/**
+    The small symbol to show trackplan options.
+*/
+
+#menu-toggle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    bottom: 70px;
+    left: 15px;
+    float: left;
+    background: rgba(210, 220, 230, 0.6);
+    color: #868b92;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10000;
+}
+
+    #menu-toggle.hidden {
+        display: none;
+    }
+
+#info-overlay {
+    position: absolute;
+    left: 15px;
+    bottom: 40px;
+    min-width: 200px;
+    min-height: 100px;
+    padding: 10px;
+    background: rgba(210, 220, 230, 1);
+    color: #868b92;
+    border-radius: 8px;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 11px;
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+    pointer-events: auto;
+}
+
+/**
+    Keyboard Information Overlay
+*/
+#info-keyboard-overlay {
+    position: fixed;
+    bottom: 35px;
+    left: 235px;
+    background: rgba(210, 220, 230, 0.6);
+    color: rgb(100, 100, 100);
+    padding: 10px;
+    padding-bottom: 5px;
+    border-radius: 8px;
+    display: none;
+    font-size: 11px;
+}
+
+    #info-keyboard-overlay .shortcut {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        margin-bottom: 5px;
+    }
+
+        #info-keyboard-overlay .shortcut i {
+            /*font-size: 16px;*/
+        }
+
+/**
+    Info blocks of locomotives in the planfield.
+*/
+.locomotiveInfo {
+    position: absolute;
+    overflow: hidden;
+    display: inline-block;
+    display: flex;
+    line-height: 28px;
+    max-height: 28px;
+    height: 28px;
+    justify-content: center; /* Horizontal */
+    align-items: center; /* Vertikal */
+}
+
+    .locomotiveInfo img {
+        max-width: 70%;
+        max-height: 70%;
+    }
+
+.mirrored {
+    transform: scaleX(-1);
+}
+
+/**
+    PLANFIELD
+*/
+
+.ctrlItem {
+    width: 32px;
+    height: 32px;
+    position: absolute;
+}
+
+img.selected {
+    background-color: #800000;
+    background-color: rgba(128, 0, 0, 0.5);
+}
+
+div#planfieldItemEdit {
+    display: none;
+    z-index: 1500;
+    position: absolute;
+    background-color: white;
+    border: 1px solid lightgrey;
+    margin: 0;
+    padding: 2px;
+    padding-top: 5px;
+    padding-bottom: 0px;
+}
+
+    div#planfieldItemEdit div.spacer {
+        margin-top: 0px;
+        margin-bottom: 3px;
+        vertical-align: middle;
+        background-color: lightgrey;
+        height: 1px;
+    }
+
+    div#planfieldItemEdit div {
+        margin: 0;
+        padding: 0;
+        vertical-align: middle;
+    }
+
+        div#planfieldItemEdit div img {
+            background-color: white;
+            margin: 0;
+            padding: -5px;
+            position: relative;
+        }
+
+/**
+    / PLANFIELD
+*/
+
+#sidebar {
+}
+
+label {
+    font-weight: bold;
+    vertical-align: top;
+}
+
+/**
+    Change some Locomotive Control CSS
+*/
+
+.ui-dialog .ui-dialog-content,
+.locomotiveControlMain {
+    background-color: #f3f3f3;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+div#tplLocomotiveControl {
+}
+
+button.locomotiveCommand {
+    font-size: 10px;
+    padding: 1px;
+    margin: 3px;
+    margin-top: 5px;
+    padding: 3px;
+    float: left;
+}
+
+button.speedLevel0,
+button.speedLevel1,
+button.speedLevel2,
+button.speedLevel3,
+button.speedLevel4 {
+    font-size: 14px;
+    font-weight: bold;
+    width: 50px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.directionBackward,
+.directionForward {
+    margin: 0;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+}
+
+.locomotiveCommandField {
+    width: 100%;
+    height: 100px;
+    overflow-y: auto;
+    padding: 0px;
+}
+
+.openSettingsDialog {
+    position: absolute;
+    top: 32px;
+    right: 5px;
+    font-size: 20px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 3px;
+    border-radius: 100%;
+}
+
+.qrcodeIcon {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 3px;
+    border-radius: 100%;
+}
+
+/*
+    END Locomotive Control CSS
+*/
+/**
+    Locomotive Info Control
+*/
+.locInfoCtrl {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 40px;
+    text-align: center;
+    background-color: #e6e6e6;
+    border: 1px solid #d3d3d3;
+    -ms-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.locInfoSpeed {
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+    .locInfoSpeed > i {
+        padding: 0;
+        cursor: pointer;
+    }
+
+.locSpeedSteps button {
+    font-size: 9px;
+    font-weight: bold;
+    width: 30px;
+    padding: 4px;
+    margin: -2px;
+    cursor: pointer;
+    -moz-filter: invert(100%);
+    -webkit-filter: invert(100%);
+    filter: invert(100%);
+    color: black;
+}
+
+.locInfoStop {
+    padding-top: 2px;
+}
+
+    .locInfoStop > i {
+        cursor: pointer;
+    }
+
+.locInfoDirection {
+    padding-top: 4px;
+    padding-bottom: 3px;
+}
+
+    .locInfoDirection > i {
+        padding: 0;
+        cursor: pointer;
+    }
+/*
+    // END Locomotive Info Control
+*/
+
+div.highlightSensorBlock {
+    background-color: rgba(170, 170, 40, 0.7); /* leicht helleres Gelb */
+    box-shadow: inset 0 0 4px rgba(220, 190, 0, 0.7), inset 0 0 1px rgba(136, 119, 136, 0.4); /* heller, aber immer noch dunklerer Schatten */
+    border: none;
+    border-radius: 4px;
+}
+
+div.highlightSensor {
+    background-color: rgba(245, 247, 116, 0.85);
+    box-shadow: inset 0 0 4px rgba(255, 255, 100, 0.5), inset 0 0 1px rgba(136, 119, 136, 0.4);
+    border: none;
+    border-radius: 4px;
+}
+
+div.blockPlus {
+    background-color: #2ed157;
+    box-shadow: inset 0 0 2px rgba(0, 80, 0, 0.4);
+    border: none;
+    border-radius: 2px;
+}
+
+div.blockMinus {
+    background-color: #d1412e;
+    box-shadow: inset 0 0 2px rgba(80, 0, 0, 0.4);
+    border: none;
+    border-radius: 2px;
+}
+
+div.highlightSignal {
+    background-color: rgba(135, 206, 250, 0.6);
+    box-shadow: inset 0 0 4px rgba(0, 123, 255, 0.4), inset 0 0 1px rgba(0, 60, 128, 0.3);
+    border: none;
+    border-radius: 4px;
+}
+
+div.blockSignal {
+}
+
+div.blockVorsignal {
+}
+
+div.highlightRoute {
+    background-color: #f57a00;
+    background-color: rgba(245,122,0,0.3);
+    -webkit-box-shadow: inset 0 0 0 1px #887788;
+    -moz-box-shadow: inset 0 0 0 1px #887788;
+    box-shadow: inset 0 0 0 1px #887788;
+}
+
+/**
+    Locomotive OCC Information
+*/
+div.locomotiveInfoFrom {
+    background-color: #0fc362;
+    background-color: rgba(15, 195, 98, 1.0);
+    -webkit-box-shadow: inset 0 0 0 1px #887788;
+    -moz-box-shadow: inset 0 0 0 1px #887788;
+    box-shadow: inset 0 0 0 1px #887788;
+    border: 2px solid black;
+}
+
+div.locomotiveInfoNext {
+    background-color: #b99700;
+    background-color: rgba(185, 151, 0, 1.0);
+    -webkit-box-shadow: inset 0 0 0 1px #887788;
+    -moz-box-shadow: inset 0 0 0 1px #887788;
+    box-shadow: inset 0 0 0 1px #887788;
+    border: 2px solid black;
+}
+
+div.locomotiveInfoFinal {
+    background-color: #fa320a;
+    background-color: rgba(250, 50, 10, 1.0);
+    -webkit-box-shadow: inset 0 0 0 1px #887788;
+    -moz-box-shadow: inset 0 0 0 1px #887788;
+    box-shadow: inset 0 0 0 1px #887788;
+    border: 2px solid black;
+}
+
+div.locomotiveInfoFinalEntering {
+    width: 10px;
+    height: 10px;
+    animation: blinker 2s linear infinite;
+    background-color: #fa320a;
+    margin-right: 5px;
+}
+
+@-webkit-keyframes blinker {
+    0% {
+        opacity: 1.0;
+    }
+
+    50% {
+        opacity: 0.25;
+    }
+
+    100% {
+        opacity: 1.0;
+    }
+}
+
+div.elEditorRoot {
+    display: none;
+    position: absolute;
+    /*    top: 300px;
+    left: 120px;*/
+}
+
+    div.elEditorRoot .elEditor {
+        font-size: 14px;
+        width: 128px;
+        height: 32px;
+        /*border: 1px solid lightgray;*/
+        display: table-cell;
+        vertical-align: middle;
+    }
+
+div.textfieldElementToolbar {
+    position: absolute;
+    z-index: 999;
+    top: 100px;
+    left: 100px;
+    padding: 4px;
+    /*border: 1px solid #dfdfdf;*/
+    border-radius: 3px;
+}
+
+/**
+    StatusBar 
+*/
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+}
+
+#statusBar {
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    width: 100%;
+    background-color: #f4f4f4;
+    background-color: rgba(244, 244, 244, 1.0);
+    border-top: 1px solid #d3d3d3;
+    border-top: 1px solid rgba(211, 211, 211, 1.0);
+    z-index: 200000;
+}
+
+    #statusBar div.csStatusEcos .powerStatus {
+        position: relative;
+        float: left;
+        margin-top: 4px;
+        margin-left: 5px;
+    }
+
+    #statusBar div.csStatusZ21 .powerStatus {
+        position: relative;
+        float: left;
+        margin-top: 4px;
+        margin-left: 5px;
+    }
+
+    #statusBar div.csStatusDemo .powerStatus {
+        position: relative;
+        float: left;
+        margin-top: 4px;
+        margin-left: 5px;
+    }
+
+    #statusBar div.notAvailable {
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        background-color: #ffc107;
+        border: 1px solid #009b00;
+        border: 1px solid rgba(0, 155, 0, 0.5);
+    }
+
+    #statusBar div.online {
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        background-color: #28a745;
+        border: 1px solid #009b00;
+        border: 1px solid rgba(0, 155, 0, 0.5);
+    }
+
+    #statusBar div.offline {
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        background-color: #dc3545;
+        border: 1px solid #9b0000;
+        border: 1px solid rgba(155, 0, 0, 0.5);
+    }
+
+    #statusBar div.csStatusEcos .stationInfo,
+    #statusBar div.csStatusZ21 .stationInfo,
+    #statusBar div.csStatusDemo .stationInfo {
+        display: none;
+    }
+
+    #statusBar div.csStatusEcos .stationInfo,
+    #statusBar div.csStatusZ21 .stationInfo,
+    #statusBar div.csStatusDemo .stationInfo {
+        position: relative;
+        float: left;
+        font-size: 0.7em;
+        margin-top: 6px;
+        margin-left: 5px;
+    }
+
+    #statusBar div.serverInfoPing,
+    #statusBar div.automodeInfo,
+    #statusBar div.automodeRuntime,
+    #statusBar div.automodeCancelForce {
+        position: relative;
+        float: left;
+        font-size: 0.75em;
+        margin-top: 6px;
+        margin-left: 5px;
+    }
+
+    #statusBar div.automodeRuntime {
+        margin-left: 10px;
+    }
+
+    #statusBar div.automodeCancelForceContainer {
+        margin: 0;
+        margin-top: 2px;
+        display: none;
+    }
+
+    #statusBar div.serverInfoPing,
+    #statusBar div.automodeInfo {
+        padding-left: 10px;
+    }
+
+    #statusBar div.ctrlInfo {
+        position: relative;
+        float: right;
+        right: 42px;
+        font-size: 0.75em;
+        margin-top: 5px;
+        margin-right: 5px;
+    }
+
+    #statusBar div.autoMode {
+        float: right;
+        position: absolute;
+        padding-top: 3px;
+        right: 21px;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+    #statusBar div.logging {
+        float: right;
+        position: absolute;
+        padding-top: 3px;
+        right: 0;
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        text-align: center;
+    }
+
+        #statusBar div.logging:hover {
+            background-color: #D8D8D8;
+            background-color: rgb(216,216,216);
+            -webkit-box-shadow: inset 0 0 0 1px #887788;
+            -moz-box-shadow: inset 0 0 0 1px #887788;
+            box-shadow: inset 0 0 0 1px #887788;
+        }
+
+    #statusBar .editPlanField {
+        float: right;
+        margin-right: 5px;
+        margin-top: 2px;
+    }
+
+        #statusBar .editPlanField img {
+            background-color: white;
+            width: 22px;
+            height: 22px;
+        }
+
+/**
+    /StatusBar
+*/
+
+/**
+    DebugConsole
+*/
+
+.debugConsole {
+    position: absolute;
+    float: right;
+    right: 0;
+    bottom: 0;
+    font-size: 14px;
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-right: 1px solid #887788;
+    border-bottom: 1px solid #887788;
+    width: 500px;
+    height: 175px;
+    display: none;
+    overflow: hidden;
+    z-index: 1000;
+    padding-bottom: 38px;
+}
+
+    .debugConsole .toolbar {
+        position: relative;
+        background-color: #eaeaea;
+        color: white;
+        height: 37px;
+    }
+
+        .debugConsole .toolbar i {
+            cursor: pointer;
+            font-size: 1.5em;
+            color: #212121;
+        }
+
+        /* Positionierung der Buttons */
+        .debugConsole .toolbar .scrollTop {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+        }
+
+        .debugConsole .toolbar .scrollBottom {
+            position: absolute;
+            top: 8px;
+            left: 38px;
+        }
+
+        /* Styling für das Wordwrap-Icon */
+        .debugConsole .toolbar .wordwrapToggle {
+            cursor: pointer;
+            top: 8px;
+            right: 38px;
+            position: absolute;
+        }
+
+            /* Tooltip-Styling */
+            .debugConsole .toolbar .wordwrapToggle:hover::after {
+                content: attr(title);
+                position: absolute;
+                bottom: -25px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: #333;
+                color: white;
+                padding: 5px;
+                font-size: 12px;
+                border-radius: 5px;
+                white-space: nowrap;
+                opacity: 0.9;
+            }
+
+        .debugConsole .toolbar .clearDebug {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+        }
+
+    .debugConsole .dropdown {
+        position: absolute;
+        top: 5px;
+        left: 80px; /* Abstand nach scrollBottom */
+    }
+
+    .debugConsole .dropdown-btn {
+        background-color: #d1d8e0;
+        color: #212121;
+        padding: 5px 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 2px;
+    }
+
+    .debugConsole .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: white;
+        min-width: 320px;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+        z-index: 1;
+        border: 1px solid #ddd;
+        top: 35px;
+        left: 0;
+        color: #212121;
+        font-size: 0.8em;
+        padding-bottom: 5px;
+    }
+
+        .debugConsole .dropdown-content label {
+            display: block;
+            padding: 2px;
+            cursor: pointer;
+            font-weight: normal;
+        }
+
+        .debugConsole .dropdown-content input {
+            margin-right: 5px;
+            font-weight: normal;
+        }
+
+    .debugConsole .messageContainer {
+        white-space: pre-wrap; /* Standard: Wordwrap aktiviert */
+        overflow-x: auto; /* Scrollbar falls nötig */
+        overflow-y: scroll;
+        height: 100%;
+        font-size: 12px;
+    }
+
+        .debugConsole .messageContainer span.dt {
+            font-weight: bold;
+        }
+
+        .debugConsole .messageContainer span.msg {
+            padding-left: 7px;
+        }
+
+    /* Kein Wordwrap -> Scrollbar erzwingen */
+    .debugConsole .wordwrap-disabled {
+        white-space: pre;
+    }
+
+/**
+    Error Overlay
+*/
+
+.overlay {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 200000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlayContent {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    max-width: 400px;
+    width: 80%;
+}
+
+.overlayText {
+    font-size: 1.0em;
+    margin-bottom: 20px; /* Mehr Abstand zum Link */
+    color: #333;
+}
+
+.loginLink {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4285F4; /* Weicheres Blau */
+    color: white;
+    text-decoration: none;
+    border-radius: 0px;
+    font-size: 0.8em;
+}
+
+    .loginLink:hover {
+        background-color: #357ae8; /* Etwas dunkler beim Hover */
+    }
+
+
+/**
+    Overwrite jquery ui css stuff
+*/
+.ui-dialog-title {
+    color: #000000;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.ui-resizable-disabled .ui-resizable-handle {
+    visibility: hidden;
+}
+
+.ui-widget {
+    font-size: 0.9em;
+}
+
+/**
+    loader / spinner
+*/
+.lds-facebook {
+    display: inline-block;
+    position: absolute;
+}
+
+    .lds-facebook div {
+        display: inline-block;
+        position: absolute;
+        left: 2px;
+        width: 8px;
+        background: #00a600;
+        background: rgba(0, 166, 0, 0.9);
+        animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    }
+
+        .lds-facebook div:nth-child(1) {
+            left: 2px;
+            animation-delay: -0.24s;
+        }
+
+        .lds-facebook div:nth-child(2) {
+            left: 12px;
+            animation-delay: -0.12s;
+        }
+
+        .lds-facebook div:nth-child(3) {
+            left: 22px;
+            animation-delay: 0;
+        }
+
+@keyframes lds-facebook {
+    0% {
+        top: 2px;
+        height: 16px;
+    }
+
+    50%, 100% {
+        top: 8px;
+        height: 8px;
+    }
+}
+
+/**
+    S88 Viewer
+*/
+
+.outerSensor {
+    font-weight: bold;
+    font-family: Verdana,Arial,sans-serif;
+    font-size: 11px;
+}
+
+    .outerSensor .sensorOuterWrapper {
+        display: block;
+        vertical-align: middle;
+        margin-top: 10px;
+    }
+
+    .outerSensor .sensorPort {
+        max-height: 48px;
+        margin-left: 10px;
+    }
+
+    .outerSensor .sensorStateRed, .sensorStateGreen {
+        display: inline-block;
+        position: relative;
+        -webkit-box-shadow: inset 0 0 0 1px #111111;
+        -moz-box-shadow: inset 0 0 0 1px #111111;
+        box-shadow: inset 0 0 0 1px #111111;
+        width: 24px;
+        height: 24px;
+        margin: 1px;
+    }
+
+    .outerSensor .sensorStateRed {
+        background: red;
+    }
+
+    .outerSensor .sensorStateGreen {
+        background: green;
+    }
+
+#dialogSensorVisualization {
+    max-height: 600px;
+}
+
+/**
+    Dialogs
+*/
+.ui-dialog {
+    padding: 0;
+}
+
+    .ui-dialog .ui-dialog-titlebar {
+        padding: 0;
+    }
+
+.ui-corner-all {
+    border-radius: 0;
+}
+
+.ui-dialog .ui-dialog-content {
+    padding: 0;
+}
+
+/**
+    Scrollbars
+*/
+
+/* Webkit-Browser (Chrome, Edge, Safari) */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+/* Hintergrund der Scrollbar (Track) */
+::-webkit-scrollbar-track {
+    background: #edf1f6; /* Leicht abgedunkelt */
+    border-radius: 4px;
+}
+
+/* Scrollbar selbst */
+::-webkit-scrollbar-thumb {
+    background: #d1d8e0; /* Dunklere, aber passende Farbe */
+    border-radius: 4px;
+}
+
+    /* Beim Hover */
+    ::-webkit-scrollbar-thumb:hover {
+        background: #b8c0cc; /* Noch etwas dunkler beim Hover */
+    }
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #d1d8e0 #edf1f6;
+}
+
+/**
+    Toolbox
+*/
+
+#toolboxPopup2 {
+}
+
+    #toolboxPopup2 .toolboxEntries {
+        width: 100%;
+    }
+
+    #toolboxPopup2 .toolboxTitle {
+        padding-left: 28px;
+        background-color: #edf1f6;
+        cursor: pointer;
+    }
+
+        #toolboxPopup2 .toolboxTitle img {
+            position: absolute;
+            left: 4px;
+        }
+
+    #toolboxPopup2 .toolboxItem {
+        display: inline-block;
+        position: relative;
+        padding: 2px;
+        margin: 0;
+        border: 1px solid rgba(236, 236, 236, 1);
+        box-shadow: 1px 1px 2px #eeeeee;
+        overflow: hidden;
+    }
+
+        #toolboxPopup2 .toolboxItem img {
+            width: 24px;
+            height: 24px;
+        }

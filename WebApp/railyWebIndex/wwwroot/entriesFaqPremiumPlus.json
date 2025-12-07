@@ -1,0 +1,93 @@
+[
+  {
+    "category": "🚂 Allgemeine Fragen",
+    "questions": [
+      {
+        "q": "Gibt es eine kostenlose Version?",
+        "a": "Ja. railhq.io ist dauerhaft zu 100 % kostenlos nutzbar &mdash; ohne versteckte Kosten."
+      },
+      {
+        "q": "Welche kostenpflichtigen Pläne gibt es?",
+        "a": "Keine. Alle Funktionen stehen Dir kostenlos zur Verfügung."
+      },
+      {
+        "q": "Wie kann ich bezahlen?",
+        "a": "Für den Betrieb und die Weiterentwicklung freuen wir uns über freiwillige Unterstützung via PayPal: [Link folgt]."
+      },
+      {
+        "q": "Wie sicher sind meine Daten?",
+        "a": "Wir nehmen Datenschutz sehr ernst. Alle Daten werden lokal gespeichert und verlassen dein Netzwerk nicht. Bei Fragen wende dich gerne an uns über die <i class=\"fas fa-link\"></i> <a href=\"/about\">About-Seite</a>."
+      },
+      {
+        "q": "Ist railhq.io Open Source?",
+        "a": "Ja! railhq.io ist ein Open Source Community-Projekt. Du findest den Quellcode auf <i class=\"fab fa-github\"></i> <a href=\"https://github.com/cbries/railhq.io\" target=\"_blank\">GitHub</a>."
+      },
+      {
+        "q": "Kann ich mein Konto löschen?",
+        "a": "Ja, du kannst dein Konto jederzeit löschen. Wende dich dazu einfach an unser Support-Team, und wir kümmern uns um den Rest."
+      },
+      {
+        "q": "Wie kann ich mein Passwort ändern?",
+        "a": "Wenn du dein Passwort ändern möchtest, klicke einfach auf 'Passwort vergessen' auf der Login-Seite. Du erhältst dann eine E-Mail mit einem Link zum Zurücksetzen deines Passworts. Der direkte Link zur Passwort-Zurücksetzung ist <i class=\"fas fa-link\"></i> <a href=\"/auth/resetPassword\">'/auth/resetPassword'</a>."
+      }
+    ]
+  },
+  {
+    "category": "🛠 Funktionen & Technik",
+    "questions": [
+      {
+        "q": "Welche Protokolle werden unterstützt?",
+        "a": "RailHQ.io unterstützt alle Protokolle, die von den jeweiligen Hardwarekomponenten unterstützt werden. Wenn du zum Beispiel eine ESU ECoS 50210 nutzt, unterstützen wir alle Protokolle, die diese Command Station bietet. Mit der <b>z21</b> von Roco/Fleischmann unterstützen wir DCC/MM. Weitere Steuerungen wie Märklin CS2/CS3 werden bald mit den jeweiligen Protokollen unterstützt."
+      },
+      {
+        "q": "Kann ich mehrere Steuerungen verbinden?",
+        "a": "Ja, RailHQ.io ermöglicht die gleichzeitige Nutzung mehrerer Zentralen. Dies wird durch Erweiterungen der Software <b>railhq.io - Gateway</b> ermöglicht. Mit zusätzlichen, nachladbaren Erweiterungen können mehrere Steuerungen verbunden und verwendet werden."
+      },
+      {
+        "q": "Gibt es eine API für eigene Erweiterungen?",
+        "a": "Ja, RailHQ.io wird in naher Zukunft eine REST API bereitstellen, die es dir ermöglicht, eigene Anwendungen zu integrieren. Diese Funktion befindet sich in der Planung und wird zeitnah umgesetzt."
+      },
+      {
+        "q": "Welche Hardware wird unterstützt?",
+        "a": "RailHQ.io unterstützt eine Vielzahl von Geräten. Aktuell unterstützen wir unter anderem ESU, Roco/Fleischmann und LDT (in Planung: Märklin), aber die Liste wird kontinuierlich erweitert. Schau in unserer <i class=\"fas fa-link\"></i> <a href=\"/features\">Roadmap</a> nach, um sicherzustellen, dass dein Gerät unterstützt wird."
+      },
+      {
+        "q": "Kann ich meine eigene Steuerung konfigurieren?",
+        "a": "Ja, du kannst deine eigene Steuerung konfigurieren, solange sie mit den unterstützten Protokollen kompatibel ist. Du kannst die Steuerung über das RailHQ.io-Gateway einbinden und anpassen."
+      }
+    ]
+  },
+  {
+    "category": "🔧 Support & Sonstiges",
+    "questions": [
+      {
+        "q": "Wie bekomme ich Support?",
+        "a": "Unser Support-Team hilft dir gerne weiter! Besuche unser Support-Center oder kontaktiere uns per E-Mail."
+      },
+      {
+        "q": "Gibt es eine Community oder ein Forum?",
+        "a": "Derzeit haben wir noch keine Community oder ein Forum. Wir entwickeln jedoch eine Strategie und werden dich zeitnah über kommende Schritte informieren. In der Zwischenzeit kannst du uns gerne per E-Mail kontaktieren. Wir bemühen uns, schnell auf deine Fragen zu antworten."
+      },
+      {
+        "q": "Kann ich RailHQ.io testen, ohne eine Anlage zu haben?",
+        "a": "Ja, es gibt einen Simulationsmodus, mit dem du RailHQ.io ohne echte Hardware ausprobieren kannst."
+      },
+      {
+        "q": "Gibt es RailHQ.io auch als App?",
+        "a": "Aktuell ist RailHQ.io Web-basiert und kann auf nahezu allen gängigen modernen Geräten genutzt werden."
+      },
+      {
+        "q": "Wie schnell erhalte ich eine Antwort auf meine Support-Anfrage?",
+        "a": "Wir bemühen uns, alle Support-Anfragen innerhalb von 24 Stunden zu beantworten."
+      },
+      {
+        "q": "Gibt es eine Möglichkeit, eigene Funktionen zu requesten?",
+        "a": "Ja, wir freuen uns immer über Vorschläge! Du kannst neue Funktionen oder Verbesserungen über unsere Kontaktseite einreichen."
+      },
+      {
+        "q": "Wie oft werden neue Funktionen hinzugefügt?",
+        "a": "Wir arbeiten kontinuierlich an neuen Funktionen und Updates. Du kannst unsere <i class=\"fas fa-link\"></i> <a href=\"/features\">Roadmap</a> einsehen, um zu sehen, welche Features in der nächsten Zeit hinzugefügt werden."
+      }
+    ]
+  }
+]

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modocc>
+  <occ bkid="BK_9_kurz" arrivetime="1728400952" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="BK_1" arrivetime="1728399806" lcid="BR_81_006" auto="false" closed="false" placing="2" blockenterside="1"/>
+  <occ bkid="BK_2" arrivetime="1728400585" lcid="V36239" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="BK_3" arrivetime="1728400858" lcid="Lindau" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="BK_5" arrivetime="1729517805" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="BK_6" arrivetime="1729516430" lcid="KITTEL" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="BK_7" arrivetime="1728401093" lcid="BR_24_038" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="BK_8" arrivetime="1729516935" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="BK_9" arrivetime="1729516039" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="AB_1" arrivetime="1729516427" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="AB_2" arrivetime="1728400247" lcid="BR_74_854" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="AB_3" arrivetime="1729517879" lcid="BR_10_001" auto="false" closed="false" placing="1" blockenterside="1"/>
+  <occ bkid="AB_4" arrivetime="1728399381" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="AB_5" arrivetime="1728401895" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="BK_Wendel_Aussen" arrivetime="1729517879" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="AB_3" arrivetime="1728400258" lcid="" auto="false" closed="false" secid="AB_3_Sektion_1" placing="0" blockenterside="0"/>
+  <occ bkid="AB_3" arrivetime="1729517879" lcid="BR_10_001" auto="false" closed="false" secid="AB_3_Sektion_2" placing="0" blockenterside="0"/>
+  <occ bkid="AB_3" arrivetime="1728401988" lcid="Typ_5920_SNCB" auto="false" closed="false" secid="AB_3_Sektion_3" placing="0" blockenterside="0"/>
+  <occ bkid="AB_3" arrivetime="1728401854" lcid="BR_212_215-8" auto="false" closed="false" secid="AB_3_Sektion_4" placing="0" blockenterside="0"/>
+  <occ bkid="BK_10" arrivetime="1729517805" lcid="VT859_rotgelb" auto="false" closed="false" placing="1" blockenterside="2"/>
+  <occ bkid="AB_1" arrivetime="1729516524" lcid="" auto="false" closed="false" secid="AB_1_Sektion_1" placing="0" blockenterside="0"/>
+  <occ bkid="AB_1" arrivetime="1729516524" lcid="BR_52_Kondenst" auto="false" closed="false" secid="AB_1_Sektion_2" placing="0" blockenterside="0"/>
+  <occ bkid="AB_1" arrivetime="1729516505" lcid="" auto="false" closed="false" secid="AB_1_Sektion_3" placing="0" blockenterside="0"/>
+  <occ bkid="AB_1" arrivetime="1729516505" lcid="BR_78_355_DB" auto="false" closed="false" secid="AB_1_Sektion_4" placing="0" blockenterside="0"/>
+  <occ bkid="AB_4" arrivetime="1728399448" lcid="" auto="false" closed="false" secid="AB_4_Sektion_1" placing="0" blockenterside="0"/>
+  <occ bkid="AB_4" arrivetime="1728399448" lcid="" auto="false" closed="false" secid="AB_4_Sektion_2" placing="0" blockenterside="0"/>
+  <occ bkid="AB_4" arrivetime="1728399448" lcid="BR_18_478_DB" auto="false" closed="false" secid="AB_4_Sektion_3" placing="0" blockenterside="0"/>
+  <occ bkid="AB_4" arrivetime="1728399426" lcid="BR_85_006" auto="false" closed="false" secid="AB_4_Sektion_4" placing="0" blockenterside="0"/>
+  <occ bkid="BK_Wendel_Innen" arrivetime="1729517755" lcid="" auto="false" closed="false" placing="0" blockenterside="0"/>
+  <occ bkid="AB_2" arrivetime="1728400246" lcid="BR_74_854" auto="false" closed="false" secid="AB_2_Sektion_1" placing="0" blockenterside="0"/>
+  <occ bkid="AB_2" arrivetime="1728399742" lcid="BR_75_057" auto="false" closed="false" secid="AB_2_Sektion_2" placing="0" blockenterside="0"/>
+  <occ bkid="AB_2" arrivetime="1728399701" lcid="BR_18_128" auto="false" closed="false" secid="AB_2_Sektion_3" placing="0" blockenterside="0"/>
+  <occ bkid="AB_2" arrivetime="1728399667" lcid="BR_216_025_7" auto="false" closed="false" secid="AB_2_Sektion_4" placing="0" blockenterside="0"/>
+  <occ bkid="AB_5" arrivetime="1728402023" lcid="" auto="false" closed="false" secid="AB_5_Sektion_1" placing="0" blockenterside="0"/>
+  <occ bkid="AB_5" arrivetime="1728402023" lcid="" auto="false" closed="false" secid="AB_5_Sektion_2" placing="0" blockenterside="0"/>
+  <occ bkid="AB_5" arrivetime="1728401895" lcid="" auto="false" closed="false" secid="AB_5_Sektion_3" placing="0" blockenterside="0"/>
+  <occ bkid="AB_5" arrivetime="1728402023" lcid="V16_101" auto="false" closed="false" secid="AB_5_Sektion_4" placing="0" blockenterside="0"/>
+  <occ bkid="BK_Ausfahrt" arrivetime="1729516427" lcid="BR_216_025_7_B" auto="false" closed="false" placing="2" blockenterside="1"/>
+</modocc>

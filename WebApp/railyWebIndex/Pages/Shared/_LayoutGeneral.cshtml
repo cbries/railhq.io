@@ -1,0 +1,151 @@
+@using libShared
+@using Microsoft.AspNetCore.Http
+@using Microsoft.Extensions.Hosting
+@inject IHttpContextAccessor HttpContextAccessor
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment Env
+@inject railyWebIndex.HostConfiguration HostConfig
+
+@{
+    // In local mode, we need to construct URLs dynamically from browser location
+    var isLocalMode = railyWebIndex.Globals.IsLocalhost;
+    var servicePort = railyWebIndex.Globals.ServicePort;
+    var useTls = railyWebIndex.Globals.UseTls;
+}
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width" />
+    <meta name="keywords" content="Modellbahn, Modellbahnsteuerung, RailHQ, digitale Modellbahn, Modellbahnsoftware, Eisenbahnsteuerung, DCC, Märklin, Rocrail, Modellbahntechnik, Cloud-Modellbahn, Modellbahn-App, digitale Zugsteuerung">
+    <meta name="description" content="Innovative Cloud-Lösung für Modelleisenbahnen – einzigartig in ihrem Funktionsumfang">
+    <meta name="author" content="riesolution - Dr. Christian Benjamin Ries">
+    <meta name="robots" content="index, follow">
+    <title>@(ViewData["Title"] ?? "RailHQ – Modellbahn-Cloudsteuerung")</title>
+    <link rel="shortcut icon"
+          type="image/x-icon"
+          href="/favicon.ico" />
+    <link rel="stylesheet" type="text/css" href="/generalIndex/tailwind-2.2.19.min.css" />
+    <link rel="stylesheet" type="text/css" href="/generalIndex/libs/fontawesome-6.0.0-beta3-all.min.css" />
+    <link rel="stylesheet" type="text/css" href="/generalIndex/main.css">
+    <link rel="stylesheet" type="text/css" href="/loginIndex/css/footer.css">
+    <link rel="stylesheet" type="text/css" href="/railhq.css">
+    <script src="/loginIndex/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/generalIndex/main2.js"></script>
+    <script src="/generalIndex/main.js"></script>
+    <script src="/railhq.js"></script>
+
+    <!-- Dynamic Service URL for Local Mode -->
+    <script>
+        (function() {
+            var isLocalMode = @(isLocalMode.ToString().ToLower());
+            var servicePort = @servicePort;
+            var useTls = @(useTls.ToString().ToLower());
+            
+            if (isLocalMode) {
+                // In local mode, construct URL from current browser location
+                var protocol = useTls ? 'https:' : window.location.protocol;
+                window.__serviceUrl = protocol + '//' + window.location.hostname + ':' + servicePort;
+            } else {
+                // In cloud mode, use the configured service URL
+                window.__serviceUrl = '@(railyWebIndex.Globals.ServiceUrl)';
+            }
+            
+            // Helper function to get API URL
+            window.getServiceUrl = function() {
+                return window.__serviceUrl;
+            };
+        })();
+    </script>
+
+    @await RenderSectionAsync("Styles", required: false)
+
+</head>
+<body class="h-screen flex overflow-hidden bg-gray-100">
+    <div id="sidebar"
+         class="riesSideBarRoot bg-gray-200 text-white w-64 md:w-64 flex flex-col h-full fixed transition-all duration-300 ease-in-out transform -translate-x-full md:translate-x-0">
+        <div class="p-5 text-lg font-semibold riesSidebarHeader">
+        </div>
+        <nav class="flex flex-col h-screen">
+            <ul class="flex-1">
+                <li class="riesNavLi p-4 hover:bg-gray-200"><i class="fas fa-home"></i>&nbsp;&nbsp;<a href="/dashboard">Übersicht</a></li>
+                <li class="riesNavLi p-4 hover:bg-gray-200"><i class="fas fa-code-branch"></i>&nbsp;&nbsp;<a href="/workspaces/overview">Arbeitsbereiche</a></li>
+                <li class="riesNavLi p-4 hover:bg-gray-200"><i class="fas fa-chart-line"></i>&nbsp;&nbsp;<a href="/fleet/locomotiveSummary">Flottendaten</a></li>
+                <li class="riesNavLi p-1 pl-8 hover:bg-gray-100">
+                    <a href="/fleet/locomotives">
+                        <i class="fas fa-train mr-2"></i> Lokomotiven
+                    </a>
+                </li>
+                <li class="riesNavLi p-1 pl-8 hover:bg-gray-100">
+                    <a href="/fleet/traveling/">
+                        <i class="fas fa-clock mr-2"></i> Fahrzeiten
+                    </a>
+                </li>
+                <li class="riesNavLi p-1 pl-8 hover:bg-gray-100">
+                    <a href="/fleet/images">
+                        <i class="fas fa-image mr-2"></i> Bilder ändern
+                    </a>
+                </li>
+                <li class="riesNavLi p-4 hover:bg-gray-200"><i class="fas fa-user"></i>&nbsp;&nbsp;<a href="/profile/edit">Profil</a></li>
+                <li class="riesNavLi p-4 hover:bg-gray-200"><i class="fas fa-info-circle"></i>&nbsp;&nbsp;<a href="/documentation">Dokumentation</a></li>
+                <li class="riesNavLi p-4 hover:bg-gray-200">
+                    <i class="fas fa-code"></i>&nbsp;&nbsp;
+                    <a href="@HostConfig.SwaggerUrl" target="_blank">API-Dokumentation</a>
+                </li>
+                <li class="riesNavLi p-4 hover:bg-gray-200"><i class="fas fa-download"></i>&nbsp;&nbsp;<a href="/downloads">Downloads</a></li>
+            </ul>
+            <ul>
+                <li class="riesNavLiOff p-4 hover:bg-red-300">
+                    <a href="/auth/logout"><i class="fas fa-sign-out-alt"></i> Abmelden</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex flex-col flex-1 min-h-screen w-full md:ml-64 transition-all duration-300">
+        <!-- Floating Menu -->
+        <style>
+            .riesMenuDropDown-button1 {
+                background-color: #ebebeb;
+                transition: background-color 0.2s ease-in-out;
+            }
+                .riesMenuDropDown-button1:hover {
+                    background-color: #e2e8f0;
+                }
+        </style>
+        <div class="relative riesMenuDropDown-button0">
+            <button class="riesMenuDropDown-button1 flex items-center px-3 py-1 text-xl font-bold rounded-lg focus:ring focus:ring-gray-300">
+                <span class="riesMenuDropDown-acronym">@(HttpContextAccessor.HttpContext?.Session.GetString(SessionGlobals.SessionAcronym) ?? "N/A")</span>
+            </button>
+            <div id="dropdown" class="hidden absolute right-0 mt-2 w-60 bg-white border border-gray-300 rounded-lg shadow-lg">
+                <div class="px-4 py-2 font-semibold text-gray-700 riesMenuDropDown-username">@(HttpContextAccessor.HttpContext?.Session.GetString(SessionGlobals.SessionWelcomeName) ?? "Gast")</div>
+                <a href="/profile/edit" class="block px-4 py-2 text-gray-700 hover:bg-gray-100 riesDropdownItem">
+                    <i class="fas fa-user mr-2"></i> Profil
+                </a>
+                <hr class="border-gray-200">
+                <a href="/auth/logout" class="block px-4 py-2 text-red-600 hover:bg-red-100 riesDropdownItem riesMenuDropDown-logout">
+                    <i class="fas fa-sign-out-alt mr-2"></i> Abmelden
+                </a>
+            </div>
+        </div>
+        <!-- Header mit Burger-Button -->
+        <header class="bg-gray-200 shadow-md p-4 flex items-center">
+            <button id="menuButton" class="md:hidden p-2 bg-gray-200 rounded">
+                ☰
+            </button>
+            <h1 class="text-xl font-bold hidden md:block text-gray-600">
+                @(ViewData["subpageName"] != null && !string.IsNullOrWhiteSpace(ViewData["subpageName"].ToString())
+                                ? Html.Raw(ViewData["subpageName"])
+                                : "Übersicht")
+            </h1>
+        </header>
+        <!-- Seiteninhalt -->
+        <main class="flex-1 min-h-screen bg-white overflow-y-auto riesMainContent">
+            @RenderBody()
+        </main>
+    </div>
+    <partial name="Shared/_Footer" />
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,1420 @@
+﻿{
+  "10x3": {
+    "identifier": "Switch_4",
+    "coord": {
+      "x": 10,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 59,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "21x8": {
+    "identifier": "Track_64",
+    "coord": {
+      "x": 21,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "11x8": {
+    "identifier": "Sensor_8",
+    "coord": {
+      "x": 11,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "26x6": {
+    "identifier": "Track_73",
+    "coord": {
+      "x": 26,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "24x7": {
+    "identifier": "Track_46",
+    "coord": {
+      "x": 24,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "20x8": {
+    "identifier": "Track_66",
+    "coord": {
+      "x": 20,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "10x8": {
+    "identifier": "Track_40",
+    "coord": {
+      "x": 10,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "17x10": {
+    "identifier": "Track_68",
+    "coord": {
+      "x": 17,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "25x6": {
+    "identifier": "Track_72",
+    "coord": {
+      "x": 25,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "23x7": {
+    "identifier": "Track_30",
+    "coord": {
+      "x": 23,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "13x7": {
+    "identifier": "Item_1",
+    "coord": {
+      "x": 13,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 1010,
+      "themeDimIdx": 0,
+      "connectorId": 1,
+      "innerHtml": "<b>Hbf. Bielefeld</b>"
+    }
+  },
+  "24x6": {
+    "identifier": "Switch_6",
+    "coord": {
+      "x": 24,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 50,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "22x7": {
+    "identifier": "Track_63",
+    "coord": {
+      "x": 22,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "7x10": {
+    "identifier": "Track_56",
+    "coord": {
+      "x": 7,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "23x6": {
+    "identifier": "Track_67",
+    "coord": {
+      "x": 23,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "6x10": {
+    "identifier": "Track_54",
+    "coord": {
+      "x": 6,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "13x6": {
+    "identifier": "Block_3",
+    "coord": {
+      "x": 13,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "21x7": {
+    "identifier": "Track_65",
+    "coord": {
+      "x": 21,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "6x9": {
+    "identifier": "Track_53",
+    "coord": {
+      "x": 6,
+      "y": 9
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "5x9": {
+    "identifier": "Track_50",
+    "coord": {
+      "x": 5,
+      "y": 9
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "9x10": {
+    "identifier": "Track_58",
+    "coord": {
+      "x": 9,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "8x10": {
+    "identifier": "Track_57",
+    "coord": {
+      "x": 8,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "4x3": {
+    "identifier": "Track_13",
+    "coord": {
+      "x": 4,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "19x1": {
+    "identifier": "Track_8",
+    "coord": {
+      "x": 19,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "22x6": {
+    "identifier": "Switch_5",
+    "coord": {
+      "x": 22,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 50,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "12x6": {
+    "identifier": "Track_31",
+    "coord": {
+      "x": 12,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "9x3": {
+    "identifier": "Track_25",
+    "coord": {
+      "x": 9,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "8x3": {
+    "identifier": "Connector_2",
+    "coord": {
+      "x": 8,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 17,
+      "themeDimIdx": 2,
+      "connectorId": 3
+    }
+  },
+  "7x6": {
+    "identifier": "Track_14",
+    "coord": {
+      "x": 7,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "6x6": {
+    "identifier": "Switch_2",
+    "coord": {
+      "x": 6,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 51,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "19x4": {
+    "identifier": "Track_83",
+    "coord": {
+      "x": 19,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "5x6": {
+    "identifier": "Track_21",
+    "coord": {
+      "x": 5,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "4x6": {
+    "identifier": "Switch_3",
+    "coord": {
+      "x": 4,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 50,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "13x10": {
+    "identifier": "Block_5",
+    "coord": {
+      "x": 13,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "21x6": {
+    "identifier": "Track_60",
+    "coord": {
+      "x": 21,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "9x6": {
+    "identifier": "Track_28",
+    "coord": {
+      "x": 9,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "11x6": {
+    "identifier": "Sensor_5",
+    "coord": {
+      "x": 11,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "8x6": {
+    "identifier": "Track_27",
+    "coord": {
+      "x": 8,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "12x10": {
+    "identifier": "Track_69",
+    "coord": {
+      "x": 12,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "20x6": {
+    "identifier": "Track_34",
+    "coord": {
+      "x": 20,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "9x12": {
+    "identifier": "Track_49",
+    "coord": {
+      "x": 9,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "10x6": {
+    "identifier": "Track_29",
+    "coord": {
+      "x": 10,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "8x12": {
+    "identifier": "Connector_4",
+    "coord": {
+      "x": 8,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 17,
+      "themeDimIdx": 2,
+      "connectorId": 2
+    }
+  },
+  "19x12": {
+    "identifier": "Track_78",
+    "coord": {
+      "x": 19,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "19x3": {
+    "identifier": "Track_18",
+    "coord": {
+      "x": 19,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "21x10": {
+    "identifier": "Track_61",
+    "coord": {
+      "x": 21,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "11x10": {
+    "identifier": "Sensor_10",
+    "coord": {
+      "x": 11,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "18x12": {
+    "identifier": "Sensor_12",
+    "coord": {
+      "x": 18,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "20x10": {
+    "identifier": "Direction_1",
+    "coord": {
+      "x": 20,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 14,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "19x8": {
+    "identifier": "Track_62",
+    "coord": {
+      "x": 19,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "10x10": {
+    "identifier": "Track_70",
+    "coord": {
+      "x": 10,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "15x2": {
+    "identifier": "Item_0",
+    "coord": {
+      "x": 15,
+      "y": 2
+    },
+    "editor": {
+      "themeId": 1010,
+      "themeDimIdx": 0,
+      "connectorId": 1,
+      "innerHtml": "<b>Hbf. Ummeln</b>"
+    }
+  },
+  "18x8": {
+    "identifier": "Sensor_7",
+    "coord": {
+      "x": 18,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "15x1": {
+    "identifier": "Block_1",
+    "coord": {
+      "x": 15,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "17x12": {
+    "identifier": "Track_77",
+    "coord": {
+      "x": 17,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "15x4": {
+    "identifier": "Block_7",
+    "coord": {
+      "x": 15,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "14x1": {
+    "identifier": "Track_7",
+    "coord": {
+      "x": 14,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "7x8": {
+    "identifier": "Track_42",
+    "coord": {
+      "x": 7,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "5x8": {
+    "identifier": "Track_52",
+    "coord": {
+      "x": 5,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "4x8": {
+    "identifier": "Track_51",
+    "coord": {
+      "x": 4,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "14x4": {
+    "identifier": "Track_81",
+    "coord": {
+      "x": 14,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "9x8": {
+    "identifier": "Track_41",
+    "coord": {
+      "x": 9,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "8x8": {
+    "identifier": "Track_45",
+    "coord": {
+      "x": 8,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "4x2": {
+    "identifier": "Track_12",
+    "coord": {
+      "x": 4,
+      "y": 2
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "17x8": {
+    "identifier": "Track_38",
+    "coord": {
+      "x": 17,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "13x1": {
+    "identifier": "Sensor_1",
+    "coord": {
+      "x": 13,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "9x2": {
+    "identifier": "Track_24",
+    "coord": {
+      "x": 9,
+      "y": 2
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "15x3": {
+    "identifier": "Block_2",
+    "coord": {
+      "x": 15,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "4x5": {
+    "identifier": "Track_15",
+    "coord": {
+      "x": 4,
+      "y": 5
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "13x4": {
+    "identifier": "Sensor_13",
+    "coord": {
+      "x": 13,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "22x1": {
+    "identifier": "Track_10",
+    "coord": {
+      "x": 22,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 13,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "12x1": {
+    "identifier": "Track_6",
+    "coord": {
+      "x": 12,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "10x2": {
+    "identifier": "Track_26",
+    "coord": {
+      "x": 10,
+      "y": 2
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "19x6": {
+    "identifier": "Track_33",
+    "coord": {
+      "x": 19,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "7x1": {
+    "identifier": "Track_3",
+    "coord": {
+      "x": 7,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "6x1": {
+    "identifier": "Track_2",
+    "coord": {
+      "x": 6,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "24x3": {
+    "identifier": "Connector_1",
+    "coord": {
+      "x": 24,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 17,
+      "themeDimIdx": 0,
+      "connectorId": 2
+    }
+  },
+  "5x1": {
+    "identifier": "Track_1",
+    "coord": {
+      "x": 5,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "14x3": {
+    "identifier": "Track_17",
+    "coord": {
+      "x": 14,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "4x1": {
+    "identifier": "Track_11",
+    "coord": {
+      "x": 4,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "1x1": {
+    "identifier": "Track_20",
+    "coord": {
+      "x": 1,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 1012,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "22x4": {
+    "identifier": "Track_85",
+    "coord": {
+      "x": 22,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 13,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "12x4": {
+    "identifier": "Track_82",
+    "coord": {
+      "x": 12,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "9x1": {
+    "identifier": "Switch_1",
+    "coord": {
+      "x": 9,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 51,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "21x1": {
+    "identifier": "Track_9",
+    "coord": {
+      "x": 21,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "8x1": {
+    "identifier": "Track_4",
+    "coord": {
+      "x": 8,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "11x1": {
+    "identifier": "Track_16",
+    "coord": {
+      "x": 11,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 15,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "18x6": {
+    "identifier": "Sensor_6",
+    "coord": {
+      "x": 18,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "4x4": {
+    "identifier": "Track_19",
+    "coord": {
+      "x": 4,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 253,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "23x3": {
+    "identifier": "Track_37",
+    "coord": {
+      "x": 23,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "13x12": {
+    "identifier": "Block_6",
+    "coord": {
+      "x": 13,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "13x3": {
+    "identifier": "Sensor_3",
+    "coord": {
+      "x": 13,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "21x4": {
+    "identifier": "Track_84",
+    "coord": {
+      "x": 21,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "11x4": {
+    "identifier": "Track_80",
+    "coord": {
+      "x": 11,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "7x7": {
+    "identifier": "Track_44",
+    "coord": {
+      "x": 7,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "6x7": {
+    "identifier": "Track_43",
+    "coord": {
+      "x": 6,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "20x1": {
+    "identifier": "Sensor_2",
+    "coord": {
+      "x": 20,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "4x7": {
+    "identifier": "Track_55",
+    "coord": {
+      "x": 4,
+      "y": 7
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "19x10": {
+    "identifier": "Track_71",
+    "coord": {
+      "x": 19,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "10x1": {
+    "identifier": "Track_5",
+    "coord": {
+      "x": 10,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "22x9": {
+    "identifier": "Track_59",
+    "coord": {
+      "x": 22,
+      "y": 9
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "22x3": {
+    "identifier": "Track_36",
+    "coord": {
+      "x": 22,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "12x12": {
+    "identifier": "Track_76",
+    "coord": {
+      "x": 12,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "12x3": {
+    "identifier": "Track_22",
+    "coord": {
+      "x": 12,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "20x4": {
+    "identifier": "Sensor_14",
+    "coord": {
+      "x": 20,
+      "y": 4
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "23x8": {
+    "identifier": "Track_47",
+    "coord": {
+      "x": 23,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 1,
+      "connectorId": 1
+    }
+  },
+  "13x8": {
+    "identifier": "Block_4",
+    "coord": {
+      "x": 13,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "18x10": {
+    "identifier": "Sensor_9",
+    "coord": {
+      "x": 18,
+      "y": 10
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "21x9": {
+    "identifier": "Track_74",
+    "coord": {
+      "x": 21,
+      "y": 9
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "21x3": {
+    "identifier": "Track_35",
+    "coord": {
+      "x": 21,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "11x12": {
+    "identifier": "Sensor_11",
+    "coord": {
+      "x": 11,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "22x8": {
+    "identifier": "Track_75",
+    "coord": {
+      "x": 22,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 11,
+      "themeDimIdx": 3,
+      "connectorId": 1
+    }
+  },
+  "12x8": {
+    "identifier": "Track_39",
+    "coord": {
+      "x": 12,
+      "y": 8
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "27x6": {
+    "identifier": "Connector_3",
+    "coord": {
+      "x": 27,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 17,
+      "themeDimIdx": 0,
+      "connectorId": 3
+    }
+  },
+  "17x6": {
+    "identifier": "Track_32",
+    "coord": {
+      "x": 17,
+      "y": 6
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "20x12": {
+    "identifier": "Track_79",
+    "coord": {
+      "x": 20,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 13,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "20x3": {
+    "identifier": "Sensor_4",
+    "coord": {
+      "x": 20,
+      "y": 3
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "10x12": {
+    "identifier": "Track_48",
+    "coord": {
+      "x": 10,
+      "y": 12
+    },
+    "editor": {
+      "themeId": 10,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  }
+}

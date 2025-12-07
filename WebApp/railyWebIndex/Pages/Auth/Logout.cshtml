@@ -1,0 +1,21 @@
+﻿@page
+@using railyWebIndex
+@model railyWebIndex.Pages.Auth.LogoutModel
+@{
+    Layout = "_LayoutLogin";
+    ViewData["Title"] = Globals.AppName + " Abmelden";
+    ViewData["productName"] = Globals.ProductName;
+}
+
+<div class="alert alert-info text-center mt-4">
+    <i class="fa-solid fa-circle-info me-2"></i>
+    Erfolgreich abgemeldet. Falls nichts passiert, <a href="@Model.RedirectUrl">klicken Sie hier</a>.
+</div>
+
+<h1 class="title">Abmeldung erfolgreich, bis später!</h1>
+
+<script>
+    setTimeout(function() {
+        window.location.href = "@Model.RedirectUrl";
+    }, 3000);
+</script>

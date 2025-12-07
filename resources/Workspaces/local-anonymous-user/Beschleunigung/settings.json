@@ -1,0 +1,340 @@
+﻿{
+  "uuid": "fc70a49f-d4e9-4344-8a57-68e35ad74495",
+  "debugging": {
+    "runtime": true,
+    "accessories": false,
+    "locomotives": false,
+    "routes": false,
+    "exceptions": false
+  },
+  "locomotives": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "z21",
+      "objectId": 9,
+      "assignedToBlock": "Block_2",
+      "enterSide": "Plus",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "left",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1037,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 1,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1036,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 1,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "z21",
+      "objectId": 10,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "2025-05-16T20:26:07.4667553+02:00",
+      "minimumBlockWaitAfterError": 0,
+      "earlistNextTimeAfterError": "2025-05-16T20:26:57.4667688+02:00",
+      "machineType": 1,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1035,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 1,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "demo",
+      "objectId": 9902,
+      "assignedToBlock": "Block_1",
+      "enterSide": "Minus",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "2025-05-16T20:31:50.8133247+02:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "2025-05-16T20:32:40.8133502+02:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1010,
+      "assignedToBlock": "",
+      "enterSide": "Plus",
+      "speed": {
+        "stepping": 2,
+        "minimum": 1,
+        "entering": 12,
+        "staging": -1,
+        "traveling": 15,
+        "maximum": 18
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "0001-01-01T00:00:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "0001-01-01T00:00:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "left",
+      "orientationPrevious": "none"
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "demo",
+      "objectId": 9900,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "speed": {
+        "stepping": 3,
+        "minimum": 5,
+        "entering": 20,
+        "staging": 5,
+        "traveling": 50,
+        "maximum": 100
+      },
+      "minimumBlockWait": 30,
+      "earlistTimeForNextTrip": "2025-05-08T12:11:00.957119+02:00",
+      "minimumBlockWaitAfterError": 0,
+      "earlistNextTimeAfterError": "2025-05-08T12:10:30.9571288+02:00",
+      "machineType": 1,
+      "length": 30,
+      "isCommuter": false,
+      "doAutoAccelerate": true,
+      "doAutoDeaccelerate": true,
+      "orientation": "none",
+      "orientationPrevious": "none"
+    }
+  ],
+  "routes": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_2[-]_Block_1[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_1[-]_Block_2[-]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_2[+]_Block_1[+]",
+      "uid": null,
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    }
+  ],
+  "blockSensors": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_2[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "Sensor_4",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_2",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[+]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "Sensor_3",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_1",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "Sensor_1",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_3",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_2[-]",
+      "length": 50,
+      "startDelay": 5,
+      "signalsToRedDelay": 15,
+      "sensorEnter": "Sensor_2",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_4",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false,
+      "signal": "",
+      "vorsignal": ""
+    }
+  ],
+  "sensors": [
+    {
+      "name": "Sensor_2",
+      "provider": "ecos",
+      "address": "4"
+    },
+    {
+      "name": "Sensor_1",
+      "provider": "ecos",
+      "address": "2"
+    },
+    {
+      "name": "Sensor_4",
+      "provider": "ecos",
+      "address": "3"
+    },
+    {
+      "name": "Sensor_3",
+      "provider": "ecos",
+      "address": "1"
+    }
+  ],
+  "accessories": [],
+  "stagings": []
+}

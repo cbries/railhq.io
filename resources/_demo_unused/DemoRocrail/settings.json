@@ -1,0 +1,153 @@
+﻿{
+  "locomotives": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1010,
+      "assignedToBlock": "cb2",
+      "enterSide": "Plus",
+      "machineType": 0,
+      "speed": {
+        "minimum": 1,
+        "entering": 2,
+        "traveling": 5,
+        "maximum": 10
+      }
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1034,
+      "assignedToBlock": "",
+      "enterSide": "None",
+      "machineType": 0,
+      "speed": {
+        "minimum": 1,
+        "entering": 2,
+        "traveling": 5,
+        "maximum": 10
+      }
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1028,
+      "assignedToBlock": "",
+      "enterSide": "Plus",
+      "machineType": 0,
+      "speed": {
+        "minimum": 1,
+        "entering": 2,
+        "traveling": 5,
+        "maximum": 10
+      }
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "ecos",
+      "objectId": 1001,
+      "assignedToBlock": "cb4",
+      "enterSide": "Plus",
+      "machineType": 0,
+      "speed": {
+        "minimum": 1,
+        "entering": 2,
+        "traveling": 5,
+        "maximum": 10
+      }
+    }
+  ],
+  "routes": [
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb1[+]_cb2[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "cb2[-]_sb3[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb3[+]_cb1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb4[+]_cb1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb3[+]_cb2[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb4[+]_cb2[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb2[+]_cb2[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "cb2[-]_sb4[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "cb2[-]_sb1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb1[+]_cb1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "sb2[+]_cb1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    },
+    {
+      "isEnabled": false,
+      "isLocked": false,
+      "name": "cb2[-]_sb2[-]",
+      "isOccupied": false,
+      "isOccupiedReason": null
+    }
+  ],
+  "blockSensors": [],
+  "sensors": [],
+  "accessories": []
+}

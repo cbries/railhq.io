@@ -1,0 +1,60 @@
+@page
+@using railyWebIndex
+@model railyWebIndex.Pages.Profile.EditModel
+@{
+    Layout = "_LayoutGeneral";
+    ViewData["Title"] = Globals.AppName + " Profil";
+    ViewData["productName"] = Globals.ProductName;
+    ViewData["subpageName"] = "Profil";
+}
+
+@if (ViewData["errorMessage"] != null)
+{
+    <div class="alert alert-warning d-flex align-items-center" role="alert">
+        @ViewData["errorMessage"]
+    </div>
+}
+
+@if (TempData["statusMessage"] != null)
+{
+    <div class="alert alert-success d-flex align-items-center" role="alert">
+        @TempData["statusMessage"]
+    </div>
+}
+
+<form class="max-w-lg mx-auto my-3 p-6 border rounded-lg shadow-md" method="post">
+
+    @Html.AntiForgeryToken()
+
+    <div class="mb-4">
+        <label for="username" class="riesLabel">Benutzername</label>
+        <input type="text" id="username" name="data_username" class="riesInputField" placeholder="Username" value="@Model.Data_Username">
+    </div>
+
+    <div class="mb-4">
+        <label for="first-name" class="riesLabel">Anzeigename</label>
+        <input type="text" id="first-name" name="data_displayname" class="riesInputField" placeholder="" value="@Model.Data_DisplayName">
+    </div>
+
+    <div class="mb-4">
+        <label for="email" class="riesLabel block mb-2">E-Mail-Adresse</label>
+        <div class="flex items-center space-x-4">
+            <div class="w-3/4">
+                <input type="email" id="email" name="EMail" class="riesInputField bg-gray-200 cursor-not-allowed"
+                       placeholder="E-Mail-Adresse" value="@Model.EMail" readonly>
+            </div>
+
+            <div class="w-1/4">
+                <a href="/profile/changeEmail" class="riesButton text-center h-full flex items-center justify-center py-1">
+                    Ändern
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex justify-center mt-6">
+        <button type="submit" class="riesButton">
+            Speichern
+        </button>
+    </div>
+</form>

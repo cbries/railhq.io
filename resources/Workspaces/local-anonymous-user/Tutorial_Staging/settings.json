@@ -1,0 +1,145 @@
+﻿{
+  "uuid": "254c920f-a42d-4d83-8203-794d464cb343",
+  "debugging": {
+    "runtime": true,
+    "accessories": false,
+    "locomotives": false,
+    "routes": false,
+    "exceptions": false
+  },
+  "locomotives": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "driverName": "demo",
+      "objectId": 9900,
+      "assignedToBlock": "Block_1",
+      "enterSide": "Minus",
+      "speed": {
+        "stepping": 5,
+        "minimum": 5,
+        "entering": 25,
+        "staging": -1,
+        "traveling": 40,
+        "maximum": 60
+      },
+      "minimumBlockWait": 10,
+      "earlistTimeForNextTrip": "2025-04-14T11:30:34.0989975+02:00",
+      "minimumBlockWaitAfterError": 60,
+      "earlistNextTimeAfterError": "2025-04-14T11:31:24.0989991+02:00",
+      "machineType": 0,
+      "length": 30,
+      "isCommuter": false,
+      "orientation": "right",
+      "orientationPrevious": "none"
+    }
+  ],
+  "routes": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Block_1[+]_Stage_1[+]",
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "name": "Stage_1[-]_Block_1[-]",
+      "isOccupied": false,
+      "isOccupiedReason": ""
+    }
+  ],
+  "blockSensors": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[-]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_6",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_5",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false
+    },
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Block_1[+]",
+      "length": 50,
+      "startDelay": 5,
+      "sensorEnter": "Sensor_5",
+      "sensorOcc": "",
+      "sensorIn": "Sensor_6",
+      "isCommuterAllowedPlus": false,
+      "isCommuterAllowedMinus": false
+    }
+  ],
+  "sensors": [
+    {
+      "name": "Sensor_4",
+      "provider": "ecos",
+      "address": "1"
+    },
+    {
+      "name": "Sensor_6",
+      "provider": "ecos",
+      "address": "6"
+    },
+    {
+      "name": "Sensor_3",
+      "provider": "ecos",
+      "address": "2"
+    },
+    {
+      "name": "Sensor_5",
+      "provider": "ecos",
+      "address": "5"
+    },
+    {
+      "name": "Sensor_2",
+      "provider": "ecos",
+      "address": "3"
+    },
+    {
+      "name": "Sensor_1",
+      "provider": "ecos",
+      "address": "4"
+    }
+  ],
+  "accessories": [],
+  "stagings": [
+    {
+      "isEnabled": true,
+      "isLocked": false,
+      "identifier": "Stage_1",
+      "blocks": [
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "Stage_1_0",
+          "length": 100,
+          "startDelay": 5,
+          "sensorEnter": "Sensor_4",
+          "sensorOcc": "",
+          "sensorIn": "Sensor_3",
+          "isCommuterAllowedPlus": false,
+          "isCommuterAllowedMinus": false
+        },
+        {
+          "isEnabled": true,
+          "isLocked": false,
+          "identifier": "Stage_1_1",
+          "length": 100,
+          "startDelay": 5,
+          "sensorEnter": "Sensor_2",
+          "sensorOcc": "",
+          "sensorIn": "Sensor_1",
+          "isCommuterAllowedPlus": false,
+          "isCommuterAllowedMinus": false
+        }
+      ]
+    }
+  ]
+}

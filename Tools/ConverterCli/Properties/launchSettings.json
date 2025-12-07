@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConverterCli": {
+      "commandName": "Project",
+      "commandLineArgs": "\"Testdata\\Rocrail\" \"$(SolutionDir)\\resources\\Workspaces\\0bf74eb8-15b5-45e0-9d74-3bc2b9036860\""
+    }
+  }
+}

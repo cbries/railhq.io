@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ECoS Command Schema",
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "pattern": "^\\d+\\.\\d+$",
+      "description": "The version of the message in Major.Minor format"
+    },
+    "extensionName": {
+      "type": "string",
+      "description": "The name of the extension"
+    },
+    "action": {
+      "type": "integer",
+      "description": "The code representing the executed action"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The timestamp in ISO 8601 format"
+    },
+    "data": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [ "command" ],
+          "description": "The type of data"
+        },
+        "payload": {
+          "type": "object",
+          "description": "A flexible object that can contain any kind of data"
+        }
+      }
+    }
+  },
+  "required": [ "version", "extensionName", "action", "timestamp", "data" ]
+}

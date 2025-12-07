@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="30">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wartungsarbeiten - RailHQ</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", sans-serif;
+            background: #f5f7fa;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #1e90ff;
+            margin-bottom: 1rem;
+        }
+        p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+        .loader {
+            border: 6px solid #dfe3e8;
+            border-top: 6px solid #1e90ff;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 1rem auto;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg);}
+            100% { transform: rotate(360deg);}
+        }
+        footer {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 2rem;
+        }
+        a {
+            color: #1e90ff;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        button {
+            background-color: #1e90ff;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        button:hover {
+            background-color: #0c70d4;
+        }
+    </style>
+</head>
+<body>
+    <div class="loader"></div>
+    <h1>RailHQ Wartung</h1>
+    <p>Unsere Plattform wird gerade aktualisiert.<br>
+       Bald sind wir wieder online. Danke für dein Verständnis!</p>
+    <button onclick="location.reload();">Jetzt aktualisieren</button>
+    <footer>
+        &copy; 2025 <a href="https://railhq.io" target="_blank">RailHQ</a> – Einfach Modellbahn automatisieren.
+    </footer>
+</body>
+</html>

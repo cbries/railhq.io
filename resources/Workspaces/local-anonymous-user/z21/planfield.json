@@ -1,0 +1,98 @@
+﻿{
+  "21x1": {
+    "identifier": "Switch_1",
+    "coord": {
+      "x": 21,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 50,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "5x1": {
+    "identifier": "Block_1",
+    "coord": {
+      "x": 5,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "4x1": {
+    "identifier": "Sensor_1",
+    "coord": {
+      "x": 4,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "24x1": {
+    "identifier": "Switch_2",
+    "coord": {
+      "x": 24,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 51,
+      "themeDimIdx": 2,
+      "connectorId": 1
+    }
+  },
+  "9x1": {
+    "identifier": "Sensor_2",
+    "coord": {
+      "x": 9,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "13x1": {
+    "identifier": "Block_2",
+    "coord": {
+      "x": 13,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 150,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "17x1": {
+    "identifier": "Sensor_4",
+    "coord": {
+      "x": 17,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  },
+  "12x1": {
+    "identifier": "Sensor_3",
+    "coord": {
+      "x": 12,
+      "y": 1
+    },
+    "editor": {
+      "themeId": 200,
+      "themeDimIdx": 0,
+      "connectorId": 1
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@using libShared
+@using railyWebIndex
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
+@{
+    var hasSessionString = HttpContextAccessor.HttpContext?.Session.GetString(SessionGlobals.AuthUserSession) ?? string.Empty;
+    var hasSession = !string.IsNullOrEmpty(hasSessionString);
+    var targetLink = hasSession ? $"target=\"_blank\"" : string.Empty;
+}
+
+<div class="footer text-center p-4">
+    <!-- Minimaler Footer für kleine Bildschirme -->
+    <div class="flex justify-between items-center w-full md:hidden">
+        <p class="text-gray-600">
+            &copy; 2025 <a href="/dashboard" class="ml-0" style="margin-left: 0;">@Globals.AppName</a> &ndash; Open Source Community Project
+        </p>
+        <p>
+            <a href="/about" class="txt1" @targetLink>About</a>
+        </p>
+    </div>
+
+    <!-- Vollständiger Footer für größere Bildschirme -->
+    <div class="hidden md:flex md:justify-between md:w-full" style="font-size: 14px;">
+        <p class="text-gray-600">
+            &copy; 2025 <a href="/dashboard" class="ml-0" style="margin-left: 0;">@Globals.AppName</a> &ndash; Open Source Community Project
+        </p>
+        <p class="text-right">
+            <a href="/about" class="txt1" @targetLink>About</a>
+            <a href="https://github.com/cbries/railhq.io" class="txt1 ml-4" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+        </p>
+    </div>
+</div>

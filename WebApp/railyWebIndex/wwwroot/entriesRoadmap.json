@@ -1,0 +1,291 @@
+[
+  {
+    "step": "In Planung",
+    "features": [
+      {
+        "icon": "fas fa-tools",
+        "name": "Support für Märklin CS3",
+        "description": "Integration und Unterstützung der Märklin CS3 Steuerzentralen zur Ansteuerung und Verwaltung von Modelleisenbahnen in der Software."
+      },      
+      {
+        "icon": "fas fa-undo-alt",
+        "name": "Undo/Redo im Editor",
+        "description": "Ermöglicht das Rückgängigmachen und Wiederholen von Änderungen im Gleisplandesigner, um Fehler leicht zu korrigieren."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Sprachsteuerung für Weichen, Schaltartikel und Lokomotiven",
+        "description": "Mit der Sprachsteuerung lassen sich Weichen, Schaltartikel und Lokomotiven intuitiv per Sprachbefehl steuern. Beispielsweise kann die Lok mit dem Kommando <i>„Emma, fahre für 10 Sekunden mit Reisegeschwindigkeit“</i> automatisch die gewünschte Geschwindigkeit annehmen. Diese Funktion macht die Steuerung noch komfortabler und ermöglicht eine freihändige Interaktion mit der Anlage."
+      }
+    ]
+  },
+  {
+    "step": "In Entwicklung",
+    "features": [ ]
+  },
+  {
+    "step": "Fertiggestellt",
+    "features": [
+      {
+        "icon": "fas fa-tools",
+        "name": "Support für Roco Z21",
+        "description": "Integration und Unterstützung der Roco Z21 Steuerzentralen zur Ansteuerung und Verwaltung von Modelleisenbahnen in der Software."
+      },
+      {
+        "icon": "fas fa-database",
+        "name": "ESU ECoS Integration",
+        "description": "Die ESU ECoS dient als zentrale Steuerungseinheit und Datenquelle: Alle Entitäten werden direkt aus der ECoS gelesen, anhand ihrer Objekt-IDs verwaltet und mit umfassenden Logging-Mechanismen protokolliert. So bleibt die gesamte Steuerung stets synchronisiert und nachvollziehbar."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "LDT HSI-88 Unterstützung",
+        "description": "Durch die direkte Anbindung des LDT HSI-88 werden S88-Feedbacks in Echtzeit erfasst und im Gleisplan visualisiert. Dies ermöglicht eine präzise Rückmeldung des Streckenzustands und eine zuverlässige Automatisierung deiner Anlage."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "ECoS Detector Support",
+        "description": "Ab Gateway-Version 1.26 unterstützt railhq.io die ESU ECoS-Detektoren für Rückmeldungen. Die Detektoren werden physikalisch hinter dem S88-Bus eingebunden und ab Adresse 497 (Port 32) adressiert. Dies erlaubt eine konfliktfreie Kombination aus S88- und ECoS-Modulen ohne weiteren Konfigurationsaufwand."
+      },
+      {
+        "icon": "fas fa-code",
+        "name": "Application Programming Interface (API) mit REST",
+        "description": "Die API ermöglicht eine nahtlose Integration externer Anwendungen und Dienste in das System. Über standardisierte REST-Endpunkte können Nutzer und Drittanbieter auf zentrale Funktionen zugreifen, darunter die Steuerung von Lokomotiven, das Schalten von Weichen und Signalen sowie das Abrufen von Fahrtdaten.<br><br>Die API bietet eine sichere Authentifizierung und Autorisierung, um den Zugriff auf sensible Steuerungsfunktionen zu regeln. Entwickler können individuelle Automatisierungs- und Steuerungslösungen realisieren, eigene Benutzeroberflächen erstellen oder das System in bestehende Softwareumgebungen einbinden.<br><br>Durch die REST-Architektur ist die API plattformunabhängig und kann mit verschiedenen Programmiersprachen und Systemen genutzt werden, was maximale Flexibilität bei der Anbindung externer Komponenten bietet."
+      },
+      {
+        "icon": "fas fa-code",
+        "name": "Unterstützung einer Skriptsprache zur individuellen Entwicklung von Automatisierungsalgorithmen",
+        "description": "Mit der integrierten Skriptunterstützung können Anwender eigene Automatisierungslogiken erstellen, um den Betriebsablauf ihrer Modellbahnanlage flexibel zu steuern. Die Skriptsprache ermöglicht die Umsetzung komplexer Abläufe, wie beispielsweise das automatische Starten von Zugfahrten, die Steuerung von Weichen und Signalen oder die Reaktion auf bestimmte Ereignisse. Dadurch lassen sich maßgeschneiderte Automatisierungsalgorithmen entwickeln, die exakt an die individuellen Anforderungen der Anlage angepasst sind."
+      },
+	  {
+        "icon": "fas fa-plug",
+        "name": "MQTT-Support",
+        "description": "Integration von MQTT für die Steuerung und Kommunikation mit externer Hardware, wie Beleuchtungselementen oder Funktionen auf der Modelleisenbahnanlage. Ermöglicht den Empfang von Rückmeldungen über MQTT zur Erweiterung der Automatisierung und Überwachung."
+      },
+	  {
+		"icon": "fas fa-sliders-h",
+		"name": "Intuitive Benutzeroberflächen-Steuerelemente (Buttons, Toggles, Slider usw.)",
+		"description": "Die Plattform bietet eine umfangreiche Sammlung an UI-Komponenten, darunter Buttons, Toggles, Slider und weitere Steuerelemente, die eine einfache und flexible Interaktion mit der Modelleisenbahnanlage ermöglichen. Diese Controls sind direkt in die Weboberfläche integrierbar und lassen sich sowohl manuell bedienen als auch programmatisch über Skripte ansteuern.<br><br>Durch die intuitive Gestaltung können Anwender Licht, Signale, Weichen oder andere Funktionen komfortabel steuern. Die Controls unterstützen verschiedene Zustände und Feedbackmechanismen, um den aktuellen Status der Anlage übersichtlich und interaktiv darzustellen.<br><br>Die Wiederverwendbarkeit und Anpassbarkeit der UI Controls ermöglicht die Erstellung individueller Bedienpanels, die optimal an die Bedürfnisse der jeweiligen Modellbahn angepasst sind."
+	  },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Automatische Lokpositionierung für Schnellstart",
+        "description": "Nach dem Aufsetzen einer Lokomotive auf das Gleis kann sie automatisch zu einem definierten Sensorpunkt fahren. Dadurch wird eine schnelle Besetzung von Blöcken ermöglicht, und die Inbetriebnahme der Anlage erfolgt effizienter und komfortabler."
+      },
+      {
+        "icon": "fa-brands fa-linux",
+        "name": "Support für Linux",
+        "description": "Installation und Ausführung des <i>railhq.io - Gateways</i> auf Linux-Systemen."
+      },
+      {
+        "icon": "fa-brands fa-raspberry-pi",
+        "name": "Support für Raspberry Pi",
+        "description": "Installation und Ausführung des <i>railhq.io - Gateways</i> auf Raspberry Pi."
+      },
+      {
+        "icon": "fas fa-mobile-alt",
+        "name": "Smartphone-Steuerung",
+        "description": "Steuere deine Lokomotiven ganz einfach von überall aus – scanne einfach den QR-Code einer Lokomotive und übernehme die Steuerung direkt über dein Smartphone. Keine komplizierte Einrichtung nötig, sofortige Kontrolle in der Hand!"
+      },
+      {
+        "icon": "fas fa-plug",
+        "name": "Vollständige Planung und Simulation ohne Steuerzentrale",
+        "description": "Ermöglicht die vollständige Planung, Ausführung und Simulation der Modelleisenbahnsteuerung ohne eine physische Steuerzentrale. Ein Demonstrations-Datenprovider stellt alle nötigen Daten zur Verfügung, um das Freemium-Angebot vollständig zu nutzen."
+      },
+      {
+        "icon": "fas fa-tools",
+        "name": "Automatische Blockreparatur",
+        "description": "Identifiziert und behebt fehlerhafte oder unvollständige Blockdaten automatisch. Erkennt ungültige Lokzuweisungen, entfernt diese bei nicht erreichbarer ControlStation und stellt sicher, dass Blöcke wieder problemlos genutzt werden können - muss manuell anetriggert werden."
+      },
+      {
+        "icon": "fas fa-tools",
+        "name": "Automatische Schaltartikelreparatur",
+        "description": "Erkennt und korrigiert fehlerhafte Schaltartikel automatisch. Identifiziert ungültige oder nicht verbundene Treiber, entfernt diese und behebt doppelte Adresszuweisungen, um eine zuverlässige Steuerung von Weichen, Signalen und anderen Schaltartikeln sicherzustellen - muss manuell anetriggert werden."
+      },
+      {
+        "icon": "fas fa-hourglass-half",
+        "name": "Automatischer Fahrtsperren-Countdown",
+        "description": "Zeigt einen Countdown an, wenn ein Zug im Automatikbetrieb innerhalb eines Blocks auf die Weiterfahrt wartet. Der Countdown beginnt, sobald der Zug den Block erreicht und sorgt dafür, dass der Benutzer den verbleibenden Wartezeitraum im Auge behalten kann. Sobald der Countdown abgelaufen ist, wird der Zug automatisch weiterfahren, sofern keine manuellen Eingriffe erforderlich sind."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Gleisplaneditor",
+        "description": "Ein What-You-See-Is-What-You-Get (WYSIWYG)-Editor zur Planung und Gestaltung von individuellen Gleisplänen."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Modernes Web-Frontend",
+        "description": "HTML5-basiertes Web-Frontend mit WebSocket-Kommunikation für eine reaktionsschnelle Steuerung."
+      },
+      {
+        "icon": "fas fa-wave-square",
+        "name": "Latenzaufzeichnung mit Verlauf",
+        "description": "Zeichnet die Kommunikationslatenz zur verbundenen ControlStation auf und speichert bis zu 100 Messwerte. Ein Klick auf die Anzeige öffnet eine grafische Darstellung des zeitlichen Verlaufs der Latenz. Ideal zur Diagnose von Verbindungsproblemen oder zur Beobachtung der Systemstabilität in Echtzeit."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Plattformübergreifende UI",
+        "description": "Nutzung des Frontends mit Chrome, Firefox, Vivaldi und Edge auf beliebigen Geräten."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Toolbox mit Drag & Drop",
+        "description": "Einfache Platzierung und Verwaltung von Gleiselementen per Drag & Drop."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Transformation von Planteilen",
+        "description": "Einfaches Verschieben, Drehen oder Entfernen von Elementen per Klick und Tastatur."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Text-Elemente",
+        "description": "Unterstützung für Formatierungen wie Fett, Kursiv, Unterstrichen sowie Anpassung von Schriftgröße und -farbe."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Invertierte Darstellung von Signalen und Weichen",
+        "description": "Die grafische Darstellung von Signalen und Weichen kann invertiert werden, um sich an eventuell verdrehte Verschaltungen in der Anlage anzupassen. Dadurch wird sichergestellt, dass die visuelle Anzeige in der Software mit dem tatsächlichen Zustand der physischen Steuerung übereinstimmt, selbst wenn die elektrische Verdrahtung oder die Logik der Schaltartikel abweicht."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Beschriftung von Planteilen",
+        "description": "Ermöglicht das Anzeigen von Labels für eine bessere Übersicht."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Direkte Steuerung von Zubehör",
+        "description": "Schalten von Zubehör durch einfachen Klick auf das jeweilige Planteil."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Direktsteuerung von Lokomotiven",
+        "description": "Steuerung der Geschwindigkeit direkt über den Plan."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Lokomotivbild-Anzeige",
+        "description": "Visuelle Darstellung der Lokomotiven im System."
+      },
+      {
+        "icon": "fas fa-palette",
+        "name": "Drag & Drop für Lokomotiven",
+        "description": "Einfache Zuordnung von Lokomotiven zu Blöcken per Drag & Drop."
+      },
+      {
+        "icon": "fas fa-chart-line",
+        "name": "Initialisierung der Schaltartikel",
+        "description": "Alle Schaltartikel der Anlage können mit einem Mausklick in ihre Grundstellung versetzt werden. Dabei werden sie zweimal geschaltet, um einen definierten Ausgangszustand sicherzustellen."
+      },
+      {
+        "icon": "fas fa-chart-line",
+        "name": "Arbeitsbereichsverwaltung",
+        "description": "Möglichkeit, zwischen verschiedenen Gleisplänen jederzeit zu wechseln."
+      },
+      {
+        "icon": "fas fa-clone",
+        "name": "Workspaces/Arbeitsbereiche duplizieren",
+        "description": "Ermöglicht das Duplizieren von Arbeitsbereichen, um eine Kopie des aktuellen Workspaces zu erstellen und weiterzuarbeiten."
+      },
+      {
+        "icon": "fas fa-chart-line",
+        "name": "Statistik für Lokbewegungen",
+        "description": "Aufzeichnung und Historisierung von Lokstart/-stopp für Wartungszwecke."
+      },
+      {
+        "icon": "fas fa-chart-line",
+        "name": "Wartungsmodus für Zubehör",
+        "description": "Deaktivierung von Zubehör in Wartung, sodass es nicht in Routen eingeplant wird."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Blockbasierter Automatikmodus",
+        "description": "Intelligente Zugsteuerung durch einen Algorithmus, der eine sichere Fahrt durch die Blöcke ermöglicht."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Automatische Routenfindung",
+        "description": "Erkennung aller möglichen Fahrwege zwischen den Blöcken."
+      },
+      {
+        "icon": "fa-solid fa-stopwatch",
+        "name": "Erzwungene Benutzer-Stopps beim Beenden des Automatikbetrieb",
+        "description": "Mit dieser neuen Funktion können automatisch ablaufende Prozesse jetzt jederzeit optional gewzungen gestoppt werden. Die Steuerung erkennt sofort, wenn ein Stopp gewünscht wird, und sorgt so für mehr Flexibilität und Kontrolle über die Abläufe."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Richtungsabhängige Routen",
+        "description": "Berücksichtigung der Fahrtrichtung bei der Auswahl der Streckenführung."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Aktivierung/Deaktivierung von Routen",
+        "description": "Routen können nach Bedarf an- oder ausgeschaltet werden."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Aktivierung/Deaktivierung von Blöcken",
+        "description": "Blöcke können individuell für den Fahrbetrieb ein- oder ausgeschaltet werden."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "S88 Viewer",
+        "description": "Anzeige der aktuellen Belegtzustände über das S88-Rückmeldesystem."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Lokomotivensperre",
+        "description": "Sperrfunktion für Lokomotiven zur gezielten Kontrolle."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Automatikbetrieb der gesamten Anlage",
+        "description": "Möglichkeit, die gesamte Modellbahn automatisch fahren zu lassen."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Simulationsmodus",
+        "description": "Testen aller Funktionen ohne reale Fahrten."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Block-Einfahrt-Visualisierung",
+        "description": "Anzeige der Ein- und Ausfahrtsrichtung einer Lokomotive in einem Block."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Abwarten laufender Fahrten im Automatikmodus",
+        "description": "Bei einem Stopp des Automatikmodus fahren alle aktiven Züge ihre Route zu Ende."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Wartezeit für Lokomotiven am Zielblock",
+        "description": "Einstellbare Pausen für Lokomotiven, nachdem sie ihr Ziel erreicht haben."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Initiale Schaltung von Weichen und Signalen",
+        "description": "Weichen und Signale werden vor der Abfahrt eines Zuges gemäß der gewählten Route geschaltet. Läuft die Schaltung in einen Timeout, wird die Route abgebrochen."
+      },
+      {
+        "icon": "fas fa-microchip",
+        "name": "Abfahrverzögerung für Züge",
+        "description": "Nach dem initialen Setzen der Weichen und Signale wartet der Zug eine einstellbare Zeit in Sekunden, bevor er sich in Bewegung setzt. Die Einstellung gilt blockweise für alle Lokomotiven."
+      },
+      {
+        "icon": "fas fa-th-large",
+        "name": "Import von Rocrail-Plänen",
+        "description": "Einfache Übernahme bestehender Rocrail-Pläne in die Software."
+      },
+      {
+        "icon": "fas fa-th-large",
+        "name": "Geschwindigkeitsstufen wie in Rocrail",
+        "description": "Unterstützung für verschiedene Geschwindigkeitslevel von v_min bis v_max."
+      },
+      {
+        "icon": "fas fa-camera",
+        "name": "Screenshots des Gleisplans",
+        "description": "Ermöglicht das Erstellen von Screenshots des Gleisplans, die heruntergeladen oder als Vorschau in der Arbeitsplatzliste angezeigt werden können."
+      }
+    ]
+  }
+]
