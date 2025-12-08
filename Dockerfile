@@ -1,5 +1,5 @@
 # 1. Basis-Image für .NET Runtime
-FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS base
+FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS base
 WORKDIR /app
 EXPOSE 443 5001
 
