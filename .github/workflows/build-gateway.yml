@@ -83,6 +83,7 @@ jobs:
         run: dotnet restore Gateway/railyGateway/railyGateway.csproj
 
       - name: Build Gateway
+        shell: bash
         run: |
           dotnet publish Gateway/railyGateway/railyGateway.csproj \
             --configuration ${{ env.BUILD_CONFIGURATION }} \
