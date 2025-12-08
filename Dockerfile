@@ -26,7 +26,7 @@ RUN echo "alias l='ls -al --color'" >> /etc/bash.bashrc
 RUN echo "alias ls='ls -a --color'" >> /etc/bash.bashrc
 
 # 2. Build-Umgebung mit .NET SDK
-FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+FROM mcr.microsoft.com/dotnet/sdk:10.0 AS build
 WORKDIR /src
 
 # 3. Code kopieren & Bereinigung von obj/ und bin/
