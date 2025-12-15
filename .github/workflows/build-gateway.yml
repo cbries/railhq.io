@@ -121,7 +121,7 @@ jobs:
           tar -czvf ../${{ matrix.artifact_name }}-${{ steps.version.outputs.VERSION }}.tar.gz ${{ matrix.artifact_name }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: ${{ matrix.artifact_name }}-${{ steps.version.outputs.VERSION }}
           path: |
@@ -168,7 +168,7 @@ jobs:
           Compress-Archive -Path ./publish/railhqSystray-windows-x64/* -DestinationPath ./railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}.zip
 
       - name: Upload Systray artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}
           path: ./railhqSystray-windows-x64-${{ steps.version.outputs.VERSION }}.zip

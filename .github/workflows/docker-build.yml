@@ -59,7 +59,7 @@ jobs:
           mv WebDoc/build WebApp/railyWebIndex/wwwroot/documentation
 
       - name: Upload documentation artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: documentation
           path: WebApp/railyWebIndex/wwwroot/documentation
@@ -145,7 +145,7 @@ jobs:
 
       - name: Upload Docker image artifact
         if: startsWith(github.ref, 'refs/tags/') || github.event.inputs.save_image == 'true'
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: docker-image-${{ steps.version.outputs.version }}
           path: |
